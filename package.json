@@ -1,0 +1,69 @@
+{
+    "name": "awesome-vjass-support",
+    "displayName": "awesome vjass support",
+    "description": "vjass support for warcraft's worldeditor.",
+    "version": "0.0.3",
+    "publisher": "FakedWeiss",
+    "engines": {
+        "vscode": "^1.20.0"
+    },
+    "categories": [
+		"Languages"
+	],
+	"keywords": [
+		"JASS",
+		"vJASS",
+		"Syntax",
+		"Warcraft"
+	],
+	"activationEvents": [
+		"onLanguage:vjass"
+	],
+	"main": "./extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "vjass",
+				"aliases": [
+					"vJASS",
+					"vjass"
+				],
+				"extensions": [
+					".jass",
+					".j",
+					".ai"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "vjass",
+				"scopeName": "source.vjass",
+				"path": "./syntaxes/vjass.json"
+			}
+		],
+		"snippets": [
+			{
+				"language": "vjass",
+				"path": "./snippets/vj_snippets.json"
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.6",
+		"eslint": "^4.6.1",
+		"@types/node": "^7.0.43",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"jsdom": "^11.3.0",
+		"tmp": "0.0.33",
+		"vscode-ripgrep": "^0.6.0-patch.0"
+	}
+}
