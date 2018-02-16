@@ -8,7 +8,7 @@ Fixed a bug in the feature completionprovider.
 
 ## 0.0.2
 
-Added features symbolprovider, completionprovider, definitionprovider and referenceprovider.
+Added features symbolprovider, completionprovider, definitionprovider, referenceprovider and hoverprovider.
 
 ## 0.0.1
 
