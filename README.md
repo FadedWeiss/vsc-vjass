@@ -24,4 +24,8 @@ Added features symbolprovider, completionprovider, definitionprovider and refere
 
 Added features snippets and syntaxes highlight.
 
+### License
+
+The source code to this extension is available on https://github.com/FakedWeiss/awesome-vjass-support.git and licensed under the MIT license.
+
 **Enjoy!**
