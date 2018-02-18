@@ -2,6 +2,10 @@
 
 All notable changes to the "vjass" extension will be documented in this file.
 
+## 0.04
+
+add keyword and japifunction in the feature completionprovider
+
 ## 0.0.3
 
 Fixed a bug in the feature completionprovider.
