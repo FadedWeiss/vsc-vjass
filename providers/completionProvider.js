@@ -31,8 +31,8 @@ class completionProvider{
                 var proposal = new vscode.CompletionItem(name);
                 proposal.kind = kind;
                 if (entry) {
-                    if (entry.description) {
-                        proposal.documentation = entry.description;
+                    if (entry.completion) {
+                        proposal.documentation = entry.completion;
                     }
                     if (entry.parameters) {
                         let signature = type ? '(' + type + ') ' : '';
@@ -54,22 +54,42 @@ class completionProvider{
             };
 
             for (var name in vjGlobals.cjfunctions){
-                if(vjGlobals.cjfunctions.hasOwnProperty(name) && matches(name))
+                if(vjGlobals.cjfunctions.hasOwnProperty(name) && matches(name)){
                     added[name] = true;
                     result.push(createNewProposal(vscode.CompletionItemKind.Function, name, vjGlobals.cjfunctions[name], 'CJfunction'));
+                }  
             }
 
             for (var name in vjGlobals.bjfunctions){
-                if(vjGlobals.bjfunctions.hasOwnProperty(name) && matches(name))
+                if(vjGlobals.bjfunctions.hasOwnProperty(name) && matches(name)){
                     added[name] = true;
-                    result.push(createNewProposal(vscode.CompletionItemKind.Function, name, vjGlobals.bjfunctions[name], 'BJfunction'));
+                    result.push(createNewProposal(vscode.CompletionItemKind.Function, name, vjGlobals.bjfunctions[name], 'BJfunction'));  
+                }
+            }
+
+            for (var name in vjGlobals.japifunctions){
+                if(vjGlobals.japifunctions.hasOwnProperty(name) && matches(name)){
+                    added[name] = true;
+                    result.push(createNewProposal(vscode.CompletionItemKind.Function, name, vjGlobals.japifunctions[name], 'JAPIfunction'));  
+                }
             }
 
             for (var name in vjGlobals.constants){
-                if(vjGlobals.constants.hasOwnProperty(name) && matches(name))
+                if(vjGlobals.constants.hasOwnProperty(name) && matches(name)){
                     added[name] = true;
-                    result.push(createNewProposal(vscode.CompletionItemKind.constants, name, vjGlobals.constants[name], 'constants'));
+                    result.push(createNewProposal(vscode.CompletionItemKind.Constant, name, vjGlobals.constants[name], 'constants'));
+                }  
             }
+
+            for (var name in vjGlobals.keywords){
+                if(vjGlobals.keywords.hasOwnProperty(name) && matches(name))
+                    added[name] = true;
+                
+                var resultItem = new vscode.CompletionItem(name);
+                resultItem.kind = vscode.CompletionItemKind.Keyword;
+                result.push(resultItem);
+            }
+
 
             vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider', document.uri).then (symbols => {
                 symbols.forEach(symbol => {

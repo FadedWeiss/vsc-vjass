@@ -9,6 +9,7 @@ exports.searchPatterns = [
     { kind: vscode.SymbolKind.Method, pattern: /\b(method)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+takes\s+/.source },
     { kind: vscode.SymbolKind.Struct, pattern: /\b(struct)\s+([a-zA-Z_][a-zA-Z0-9_]*)/.source },
     { kind: vscode.SymbolKind.Module, pattern: /\b(library)\s+([a-zA-Z_][a-zA-Z0-9_]*)/.source },
+    { kind: vscode.SymbolKind.Interface, pattern: /\b(interface)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+takes\s+/.source },
     { kind: vscode.SymbolKind.Variable, pattern: /^(?:hashtable|integer|real|boolean|string|handle|agent|event|player|widget|unit|destructable|item|ability|buff|force|group|trigger|triggercondition|triggeraction|timer|location|region|rect|boolexpr|sound|conditionfunc|filterfunc|unitpool|itempool|race|alliancetype|racepreference|gamestate|igamestate|fgamestate|playerstate|playerscore|playergameresult|unitstate|aidifficulty|eventid|gameevent|playerevent|playerunitevent|unitevent|limitop|widgetevent|dialogevent|unittype|gamespeed|gamedifficulty|gametype|mapflag|mapvisibility|mapsetting|mapdensity|mapcontrol|playerslotstate|volumegroup|camerafield|camerasetup|playercolor|placement|startlocprio|raritycontrol|blendmode|texmapflags|effect|effecttype|weathereffect|terraindeformation|fogstate|fogmodifier|dialog|button|quest|questitem|defeatcondition|timerdialog|leaderboard|multiboard|multiboarditem|trackable|gamecache|version|itemtype|texttag|attacktype|damagetype|weapontype|soundtype|lightning|pathingtype|image|ubersplat)\s+([a-zA-Z_\x7f-\xff][a-zA-Z0-9:_\x7f-\xff]*)/.source},
 ];
 
@@ -15808,4 +15809,260 @@ exports.keywords = {
     defaults: { description: "" },
     operator: { description: "" },
     debug: { description: "" },
+}
+
+exports.japifunctions = {
+    EXSetUnitFacing: {
+        completion: "native EXSetUnitFacing takes unit u, real angle returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'u', documentation: "" },
+            { label: 'real', name: 'angle', documentation: "" }
+        ]
+    },
+    EXPauseUnit: {
+        completion: "native EXPauseUnit takes unit u, boolean flag returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'u', documentation: "" },
+            { label: 'boolean', name: 'flag', documentation: "" },
+        ]
+    },
+    EXSetUnitCollisionType: {
+        completion: "native EXSetUnitCollisionType takes boolean enable, unit u, integer t returns nothing",
+        description: "",
+        parameters: [
+            { label: 'boolean', name: 'enable', documentation: "" },
+            { label: 'unit', name: 'u', documentation: "" },
+            { label: 'integer', name: 't', documentation: ""},
+        ]
+    },
+    EXSetUnitMoveType: {
+        completion: "native EXSetUnitMoveType takes unit u, integer t returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'u', documentation: "" },
+            { label: 'integer', name: 't', documentation: ""},
+        ]
+    },
+    EXExecuteScript: {
+        completion: "native EXExecuteScript     takes string script returns string",
+        description: "",
+        parameters: [
+            { label: 'string', name: 'script', documentation: "" },
+        ]
+    },
+    EXGetEffectX: {
+        completion: "native EXGetEffectX takes effect e returns real",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: ""},
+        ]
+    },
+    EXGetEffectY: {
+        completion: "native EXGetEffectY takes effect e returns real",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: ""},
+        ]
+    },
+    EXGetEffectZ: {
+        completion: "native EXGetEffectZ takes effect e returns real",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: ""},
+        ]
+    },
+    EXSetEffectXY: {
+        completion: "native EXSetEffectXY takes effect e, real x, real y returns nothing",
+        description: "",
+        parameters: [ 
+            { label: 'effect', name: 'e', documentation: "" },
+            { label: 'real', name: 'x', documentation: "" },
+            { label: 'real', name: 'y', documentation: "" },
+        ]
+    },
+    EXSetEffectZ: {
+        completion: "native EXSetEffectZ takes effect e, real z returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: "" },
+            { label: 'real', name: 'z', documentation: "" },
+        ]
+    },
+    EXGetEffectSize: {
+        completion: "native EXGetEffectSize takes effect e returns real",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: "" },
+        ]
+    },
+    EXSetEffectSize: {
+        completion: "native EXSetEffectSize takes effect e, real size returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: "" },
+            { label: 'real', name: 'size', documentation: "" },
+        ]
+    },
+    EXEffectMatRotateX: {
+        completion: "native EXEffectMatRotateX takes effect e, real angle returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: "" },
+            { label: 'real', name: 'angle', documentation: "" },
+        ]
+    },
+    EXEffectMatRotateY: {
+        completion: "native EXEffectMatRotateY takes effect e, real angle returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: "" },
+            { label: 'real', name: 'angle', documentation: "" },
+        ]
+    },
+    EXEffectMatRotateZ: {
+        completion: "native EXEffectMatRotateZ takes effect e, real angle returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: "" },
+            { label: 'real', name: 'angle', documentation: "" },
+        ]
+    },
+    EXEffectMatScale: {
+        completion: "native EXEffectMatScale takes effect e, real x, real y, real z returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: "" },
+            { label: 'real', name: 'x', documentation: "" },
+            { label: 'real', name: 'y', documentation: "" },
+            { label: 'real', name: 'z', documentation: "" },
+        ]
+    },
+    EXEffectMatReset: {
+        completion: "native EXEffectMatReset takes effect e returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: "" },
+        ]
+    },
+    EXSetEffectSpeed: {
+        completion: "native EXSetEffectSpeed takes effect e, real speed returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'e', documentation: "" },
+            { label: 'real', name: 'speed', documentation: "" },
+        ]
+    },
+    EXGetEventDamageData: {
+        completion: "native EXGetEventDamageData takes integer edd_type returns integer",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'edd_type', documentation: "" },
+        ]
+    },
+    EXSetEventDamage: {
+        completion: "native EXSetEventDamage takes real amount returns boolean",
+        description: "",
+        parameters: [
+            { label: 'real', name: 'amount', documentation: "" },
+        ]
+    },
+    EXGetUnitAbility: {
+        completion: "native EXGetUnitAbility        takes unit u, integer abilcode returns ability",
+        description: "",
+        parameters:[
+            { label: 'unit', name: 'u', documentation: "" },
+            { label: 'integer', name: 'abilcode', documentation: "" },
+        ]
+    },
+    EXGetUnitAbilityByIndex: {
+        completion: "native EXGetUnitAbilityByIndex takes unit u, integer index returns ability",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'u', documentation: "" },
+            { label: 'integer', name: 'index', documentation: "" },
+        ]
+    },
+    EXGetAbilityId: {
+        completion: "native EXGetAbilityId          takes ability abil returns integer",
+        description: "",
+        parameters: [
+            { label: 'ability', name: 'abil' },
+        ]
+    },
+    EXGetAbilityState: {
+        completion: "native EXGetAbilityState       takes ability abil, integer state_type returns real",
+        description: "",
+        parameters: [
+            { label: 'ability', name: 'abil', documentation: "" },
+            { label: 'integer', name: 'state_type', documentation: "" },
+        ]
+    },
+    EXSetAbilityState: {
+        completion: "native EXSetAbilityState       takes ability abil, integer state_type, real value returns boolean",
+        description: "",
+        parameters: [
+            { label: 'ability', name: 'abil', documentation: "" },
+            { label: 'integer', name: 'state_type', documentation: "" },
+            { label: 'real', name: 'value', documentation: "" },
+        ]
+    },
+    EXGetAbilityDataReal: {
+        completion: "native EXGetAbilityDataReal    takes ability abil, integer level, integer data_type returns real",
+        description: "",
+        parameters: [
+            { label: 'ability', name: 'abil', documentation: "" },
+            { label: 'integer', name: 'level', documentation: "" },
+            { label: 'integer', name: 'data_type', documentation: "" },
+        ]
+    },
+    EXSetAbilityDataReal: {
+        completion: "native EXSetAbilityDataReal    takes ability abil, integer level, integer data_type, real value returns boolean",
+        description: "",
+        parameters: [
+            { label: 'ability', name: 'abil', documentation: "" },
+            { label: 'integer', name: 'level', documentation: "" },
+            { label: 'integer', name: 'data_type', documentation: "" },
+            { label: 'real', name: 'value', documentation: "" },
+        ]
+    },
+    EXGetAbilityDataInteger: {
+        completion: "native EXGetAbilityDataInteger takes ability abil, integer level, integer data_type returns integer",
+        description: "",
+        parameters: [
+            { label: 'ability', name: 'abil', documentation: "" },
+            { label: 'integer', name: 'level', documentation: "" },
+            { label: 'integer', name: 'data_type', documentation: "" },
+        ]
+    },
+    EXSetAbilityDataInteger: {
+        completion: "native EXSetAbilityDataInteger takes ability abil, integer level, integer data_type, integer value returns boolean",
+        description: "",
+        parameters: [
+            { label: 'ability', name: 'abil', documentation: "" },
+            { label: 'integer', name: 'level', documentation: "" },
+            { label: 'integer', name: 'data_type', documentation: "" },
+            { label: 'integer', name: 'value', documentation: "" },
+        ]
+    },
+    EXGetAbilityDataString: {
+        completion: "native EXGetAbilityDataString  takes ability abil, integer level, integer data_type returns string",
+        description: "",
+        parameters: [
+            { label: 'ability', name: 'abil', documentation: "" },
+            { label: 'integer', name: 'level', documentation: "" },
+            { label: 'integer', name: 'data_type', documentation: "" },
+        ]
+    },
+    EXSetAbilityDataString: {
+        completion: "native EXSetAbilityDataString  takes ability abil, integer level, integer data_type, string value returns boolean",
+        description: "",
+        parameters: [
+            { label: 'ability', name: 'abil', documentation: "" },
+            { label: 'integer', name: 'level', documentation: "" },
+            { label: 'integer', name: 'data_type', documentation: "" },
+            { label: 'string', name: 'value', documentation: "" },
+        ]
+    },
 }

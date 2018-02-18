@@ -3,13 +3,6 @@ const vscode_ripgrep = require('vscode-ripgrep');
 const child_process = require("child_process");
 const path = require("path");
 const vjGlobal = require('../syntaxes/vjassGlobal');
-const searchPatterns = [
-    { kind: vscode.SymbolKind.Function, pattern: /\b(function)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+takes\s+/.source },
-    { kind: vscode.SymbolKind.Method, pattern: /\b(method)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+takes\s+/.source },
-    { kind: vscode.SymbolKind.Struct, pattern: /\b(struct)\s+([a-zA-Z_][a-zA-Z0-9_]*)/.source },
-    { kind: vscode.SymbolKind.Module, pattern: /\b(library)\s+([a-zA-Z_][a-zA-Z0-9_]*)/.source },
-    { kind: vscode.SymbolKind.Variable, pattern: /^(?:hashtable|integer|real|boolean|string|handle|agent|event|player|widget|unit|destructable|item|ability|buff|force|group|trigger|triggercondition|triggeraction|timer|location|region|rect|boolexpr|sound|conditionfunc|filterfunc|unitpool|itempool|race|alliancetype|racepreference|gamestate|igamestate|fgamestate|playerstate|playerscore|playergameresult|unitstate|aidifficulty|eventid|gameevent|playerevent|playerunitevent|unitevent|limitop|widgetevent|dialogevent|unittype|gamespeed|gamedifficulty|gametype|mapflag|mapvisibility|mapsetting|mapdensity|mapcontrol|playerslotstate|volumegroup|camerafield|camerasetup|playercolor|placement|startlocprio|raritycontrol|blendmode|texmapflags|effect|effecttype|weathereffect|terraindeformation|fogstate|fogmodifier|dialog|button|quest|questitem|defeatcondition|timerdialog|leaderboard|multiboard|multiboarditem|trackable|gamecache|version|itemtype|texttag|attacktype|damagetype|weapontype|soundtype|lightning|pathingtype|image|ubersplat)\s+([a-zA-Z_\x7f-\xff][a-zA-Z0-9:_\x7f-\xff]*)/.source},
-];
 
 class symbolProvider {
     constructor(){
@@ -58,7 +51,7 @@ class symbolProvider {
                     let range = document.lineAt(line).range;
                     let word = match[2];
 
-                    let lastChar = kind === vscode.SymbolKind.Function ? "endfunction" :
+                    let lastChar = (kind === vscode.SymbolKind.Function || kind === vscode.SymbolKind.Interface) ? "endfunction" :
                         kind === vscode.SymbolKind.Method ? 'endmethod' :
                             kind === vscode.SymbolKind.Struct ? 'endstruct' :
                                 kind === vscode.SymbolKind.Module ? 'endlibrary' :
