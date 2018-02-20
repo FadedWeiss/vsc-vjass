@@ -3,3 +3,4 @@ node_modules
 .vsix
 .idea/
 vsc-extension-quickstart.md
+*.vsix

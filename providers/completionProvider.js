@@ -82,12 +82,13 @@ class completionProvider{
             }
 
             for (var name in vjGlobals.keywords){
-                if(vjGlobals.keywords.hasOwnProperty(name) && matches(name))
+                if(vjGlobals.keywords.hasOwnProperty(name) && matches(name)){
                     added[name] = true;
-                
-                var resultItem = new vscode.CompletionItem(name);
-                resultItem.kind = vscode.CompletionItemKind.Keyword;
-                result.push(resultItem);
+                    var resultItem = new vscode.CompletionItem(name);
+                    resultItem.kind = vscode.CompletionItemKind.Keyword;
+                    result.push(resultItem);
+                }
+                    
             }
 
 

@@ -1,13 +1,13 @@
 {
-    "name": "awesome-vjass-support",
-    "displayName": "awesome vjass support",
-    "description": "vjass support for warcraft's worldeditor.",
-    "version": "0.0.4",
-    "publisher": "FakedWeiss",
-    "engines": {
-        "vscode": "^1.20.0"
-    },
-    "categories": [
+	"name": "awesome-vjass-support",
+	"displayName": "awesome vjass support",
+	"description": "vjass support for warcraft's worldeditor.",
+	"version": "0.0.5",
+	"publisher": "FakedWeiss",
+	"engines": {
+		"vscode": "^1.20.0"
+	},
+	"categories": [
 		"Languages"
 	],
 	"keywords": [
