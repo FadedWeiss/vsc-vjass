@@ -28,9 +28,9 @@ class referenceProvider {
                 let refPosition = document.positionAt(match.index);
                 results.push(new vscode.Location(document.uri, document.getWordRangeAtPosition(refPosition)));
             }
-            //let symbols = yield
-            //vscode.commands.executeCommand('vscode.executeWorkspaceSymbolProvider', name).then
-            vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider', document.uri).then (symbols => {
+            
+            //vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider', document.uri)
+            vscode.commands.executeCommand('vscode.executeWorkspaceSymbolProvider', name).then (symbols => {
                 symbols.filter(s => 
                     (s.name === name && s.location.uri.toString() != document.uri.toString())).forEach(symbol => {
                     results.push(symbol.location);

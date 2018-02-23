@@ -91,10 +91,20 @@ class completionProvider{
                     
             }
 
+            // vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider', document.uri).then (symbols => {
+            //     symbols.forEach(symbol => {
 
-            vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider', document.uri).then (symbols => {
+            //         if (!added[symbol.name]) {
+            //             added[symbol.name] = true;
+            //             result.push(createNewProposal(symbol.kind, symbol.name, null));
+            //         }
+            //     });
+
+            //     resolve(result);
+            // });
+
+            vscode.commands.executeCommand('vscode.executeWorkspaceSymbolProvider', name).then(symbols => {
                 symbols.forEach(symbol => {
-
                     if (!added[symbol.name]) {
                         added[symbol.name] = true;
                         result.push(createNewProposal(symbol.kind, symbol.name, null));

@@ -98,11 +98,11 @@ class symbolProvider {
                         let word = '?????';
                         let symbolMatch = regex.exec(lineMatch[4].toString());
                         if (symbolMatch) {
-                            word = symbolMatch[1];
+                            word = symbolMatch[2];
                             position = position.with({ character: symbolMatch[0].indexOf(word) });
                             range = new vscode.Range(position, position.translate(0, word.length));
+                            results.push(new vscode.SymbolInformation(word, kind, '', new vscode.Location(vscode.Uri.file(filepath), range)));
                         }
-                        results.push(new vscode.SymbolInformation(word, kind, '', new vscode.Location(vscode.Uri.file(filepath), range)));
                     }
                 }
             }

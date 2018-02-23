@@ -2,7 +2,7 @@
 	"name": "awesome-vjass-support",
 	"displayName": "awesome vjass support",
 	"description": "vjass support for warcraft's worldeditor.",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"publisher": "FakedWeiss",
 	"engines": {
 		"vscode": "^1.20.0"
