@@ -21,10 +21,10 @@ function activate(context) {
 
     context.subscriptions.push(vscode.languages.registerHoverProvider('vjass', new hoverProvider()));
     context.subscriptions.push(vscode.languages.registerCompletionItemProvider('vjass', new completionProvider(), ','));
-    context.subscriptions.push(vscode.languages.registerReferenceProvider('vjass', new referenceProvider()));
     let sp = new symbolProvider();
     context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider('vjass', sp));
     context.subscriptions.push(vscode.languages.registerWorkspaceSymbolProvider(sp));
+    context.subscriptions.push(vscode.languages.registerReferenceProvider('vjass', new referenceProvider()));
     context.subscriptions.push(vscode.languages.registerDefinitionProvider('vjass', new definitionProvider()));
 
 }

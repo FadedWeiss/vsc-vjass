@@ -11,7 +11,7 @@ class definitionProvider{
             }
             let name = document.getText(wordRange);
 
-            //vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider', document.uri)
+            //vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider', document.uri).then(symbols => {
             vscode.commands.executeCommand('vscode.executeWorkspaceSymbolProvider', name).then(symbols => {
                 let result = [];
                 for (let symbol of symbols) {
