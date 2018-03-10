@@ -1,17 +1,52 @@
 const vscode = require('vscode');
-class IEntry {
+const vscode_ripgrep = require('vscode-ripgrep');
+const child_process = require("child_process");
 
+const execOpts = {
+    cwd: vscode.workspace.rootPath,
+    maxBuffer: 1024 * 1024,
+};
+
+var processLines = function(pattern, filepath){
+    let lines;
+    try {
+        let output = child_process.execSync(`${vscode_ripgrep.rgPath} --no-messages -o --case-sensitive --line-number --column --hidden -e "${pattern}" "${filepath}"`, execOpts);
+        lines = output.toString().split('\n');
+    } catch (error) {
+        console.log("RipgrepCommand failed: " + filepath);
+        lines = [];
+    }
+    return lines;
 }
-exports.IEntry = IEntry;
+exports.processLines = processLines;
+
+var filePattern = '{**/*.j,**/*.jass,**/*.ai}';
+exports.filePattern = filePattern;
+
+var namePattern = /\s/.source + '+([a-zA-Z_][a-zA-Z0-9_]*)';
+
+var regPatterns = [
+    '(function)' + namePattern,
+    '(method)' + namePattern,
+    '(struct)' + namePattern,
+    '(library)' + namePattern,
+    '(interface function)' + namePattern,
+    '(hashtable|integer|real|boolean|string|handle|agent|event|player|widget|unit|destructable|item|ability|buff|force|group|trigger|triggercondition|triggeraction|timer|location|region|rect|boolexpr|sound|conditionfunc|filterfunc|unitpool|itempool|race|alliancetype|racepreference|gamestate|igamestate|fgamestate|playerstate|playerscore|playergameresult|unitstate|aidifficulty|eventid|gameevent|playerevent|playerunitevent|unitevent|limitop|widgetevent|dialogevent|unittype|gamespeed|gamedifficulty|gametype|mapflag|mapvisibility|mapsetting|mapdensity|mapcontrol|playerslotstate|volumegroup|camerafield|camerasetup|playercolor|placement|startlocprio|raritycontrol|blendmode|texmapflags|effect|effecttype|weathereffect|terraindeformation|fogstate|fogmodifier|dialog|button|quest|questitem|defeatcondition|timerdialog|leaderboard|multiboard|multiboarditem|trackable|gamecache|version|itemtype|texttag|attacktype|damagetype|weapontype|soundtype|lightning|pathingtype|image|ubersplat)' + namePattern,
+];
 
 exports.searchPatterns = [
-    { kind: vscode.SymbolKind.Function, pattern: /\b(function)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+/.source },
-    { kind: vscode.SymbolKind.Method, pattern: /\b(method)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+/.source },
-    { kind: vscode.SymbolKind.Struct, pattern: /\b(struct)\s+([a-zA-Z_][a-zA-Z0-9_]*)/.source },
-    { kind: vscode.SymbolKind.Module, pattern: /\b(library)\s+([a-zA-Z_][a-zA-Z0-9_]*)/.source },
-    { kind: vscode.SymbolKind.Interface, pattern: /\b(interface function)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+/.source },
-    { kind: vscode.SymbolKind.Variable, pattern: /\b(hashtable|integer|real|boolean|string|handle|agent|event|player|widget|unit|destructable|item|ability|buff|force|group|trigger|triggercondition|triggeraction|timer|location|region|rect|boolexpr|sound|conditionfunc|filterfunc|unitpool|itempool|race|alliancetype|racepreference|gamestate|igamestate|fgamestate|playerstate|playerscore|playergameresult|unitstate|aidifficulty|eventid|gameevent|playerevent|playerunitevent|unitevent|limitop|widgetevent|dialogevent|unittype|gamespeed|gamedifficulty|gametype|mapflag|mapvisibility|mapsetting|mapdensity|mapcontrol|playerslotstate|volumegroup|camerafield|camerasetup|playercolor|placement|startlocprio|raritycontrol|blendmode|texmapflags|effect|effecttype|weathereffect|terraindeformation|fogstate|fogmodifier|dialog|button|quest|questitem|defeatcondition|timerdialog|leaderboard|multiboard|multiboarditem|trackable|gamecache|version|itemtype|texttag|attacktype|damagetype|weapontype|soundtype|lightning|pathingtype|image|ubersplat)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+/.source},
+    { kind: vscode.SymbolKind.Function, pattern: /\b/.source + regPatterns[0] + /\s+/.source },
+    { kind: vscode.SymbolKind.Method, pattern: /\b/.source + regPatterns[1] + /\s+/.source },
+    { kind: vscode.SymbolKind.Struct, pattern: /\b/.source + regPatterns[2] },
+    { kind: vscode.SymbolKind.Module, pattern: /\b/.source + regPatterns[3] },
+    { kind: vscode.SymbolKind.Interface, pattern: /\b/.source + regPatterns[4] + /\s+/.source },
+    { kind: vscode.SymbolKind.Variable, pattern: /\b/.source + regPatterns[5] },
 ];
+
+
+
+exports.symbolPattern = /\b/.source + '(' + regPatterns[0] + '|' + regPatterns[1] + '|' + regPatterns[2] + '|' + regPatterns[3] + '|' + regPatterns[4] + '|' + regPatterns[5] + ')' + /\s+/.source;
+
 
 exports.cjfunctions = {
     ConvertRace: {
@@ -115,7 +150,7 @@ exports.cjfunctions = {
         description: "",
         parameters: [
             { label: 'integer', name: 'i', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
-      ],
+        ],
     
     },
     ConvertWidgetEvent: {
@@ -15809,6 +15844,25 @@ exports.keywords = {
     defaults: { description: "" },
     operator: { description: "" },
     debug: { description: "" },
+    hashtable: { description: "" },integer: { description: "" },real: { description: "" },boolean: { description: "" },string: { description: "" },handle: { description: "" },agent: { description: "" },event: { description: "" },player: { description: "" },widget: { description: "" },unit: { description: "" },destructable: { description: "" },item: { description: "" },ability: { description: "" },buff: { description: "" },force: { description: "" },group: { description: "" },trigger: { description: "" },triggercondition: { description: "" },triggeraction: { description: "" },timer: { description: "" },location: { description: "" },region: { description: "" },rect: { description: "" },boolexpr: { description: "" },sound: { description: "" },conditionfunc: { description: "" },filterfunc: { description: "" },unitpool: { description: "" },itempool: { description: "" },race: { description: "" },alliancetype: { description: "" },racepreference: { description: "" },gamestate: { description: "" },igamestate: { description: "" },fgamestate: { description: "" },playerstate: { description: "" },playerscore: { description: "" },playergameresult: { description: "" },unitstate: { description: "" },aidifficulty: { description: "" },eventid: { description: "" },gameevent: { description: "" },playerevent: { description: "" },playerunitevent: { description: "" },unitevent: { description: "" },limitop: { description: "" },widgetevent: { description: "" },dialogevent: { description: "" },unittype: { description: "" },gamespeed: { description: "" },gamedifficulty: { description: "" },gametype: { description: "" },mapflag: { description: "" },mapvisibility: { description: "" },mapsetting: { description: "" },mapdensity: { description: "" },mapcontrol: { description: "" },playerslotstate: { description: "" },volumegroup: { description: "" },camerafield: { description: "" },camerasetup: { description: "" },playercolor: { description: "" },placement: { description: "" },startlocprio: { description: "" },raritycontrol: { description: "" },blendmode: { description: "" },texmapflags: { description: "" },effect: { description: "" },effecttype: { description: "" },weathereffect: { description: "" },terraindeformation: { description: "" },fogstate: { description: "" },fogmodifier: { description: "" },dialog: { description: "" },button: { description: "" },quest: { description: "" },questitem: { description: "" },defeatcondition: { description: "" },timerdialog: { description: "" },leaderboard: { description: "" },multiboard: { description: "" },multiboarditem: { description: "" },trackable: { description: "" },gamecache: { description: "" },version: { description: "" },itemtype: { description: "" },texttag: { description: "" },attacktype: { description: "" },damagetype: { description: "" },weapontype: { description: "" },soundtype: { description: "" },lightning: { description: "" },pathingtype: { description: "" },image: { description: "" },ubersplat: { description: "" },nothing: { description: "" },
+}
+
+exports.vjfunctions = {
+    create: {
+        description: "Struct.create()"
+    },
+    allocate: {
+        description: "Struct.allocate()"
+    },
+    destroy: {
+        description: "Struct.destroy()"
+    },
+    execute: {
+        description: "function.execute()"
+    },
+    evaluate: {
+        description: "function.evaluate()"
+    },
 }
 
 exports.japifunctions = {

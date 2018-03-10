@@ -13,7 +13,7 @@ var awaiter = function(thisArg, _arguments, generator){
 class completionProvider{
 
     constructor(){
-        this.triggerCharacters = ['.'];
+        this.triggerCharacters = ['('];
     }
     
 
@@ -71,6 +71,13 @@ class completionProvider{
                 if(vjGlobals.japifunctions.hasOwnProperty(name) && matches(name)){
                     added[name] = true;
                     result.push(createNewProposal(vscode.CompletionItemKind.Function, name, vjGlobals.japifunctions[name], 'JAPIfunction'));  
+                }
+            }
+
+            for (var name in vjGlobals.vjfunctions){
+                if(vjGlobals.vjfunctions.hasOwnProperty(name) && matches(name)){
+                    added[name] = true;
+                    result.push(createNewProposal(vscode.CompletionItemKind.Function, name, vjGlobals.vjfunctions[name], 'VJfunction'));
                 }
             }
 

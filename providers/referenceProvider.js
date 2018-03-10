@@ -1,5 +1,6 @@
 
 const vscode = require('vscode');
+const vjGlobal = require('../syntaxes/vjassGlobal');
 
 var awaiter = function(thisArg, _arguments, generator){
     return new Promise((resolve, reject) =>{
@@ -11,6 +12,33 @@ var awaiter = function(thisArg, _arguments, generator){
 };
 
 class referenceProvider {
+
+    promiseReferences(document, word){
+        return new Promise((resolve, reject) =>{
+            let results = [];
+            vscode.workspace.findFiles(vjGlobal.filePattern).then(uris => {
+                for(let uri of uris){
+                    let filePath = uri.fsPath;
+                    if (filePath !== '' && document.uri.toString() !== uri.toString()){
+                        let lines = vjGlobal.processLines(`\\b${word}\\b`, filePath);
+                        
+                        //wrong
+                        for (let line of lines) {
+                            if ( line !== '' ){
+                                let info = line.split(':');
+                                let wordpos = new vscode.Position(parseInt(info[0]) - 1, parseInt(info[1]) - 1);
+                                results.push(new vscode.Location(uri, wordpos));
+                            }
+                        }
+                        
+                      
+                        //results = results.concat(lines);
+                    }
+                }
+                resolve(results);
+            });
+        });
+    }
 
     provideReferences(document, position, options, token) {
 
@@ -30,13 +58,18 @@ class referenceProvider {
             }
             
             //vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider', document.uri)
-            vscode.commands.executeCommand('vscode.executeWorkspaceSymbolProvider', name).then (symbols => {
-                symbols.filter(s => 
-                    (s.name === name && s.location.uri.toString() != document.uri.toString())).forEach(symbol => {
-                    results.push(symbol.location);
-                });
+            this.promiseReferences(document, name).then( references => {
+                results = results.concat(references);
                 resolve(results);
-            });
+            })
+
+            // vscode.commands.executeCommand('vscode.executeWorkspaceSymbolProvider', name).then (symbols => {
+            //     symbols.filter(s => 
+            //         (s.name === name && s.location.uri.toString() != document.uri.toString())).forEach(symbol => {
+            //         results.push(symbol.location);
+            //     });
+            //     resolve(results);
+            // });
            
         }));
     }

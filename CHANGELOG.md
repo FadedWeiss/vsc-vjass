@@ -2,6 +2,17 @@
 
 All notable changes to the "vjass" extension will be documented in this file.
 
+## 0.0.8
+
+bugs fixed;
+refactoring referenceProvider;
+add vj .allocate .create .destroy .execute .evalute to completionProvider.
+
+## 0.0.7
+
+fixed a bug that I haven't catch an error throwed from the vscode_ripgrep.
+symbolprovider refactoring.
+
 ## 0.0.6
 
 now the intellisense features works by searching over the whole jass files in the workspace

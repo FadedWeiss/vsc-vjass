@@ -66,15 +66,137 @@
 		},
 
 		{
-			"name": "keyword.operator.vjass",
+			"begin": "\\b(function)\\s+(?:([\\w_]+)\\s+)(?=takes\\b)",
+			"end": "\\b(endfunction)\\b",
+			"beginCaptures": {
+				"1": { "name": "keyword.vjass" },
+				"2": { "name": "entity.name.function" },
+				"3": { "name": "keyword.vjass" }
+			},
+			"endCaptures": { "1": { "name": "keyword.vjass" } },
+			"patterns": [{ "include": "$self" }]
+		},
+		{
+			"begin": "\\b(takes)\\b",
+			"end": "\\b(returns)\\s+([\\w_]+)\\b",
+			"beginCaptures": { "1": { "name": "keyword.vjass" } },
+			"endCaptures": {
+				"1": { "name": "keyword.vjass" },
+				"2": { "name": "storage.type.vjass" }
+			},
+			"patterns": [
+				{
+					"match": "\\bnothing\\b",
+					"name": "storage.type.vjass"
+				},
+				{
+					"match": "\\b([\\w_]+)\\s+(?:(this)|([\\w_]+))\\b",
+					"captures": {
+						"1": { "name": "storage.type.vjass" },
+						"2": { "name": "variable.language.vjass" },
+						"3": { "name": "variable.parameter.vjass" }
+					}
+				}
+			]
+		},
+		{
+			"begin": "\\b(struct)\\s+([\\w_]+)(?:\\s+(extends)\\s+([\\w_]+))?(?:\\s+(implements)\\s+(?:,?\\s*([\\w_]+))+)?",
+			"end": "\\bendstruct\\b",
+			"beginCaptures": {
+				"1": { "name": "keyword.vjass" },
+				"2": { "name": "entity.name.type" },
+				"3": { "name": "keyword.vjass" },
+				"4": { "name": "entity.other.inherited-class.vjass" },
+				"5": { "name": "keyword.vjass" },
+				"6": { "name": "entity.other.inherited-class.vjass" }
+			},
+			"endCaptures": { "0": { "name": "keyword.vjass" } },
+			"patterns": [
+				{
+					"begin": "\\b(?:(public|private|protected)\\s+)?(?:(static)\\s+)?(method)\\s+(?:(?:((?:operator)(?:\\[\\])?)\\s+)?)(?:([\\w_]+)\\s+)?(?=takes\\b)",
+					"end": "\\b(endmethod)\\b",
+					"beginCaptures": {
+						"1": { "name": "storage.modifier.vjass" },
+						"2": { "name": "storage.modifier.vjass" },
+						"3": { "name": "keyword.vjass" },
+						"4": { "name": "keyword.vjass" },
+						"5": { "name": "entity.name.function" },
+						"6": { "name": "keyword.vjass" }
+					},
+					"endCaptures": { "1": { "name": "keyword.vjass" } },
+					"patterns": [{ "include": "$self" }]
+				},
+				{ "include": "$self" }
+			]
+		},
+		{
+			"begin": "\\b(library)\\s+([\\w_]+)(?:\\s+(requires|uses|needs)\\s+(?:,?\\s*(optional)?\\s+([\\w_]+))+)?(?:\\s+(initializer)\\s+([\\w_]+))?",
+			"end": "\\bendlibrary\\b",
+			"captures": {
+				"1": { "name": "keyword.vjass" },
+				"2": { "name": "entity.name.section" },
+				"3": { "name": "keyword.vjass" },
+				"4": { "name": "keyword.vjass" },
+				"5": { "name": "entity.name.section" },
+				"6": { "name": "keyword.vjass" },
+				"7": { "name": "entity.name.function" }
+			},
+			"endCaptures": { "0": { "name": "keyword.vjass" } },
+			"patterns": [{ "include": "$self" }]
+		},
+		{
+			"begin": "\\b(scope)\\s+([\\w_]+)",
+			"end": "\\bendscope\\b",
+			"captures": {
+				"1": { "name": "keyword.vjass" },
+				"2": { "name": "entity.name.section" }
+			},
+			"endCaptures": { "0": { "name": "keyword.vjass" } },
+			"patterns": [{ "include": "$self" }]
+		},
+		{
+			"begin": "\\b(module)\\s+([\\w_]+)",
+			"end": "\\bendmodule\\b",
+			"captures": {
+				"1": { "name": "keyword.vjass" },
+				"2": { "name": "entity.name.type" }
+			},
+			"endCaptures": { "0": { "name": "keyword.vjass" } },
+			"patterns": [{ "include": "$self" }]
+		},
 
-			"match": "\\+|-|/|\\*|,|=|:|\\(|\\)|\\!|\\[|\\]|<|>|\\{|\\}|\\&|\\|\\.|\\%|\\^|\\.|\\|"
+		{
+			"match": "^\\s*(local)\\s+([\\w_]+)\\s+(?:(this)|([\\w_]+))\\b",
+			"captures": {
+				"1": { "name": "keyword.vjass" },
+				"2": { "name": "storage.type.vjass" },
+				"3": { "name": "variable.language.vjass" },
+				"4": { "name": "variable.parameter.vjass" }
+			}
+		},
+
+		{
+			"match": "^\\s*(constant)\\s+([\\w_]+)\\s+(?:(this)|([\\w_]+))\\b",
+			"captures": {
+				"1": { "name": "keyword.vjass" },
+				"2": { "name": "storage.type.vjass" },
+				"3": { "name": "variable.language.vjass" },
+				"4": { "name": "constant.other.vjass" }
+			}
+		},
+
+		{
+			"match": "\b(call)?\\s*(?:(allocate|destroy)|(?:(?:[\\w_\\.\\[\\]\\s]+\\s*\\.)?\\s*([\\w_]+)))\\s*(?=\\()",
+			"captures": {
+				"1": { "name": "keyword.vjass" }, 
+				"2": { "name": "support.function.vjass" },
+				"3": { "name": "entity.name.function" }
+			}
 		},
 
 		{
 			"name": "keyword.operator.vjass",
-
-			"match": "\\b(and|or|not)\\b"
+			"match": "(\\+|\\band\\b|\\bor\\b|=|==|!=|\\-|<|<=|\\*|>|>=|/)"
 		},
 
 		{
