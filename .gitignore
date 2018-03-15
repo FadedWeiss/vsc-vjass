@@ -4,3 +4,5 @@ node_modules
 .idea/
 vsc-extension-quickstart.md
 *.vsix
+*.lock
+*.log
