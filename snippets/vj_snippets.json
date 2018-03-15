@@ -52,6 +52,10 @@
 		"body": "else",
 		"description": "else",
 		"scope": "source.vjass"
+    },
+    "global": {
+        "prefix": "globals",
+        "body": "globals\n\t${0:}\nendglobals"
     },	
     "if": {
 		"prefix": "if",
@@ -115,7 +119,7 @@
     },
     "library": {
         "prefix": "library",
-        "body": "library ${1:library_name} initializer ${2:init_function} requires ${3:require_libs}\n\tfunction ${2:initializer_name} takes nothing returns nothing\n\t\t${0:// init_body}\n\tendfunction\nendlibrary",
+        "body": "library ${1:library_name} initializer ${2:init_function} requires ${3:require_libs}\n\tprivate function ${2:initializer_name} takes nothing returns nothing\n\t\t${0:// init_body}\n\tendfunction\nendlibrary",
         "description": "library",
         "scope": "source.vjass"
     },

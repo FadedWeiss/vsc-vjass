@@ -67,15 +67,65 @@ class fileSymbolCache {
         }
     }
 
+    fetchDocumentSymbols(document){
+        var text = document.getText();
+        var symbols = this.symbols;
+        function fetchSymbol(entry) {
+            const kind = entry.kind;
+            const pattern = entry.pattern;
+            let regex = new RegExp(pattern, "gm");
+            let match = null;
+            while (match = regex.exec(text)) {
+                let line = document.positionAt(match.index).line;
+                let range = document.lineAt(line).range;
+                let word = match[2];
+    
+                let lastChar = (kind === vscode.SymbolKind.Function || kind === vscode.SymbolKind.Interface) ? "endfunction" :
+                    kind === vscode.SymbolKind.Method ? 'endmethod' :
+                        kind === vscode.SymbolKind.Struct ? 'endstruct' :
+                            kind === vscode.SymbolKind.Module ? 'endlibrary' :
+                                '';
+    
+                if (lastChar) {
+                    let end = text.indexOf(lastChar, match.index) + 1;
+                    range = new vscode.Range(range.start, document.positionAt(end));
+                }
+
+                let kindkey = this.symbolKindToSymbolSetKey(kind);
+                let symbolSet = symbols[kindkey];
+                let symbol = new vscode.SymbolInformation(word, kind, '', new vscode.Location(document.uri, range));
+                symbolSet[word] = symbol;
+            }
+        }
+        for (let entry of vjGlobal.searchPatterns) {
+            fetchSymbol(entry);
+        }
+    };
+
+    fileOpened(){
+        for (let d of vscode.workspace.textDocuments) {
+            if (d.uri.toString() === this.filePath) {
+                return d;
+            }
+        }
+        return null;
+    }
+
     updateSymbols(){
         if (this.filePath !== ''){
-            let lines = vjGlobal.processLines(vjGlobal.symbolPattern, this.filePath);
+            let document = this.fileOpened();
+            if(document){
+                this.fetchDocumentSymbols(document);
+            }else{
+                let lines = vjGlobal.processLines(vjGlobal.symbolPattern, this.filePath);
 
-            if(lines.length > 0 && this.changed){
-                this.initSymbols();
-                this.updateLines(lines);
-                this.changed = false;
-            }               
+                if(lines.length > 0 && this.changed){
+                    this.initSymbols();
+                    this.updateLines(lines);
+                    this.changed = false;
+                }       
+            }
+                   
         } 
     }
 

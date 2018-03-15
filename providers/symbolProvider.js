@@ -4,7 +4,7 @@ const fileSymbolCache = require('./fileSymbolCache');
 
 var fetchDocumentSymbols = function(document){
     var results = [];
-    let text = document.getText();
+    var text = document.getText();
     function fetchSymbol(entry) {
         const kind = entry.kind;
         const pattern = entry.pattern;
@@ -43,17 +43,18 @@ class symbolProvider {
         this.preloadSymbols();
         // watch files to invalidate cache, if needed
         let watcher = vscode.workspace.createFileSystemWatcher(new vscode.RelativePattern(vscode.workspace.rootPath, vjGlobal.filePattern), true);
-        watcher.onDidChange(uri => {
+        
+        watcher.onDidChange((uri => {
             let filePath = uri.fsPath;
             this._symbolCache[filePath].changed = true;
             this._symbolCache[filePath].updateSymbols();
             console.log(filePath);
-        });
-        watcher.onDidDelete(uri => {
+        }).bind(this));
+        watcher.onDidDelete((uri => {
             let filePath = uri.fsPath;
             this._symbolCache[filePath] = undefined;
             console.log(filePath);
-        });
+        }).bind(this));
         //warcher.onDidCreate(uri => { this._symbolCache[uri.fsPath] = undefined; console.log(uri.fsPath); });
         
         this._disposables.push(watcher);

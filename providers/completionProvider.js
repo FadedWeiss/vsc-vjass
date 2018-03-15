@@ -50,7 +50,7 @@ class completionProvider{
                 return proposal;
             };
             var matches = (name) => {
-                return prefix.length === 0 || name.length >= prefix.length && name.substr(0, prefix.length) === prefix;
+                return prefix.length === 0 || name.length >= prefix.length && name.substr(0, prefix.length).toLocaleLowerCase() === prefix.toLocaleLowerCase();
             };
 
             for (var name in vjGlobals.cjfunctions){

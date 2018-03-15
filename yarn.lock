@@ -2377,9 +2377,9 @@ vinyl@~2.0.1:
     remove-trailing-separator "^1.0.1"
     replace-ext "^1.0.0"
 
-vscode-ripgrep@^0.6.0-patch.0:
-  version "0.6.0-patch.0.5"
-  resolved "https://registry.yarnpkg.com/vscode-ripgrep/-/vscode-ripgrep-0.6.0-patch.0.5.tgz#afd62ed290481c4cca6bf8e376fdf5d1e3f8afcd"
+vscode-ripgrep@^0.7.1-patch.1.5:
+  version "0.7.1-patch.1.5"
+  resolved "https://registry.yarnpkg.com/vscode-ripgrep/-/vscode-ripgrep-0.7.1-patch.1.5.tgz#a1f1b037709de087533b003b13cb526bb39be876"
 
 vscode@^1.1.6:
   version "1.1.10"

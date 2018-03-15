@@ -1,7 +1,4 @@
 { 
-	"information_for_contributors": [
-		"This file reffered to https://github.com/Ruk33/SublimeText-JASS/blob/master/jass.json"
-	],
 	"name": "JASS (Warcraft 3)", 
 	"scopeName": "source.vjass", 
 	"fileTypes": ["jass"], 
