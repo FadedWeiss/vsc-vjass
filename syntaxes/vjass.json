@@ -66,7 +66,7 @@
 		},
 
 		{
-			"begin": "\\b(function)\\s+(?:([\\w_]+)\\s+)(?=takes\\b)",
+			"begin": "\\b(function)|(function\\binterface)\\s+(?:([$\\w_$]+)\\s+)(?=takes\\b)",
 			"end": "\\b(endfunction)\\b",
 			"beginCaptures": {
 				"1": { "name": "keyword.vjass" },
@@ -78,7 +78,7 @@
 		},
 		{
 			"begin": "\\b(takes)\\b",
-			"end": "\\b(returns)\\s+([\\w_]+)\\b",
+			"end": "\\b(returns)\\s+([$\\w_$]+)\\b",
 			"beginCaptures": { "1": { "name": "keyword.vjass" } },
 			"endCaptures": {
 				"1": { "name": "keyword.vjass" },
@@ -90,7 +90,7 @@
 					"name": "storage.type.vjass"
 				},
 				{
-					"match": "\\b([\\w_]+)\\s+(?:(this)|([\\w_]+))\\b",
+					"match": "\\b([$\\w_$]+)\\s+(?:(this)|([$\\w_$]+))\\b",
 					"captures": {
 						"1": { "name": "storage.type.vjass" },
 						"2": { "name": "variable.language.vjass" },
@@ -100,7 +100,7 @@
 			]
 		},
 		{
-			"begin": "\\b(struct)\\s+([\\w_]+)(?:\\s+(extends)\\s+([\\w_]+))?(?:\\s+(implements)\\s+(?:,?\\s*([\\w_]+))+)?",
+			"begin": "\\b(struct)\\s+([$\\w_$]+)(?:\\s+(extends)\\s+([$\\w_$]+))?(?:\\s+(implements)\\s+(?:,?\\s*([$\\w_$]+))+)?",
 			"end": "\\bendstruct\\b",
 			"beginCaptures": {
 				"1": { "name": "keyword.vjass" },
@@ -113,7 +113,7 @@
 			"endCaptures": { "0": { "name": "keyword.vjass" } },
 			"patterns": [
 				{
-					"begin": "\\b(?:(public|private|protected)\\s+)?(?:(static)\\s+)?(method)\\s+(?:(?:((?:operator)(?:\\[\\])?)\\s+)?)(?:([\\w_]+)\\s+)?(?=takes\\b)",
+					"begin": "\\b(?:(public|private|protected)\\s+)?(?:(static)\\s+)?(method)\\s+(?:(?:((?:operator)(?:\\[\\])?)\\s+)?)(?:([$\\w_$]+)\\s+)?(?=takes\\b)",
 					"end": "\\b(endmethod)\\b",
 					"beginCaptures": {
 						"1": { "name": "storage.modifier.vjass" },
@@ -130,7 +130,7 @@
 			]
 		},
 		{
-			"begin": "\\b(library)\\s+([\\w_]+)(?:\\s+(requires|uses|needs)\\s+(?:,?\\s*(optional)?\\s+([\\w_]+))+)?(?:\\s+(initializer)\\s+([\\w_]+))?",
+			"begin": "\\b(library)\\s+([$\\w_$]+)(?:\\s+(requires|uses|needs)\\s+(?:,?\\s*(optional)?\\s+([$\\w_$]+))+)?(?:\\s+(initializer)\\s+([$\\w_$]+))?",
 			"end": "\\bendlibrary\\b",
 			"captures": {
 				"1": { "name": "keyword.vjass" },
@@ -145,7 +145,7 @@
 			"patterns": [{ "include": "$self" }]
 		},
 		{
-			"begin": "\\b(scope)\\s+([\\w_]+)",
+			"begin": "\\b(scope)\\s+([$\\w_$]+)",
 			"end": "\\bendscope\\b",
 			"captures": {
 				"1": { "name": "keyword.vjass" },
@@ -155,7 +155,7 @@
 			"patterns": [{ "include": "$self" }]
 		},
 		{
-			"begin": "\\b(module)\\s+([\\w_]+)",
+			"begin": "\\b(module)\\s+([$\\w_$]+)",
 			"end": "\\bendmodule\\b",
 			"captures": {
 				"1": { "name": "keyword.vjass" },
@@ -164,9 +164,8 @@
 			"endCaptures": { "0": { "name": "keyword.vjass" } },
 			"patterns": [{ "include": "$self" }]
 		},
-
 		{
-			"match": "^\\s*(local)\\s+([\\w_]+)\\s+(?:(this)|([\\w_]+))\\b",
+			"match": "^\\s*(local)\\s+(([$\\w_$]+\\sarray)|([$\\w_$]+))\\s+(?:(this)|([$\\w_$]+))",
 			"captures": {
 				"1": { "name": "keyword.vjass" },
 				"2": { "name": "storage.type.vjass" },
@@ -174,9 +173,8 @@
 				"4": { "name": "variable.parameter.vjass" }
 			}
 		},
-
 		{
-			"match": "^\\s*(constant)\\s+([\\w_]+)\\s+(?:(this)|([\\w_]+))\\b",
+			"match": "^\\s*(constant)\\s+([$\\w_$]+)\\s+(?:(this)|([$\\w_$]+))",
 			"captures": {
 				"1": { "name": "keyword.vjass" },
 				"2": { "name": "storage.type.vjass" },
@@ -186,7 +184,7 @@
 		},
 
 		{
-			"match": "\b(call)?\\s*(?:(allocate|destroy)|(?:(?:[\\w_\\.\\[\\]\\s]+\\s*\\.)?\\s*([\\w_]+)))\\s*(?=\\()",
+			"match": "\b(call)?\\s*(?:(allocate|create|destroy)|(?:(?:[\\w_\\.\\[\\]\\s]+\\s*\\.)?\\s*([$\\w_$]+)))\\s*(?=\\()",
 			"captures": {
 				"1": { "name": "keyword.vjass" }, 
 				"2": { "name": "support.function.vjass" },

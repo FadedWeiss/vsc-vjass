@@ -20,7 +20,7 @@ function activate(context) {
     // The commandId parameter must match the command field in package.json
 
     context.subscriptions.push(vscode.languages.registerHoverProvider('vjass', new hoverProvider()));
-    context.subscriptions.push(vscode.languages.registerCompletionItemProvider('vjass', new completionProvider(), ','));
+    context.subscriptions.push(vscode.languages.registerCompletionItemProvider('vjass', new completionProvider(), '\(', ',', '.'));
     let sp = new symbolProvider();
     context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider('vjass', sp));
     context.subscriptions.push(vscode.languages.registerWorkspaceSymbolProvider(sp));
