@@ -118,17 +118,15 @@ class fileSymbolCache {
             if(document){
                 this.initSymbols();
                 this.fetchDocumentSymbols(document);
-                this.changed = false;
+                this.changed = false;   
             }else{
                 let lines = vjGlobal.processLines(vjGlobal.symbolPattern, this.filePath);
-
-                if(lines.length > 0 && this.changed){
+                if(lines.length > 0){
                     this.initSymbols();
                     this.updateLines(lines);
                     this.changed = false;
                 }       
             }
-                   
         } 
     }
 

@@ -126,93 +126,20 @@ class symbolProvider {
                 for(let uri of uris){
                     let filePath = uri.fsPath;
                     if (filePath !== ''){
-                        if (symbolCache[filePath]){
+                        if (!symbolCache[filePath]){
+                            symbolCache[filePath] = new fileSymbolCache(filePath);
+                        }else if (symbolCache[filePath].changed){
+                            symbolCache[filePath].updateSymbols();
+                        }//else{
                             let symbols = symbolCache[filePath].getSymbols(query);
                             results = results.concat(symbols);
-                        }
+                        //}
                     }
                 }
                 symbolCache = null;
                 provider = null;
                 resolve(results);
             });
-           
-            // vscode.workspace.findFiles(provider._vjPattern).then(uris => {
-            //     const execOpts = {
-            //         cwd: vscode.workspace.rootPath,
-            //         maxBuffer: 1024 * 1024,
-            //     };
-            //     let results = [];
-            //     for(let uri of uris){
-            //         let filePath = uri.fsPath;
-            //         if (filePath !== ''){
-            //             if (!provider._symbolCache[filePath]) {
-            //                 provider._symbolCache[filePath] = [];
-            //             }
-
-            //             let output, lines;
-            //             try {
-            //                 output = child_process.execSync(`${vscode_ripgrep.rgPath} --no-messages -o --case-sensitive --line-number --column --hidden -e "${vjGlobal.symbolPattern}" ${filePath}`, execOpts);
-            //                 lines = output.toString().split('\n');
-            //             } catch (error) {
-            //                 console.log(error.toString());
-            //                 lines = [];
-            //             }
-
-            //             for (let entry of vjGlobal.searchPatterns) {
-            //                 const kind = entry.kind;
-            //                 const searchPattern = entry.pattern;
-                           
-                        
-            //                 for (let line of lines) {
-            //                     let lineMatch = /^(?:((?:[a-zA-Z]:)?[^:]*):)?(\d+):(\d):(.+)/.exec(line);
-            //                     if (lineMatch) {
-            //                         let position = new vscode.Position(parseInt(lineMatch[2]) - 1, parseInt(lineMatch[3]) - 1);
-            //                         let range = new vscode.Range(position, position);
-            //                         let regex = new RegExp(searchPattern);
-            //                         let word = '?????';
-            //                         let symbolMatch = regex.exec(lineMatch[4].toString());
-            //                         if (symbolMatch) {
-            //                             word = symbolMatch[2];
-            //                             position = position.with({ character: symbolMatch[0].indexOf(word) });
-            //                             range = new vscode.Range(position, position.translate(0, word.length));
-    
-            //                             if (!provider._symbolCache[filePath]) {
-            //                                 //console.log('missing: ' + filePath);
-            //                                 provider._symbolCache[filePath] = [];
-            //                             }
-
-            //                             // if (provider._symbolCache[filePath].filter(e => { 
-            //                             //     return e.name === word
-            //                             // }).length === 0){
-            //                             //     provider._symbolCache[filePath].push(new vscode.SymbolInformation(word, kind, '', new vscode.Location(vscode.Uri.file(filePath), range)));
-            //                             // }
-                                        
-            //                             if (!provider._symbolCache[filePath][word]){
-            //                                 provider._symbolCache[filePath][word] = new vscode.SymbolInformation(word, kind, '', new vscode.Location(vscode.Uri.file(filePath), range));
-            //                             }
-            //                             results.push(provider._symbolCache[filePath][word]);
-
-            //                         }
-            //                     }
-            //                 }
-            //             }
-
-            //         }
-                    
-            //     }
-
-                // for (let key in provider._symbolCache) {
-                //     if (provider._symbolCache[key]) {
-                        
-                //         for (let symbol in provider._symbolCache[key]){
-                //             results.push(provider._symbolCache[key][symbol]);
-                //         }
-                //         //results.push(...provider._symbolCache[key]);
-                //     }
-                // }
-                
-            //});
         });
     }
 }
