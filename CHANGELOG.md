@@ -2,6 +2,11 @@
 
 All notable changes to the "vjass" extension will be documented in this file.
 
+## 0.0.9
+
+fixed a bug that completion won't work when jass file has been edited;
+improving of color highlighting and language snippets.
+
 ## 0.0.8
 
 bugs fixed;

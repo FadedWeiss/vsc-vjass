@@ -51,7 +51,7 @@ class fileSymbolCache {
                     const pattern = entry.pattern;
                     let symbolMatch = this.matchSymbol(lineMatch[4].toString(), pattern);
                     if(symbolMatch){
-                        word = symbolMatch[2];
+                        word = symbolMatch[symbolMatch.length - 1];
                         let wordpos = linepos.with({ character: symbolMatch[0].indexOf(word) });
                         let range = new vscode.Range(wordpos, wordpos.translate(0, word.length));
                         let kindkey = this.symbolKindToSymbolSetKey(kind);
@@ -67,44 +67,45 @@ class fileSymbolCache {
         }
     }
 
-    fetchDocumentSymbols(document){
+    fetchSymbol(entry, document) {
         var text = document.getText();
-        var symbols = this.symbols;
-        function fetchSymbol(entry) {
-            const kind = entry.kind;
-            const pattern = entry.pattern;
-            let regex = new RegExp(pattern, "gm");
-            let match = null;
-            while (match = regex.exec(text)) {
-                let line = document.positionAt(match.index).line;
-                let range = document.lineAt(line).range;
-                let word = match[2];
-    
-                let lastChar = (kind === vscode.SymbolKind.Function || kind === vscode.SymbolKind.Interface) ? "endfunction" :
-                    kind === vscode.SymbolKind.Method ? 'endmethod' :
-                        kind === vscode.SymbolKind.Struct ? 'endstruct' :
-                            kind === vscode.SymbolKind.Module ? 'endlibrary' :
-                                '';
-    
-                if (lastChar) {
-                    let end = text.indexOf(lastChar, match.index) + 1;
-                    range = new vscode.Range(range.start, document.positionAt(end));
-                }
+        const kind = entry.kind;
+        const pattern = entry.pattern;
+        let regex = new RegExp(pattern, "gm");
+        let match = null;
+        while (match = regex.exec(text)) {
+            let line = document.positionAt(match.index).line;
+            let range = document.lineAt(line).range;
+            let word = match[match.length - 1];
 
-                let kindkey = this.symbolKindToSymbolSetKey(kind);
-                let symbolSet = symbols[kindkey];
-                let symbol = new vscode.SymbolInformation(word, kind, '', new vscode.Location(document.uri, range));
-                symbolSet[word] = symbol;
+            let lastChar = (kind === vscode.SymbolKind.Function || kind === vscode.SymbolKind.Interface) ? "endfunction" :
+                kind === vscode.SymbolKind.Method ? 'endmethod' :
+                    kind === vscode.SymbolKind.Struct ? 'endstruct' :
+                        kind === vscode.SymbolKind.Module ? 'endlibrary' :
+                            '';
+
+            if (lastChar) {
+                let end = text.indexOf(lastChar, match.index) + 1;
+                range = new vscode.Range(range.start, document.positionAt(end));
             }
+
+            let kindkey = this.symbolKindToSymbolSetKey(kind);
+            let symbolSet = this.symbols[kindkey];
+            let symbol = new vscode.SymbolInformation(word, kind, '', new vscode.Location(document.uri, range));
+            symbolSet[word] = symbol;
         }
+    }
+
+    fetchDocumentSymbols(document){
+  
         for (let entry of vjGlobal.searchPatterns) {
-            fetchSymbol(entry);
+            this.fetchSymbol(entry, document);
         }
     };
 
     fileOpened(){
         for (let d of vscode.workspace.textDocuments) {
-            if (d.uri.toString() === this.filePath) {
+            if (d.fileName.toString() === this.filePath) {
                 return d;
             }
         }
@@ -115,7 +116,9 @@ class fileSymbolCache {
         if (this.filePath !== ''){
             let document = this.fileOpened();
             if(document){
+                this.initSymbols();
                 this.fetchDocumentSymbols(document);
+                this.changed = false;
             }else{
                 let lines = vjGlobal.processLines(vjGlobal.symbolPattern, this.filePath);
 
@@ -134,13 +137,14 @@ class fileSymbolCache {
         return regex.exec(data);
     }
 
-    getSymbols(){
+    getSymbols(matchname){
         let results = [];
         for(let idx in this.symbols){
             let symbolSet = this.symbols[idx];
             for(let key in symbolSet){
                 let symbol = symbolSet[key];
-                results.push(symbol);
+                if(symbol.name.search(matchname) !== -1)
+                    results.push(symbol);
             }
         }
         return results;

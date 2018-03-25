@@ -77,13 +77,13 @@
     },
     "fun": {
 		"prefix": "fun",
-		"body": "function ${1:function_name} takes ${2:...} returns ${3:...}\n\t${0:// body}\nendfunction",
+		"body": "function ${1:function_name} takes ${2:nothing} returns ${3:nothing}\n\t${0:// body}\nendfunction",
 		"description": "function",
 		"scope": "source.vjass"
 	},
 	"function": {
 		"prefix": "function",
-		"body": "function ${1:function_name} takes ${2:...} returns ${3:...}\n\t${0:// body}\nendfunction",
+		"body": "function ${1:function_name} takes ${2:nothing} returns ${3:nothing}\n\t${0:// body}\nendfunction",
 		"description": "function",
 		"scope": "source.vjass"
 	},
@@ -113,26 +113,26 @@
     },
     "method": {
         "prefix": "method",
-        "body": "method ${1:method_name} takes ${2:...} returns ${3:...}\n\t${0:// body}\nendmethod",
+        "body": "method ${1:method_name} takes ${2:nothing} returns ${3:nothing}\n\t${0:// body}\nendmethod",
         "description": "method",
         "scope": "source.vjass"
     },
     "library": {
         "prefix": "library",
-        "body": "library ${1:library_name} initializer ${2:init_function} requires ${3:require_libs}\n\tprivate function ${2:initializer_name} takes nothing returns nothing\n\t\t${0:// init_body}\n\tendfunction\nendlibrary",
+        "body": "library ${1:library_name} initializer ${2:init_function} requires ${3:require_libs}\n\tprivate function ${2:initializer_name} takes nothing returns nothing\n\t\t${0:// init_body}\n\tendfunction\nendlibrary\n",
         "description": "library",
         "scope": "source.vjass"
     },
     "callDebug":{
         "prefix": "cdebug",
         "body": "call BJDebugMsg()",
-        "description": "call debug",
+        "description": "call debugMsg",
         "scope": "source.vjass"
     },
-    "debug":{
-        "prefix:": "debug",
+    "dbg":{
+        "prefix:": "dbg",
         "body": "BJDebugMsg()",
-        "description": "debug",
+        "description": "debugMsg",
         "scope": "source.vjass"
     }
 }

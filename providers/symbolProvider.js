@@ -13,7 +13,7 @@ var fetchDocumentSymbols = function(document){
         while (match = regex.exec(text)) {
             let line = document.positionAt(match.index).line;
             let range = document.lineAt(line).range;
-            let word = match[2];
+            let word = match[match.length - 1];
 
             let lastChar = (kind === vscode.SymbolKind.Function || kind === vscode.SymbolKind.Interface) ? "endfunction" :
                 kind === vscode.SymbolKind.Method ? 'endmethod' :
@@ -47,18 +47,16 @@ class symbolProvider {
         watcher.onDidChange((uri => {
             let filePath = uri.fsPath;
             this._symbolCache[filePath].changed = true;
-            this._symbolCache[filePath].updateSymbols();
-            console.log(filePath);
+            //this._symbolCache[filePath].updateSymbols();
+            //console.log(filePath);
         }).bind(this));
         watcher.onDidDelete((uri => {
             let filePath = uri.fsPath;
             this._symbolCache[filePath] = undefined;
-            console.log(filePath);
+            //console.log(filePath);
         }).bind(this));
-        //warcher.onDidCreate(uri => { this._symbolCache[uri.fsPath] = undefined; console.log(uri.fsPath); });
         
         this._disposables.push(watcher);
-
     }
 
     dispose() {
@@ -69,6 +67,8 @@ class symbolProvider {
     }
 
     preloadSymbols(){
+        console.log("preload");
+        vscode.window.showInformationMessage('[VJASS] Building Cache.');
         var symbolCache = this._symbolCache;
         vscode.workspace.findFiles(vjGlobal.filePattern).then(uris => {
             for(let uri of uris){
@@ -87,6 +87,7 @@ class symbolProvider {
     }
 
     getDocumentSymbols(uri) {
+        var provider = this;
         return new Promise((resolve, reject) => {
             
             let document = null;
@@ -103,7 +104,7 @@ class symbolProvider {
 
             //已经缓存了当前document的symbos则直接resolve
             let filePath = document.uri.fsPath;
-            let filesymbolCache = this._symbolCache[filePath]
+            let filesymbolCache = provider._symbolCache[filePath]
             
             if(filesymbolCache && !filesymbolCache.changed){
                 resolve(filesymbolCache.getSymbols());
@@ -116,8 +117,7 @@ class symbolProvider {
     provideDocumentSymbols(document, token) {
         return this.getDocumentSymbols(document.uri);
     }
-    provideWorkspaceSymbols(query, token) {        
-
+    provideWorkspaceSymbols(query, token) {       
         var provider = this;
         return new Promise((resolve, reject) => {
             var results = [];
@@ -127,7 +127,7 @@ class symbolProvider {
                     let filePath = uri.fsPath;
                     if (filePath !== ''){
                         if (symbolCache[filePath]){
-                            let symbols = symbolCache[filePath].getSymbols();
+                            let symbols = symbolCache[filePath].getSymbols(query);
                             results = results.concat(symbols);
                         }
                     }
