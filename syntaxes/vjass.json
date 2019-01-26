@@ -4,6 +4,15 @@
 	"fileTypes": ["jass"], 
 	"patterns": [
 		{
+			"begin": "//",
+			"end": "$",
+			"beginCaptures": {
+				"1": { "name": "punctuation.definition.comment.vjass" }
+			},
+			"name": "comment.line.double-slash.vjass"
+		},
+
+		{
 			"name": "comment.block.vjass",
 
 			"begin": "^(\\s*/\\*.*)$",
@@ -34,14 +43,6 @@
 			"match": "(//!).*$\\n?"
 		},
 
-		{
-			"name": "comment.line.double-slash.vjass",
-
-			"captures": {
-				"1": { "name": "punctuation.definition.comment.vjass" }
-			},
-			"match": "(//).*$\\n?"
-		},
 
 		{
 			"begin": "\"",
@@ -238,6 +239,11 @@
 
 			"match": "'(.){4}'"
 		},
+
+		{
+            "match": "/?(\\S+/)+\\S*",
+            "name": "string.path"
+        },
 
 		{
 			"name": "constant.language.boolean.true.vjass",

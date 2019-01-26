@@ -2413,6 +2413,14 @@ exports.cjfunctions = {
         description: "",
     
     },
+    GetSpellTargetX: {
+        completion: "constant native GetSpellTargetX				takes nothing returns real",
+        description: "",
+    },
+    GetSpellTargetY: {
+        completion: "constant native GetSpellTargetY				takes nothing returns real",
+        description: "",
+    },
     GetSpellTargetDestructable: {
         completion: "constant native GetSpellTargetDestructable takes nothing returns destructable",
         description: "",
