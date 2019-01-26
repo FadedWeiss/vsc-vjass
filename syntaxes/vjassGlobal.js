@@ -31,7 +31,7 @@ var regPatterns = [
     '(struct)' + namePattern,
     '(library)' + namePattern,
     '(interface function)' + namePattern,
-    '(hashtable|integer|real|boolean|string|handle|agent|event|player|widget|unit|destructable|item|ability|buff|force|group|trigger|triggercondition|triggeraction|timer|location|region|rect|boolexpr|sound|conditionfunc|filterfunc|unitpool|itempool|race|alliancetype|racepreference|gamestate|igamestate|fgamestate|playerstate|playerscore|playergameresult|unitstate|aidifficulty|eventid|gameevent|playerevent|playerunitevent|unitevent|limitop|widgetevent|dialogevent|unittype|gamespeed|gamedifficulty|gametype|mapflag|mapvisibility|mapsetting|mapdensity|mapcontrol|playerslotstate|volumegroup|camerafield|camerasetup|playercolor|placement|startlocprio|raritycontrol|blendmode|texmapflags|effect|effecttype|weathereffect|terraindeformation|fogstate|fogmodifier|dialog|button|quest|questitem|defeatcondition|timerdialog|leaderboard|multiboard|multiboarditem|trackable|gamecache|version|itemtype|texttag|attacktype|damagetype|weapontype|soundtype|lightning|pathingtype|image|ubersplat)(?:(\\s+array)*)' + namePattern,
+    '(hashtable|integer|real|boolean|string|handle|agent|event|player|widget|unit|destructable|item|ability|buff|force|group|trigger|triggercondition|triggeraction|timer|location|region|rect|boolexpr|sound|conditionfunc|filterfunc|unitpool|itempool|race|alliancetype|racepreference|gamestate|igamestate|fgamestate|playerstate|playerscore|playergameresult|unitstate|aidifficulty|eventid|gameevent|playerevent|playerunitevent|unitevent|limitop|widgetevent|dialogevent|unittype|gamespeed|gamedifficulty|gametype|mapflag|mapvisibility|mapsetting|mapdensity|mapcontrol|playerslotstate|volumegroup|camerafield|camerasetup|playercolor|placement|startlocprio|raritycontrol|blendmode|texmapflags|effect|effecttype|weathereffect|terraindeformation|fogstate|fogmodifier|dialog|button|quest|questitem|defeatcondition|timerdialog|leaderboard|multiboard|multiboarditem|trackable|gamecache|version|itemtype|texttag|attacktype|damagetype|weapontype|soundtype|lightning|pathingtype|mousebuttontype|animtype|subanimtype|image|ubersplat)(?:(\\s+array)*)' + namePattern,
 ];
 
 exports.searchPatterns = [
@@ -401,6 +401,30 @@ exports.cjfunctions = {
       ],
     
     },
+    ConvertMouseButtonType: {
+        completion: "constant native ConvertMouseButtonType takes integer i returns mousebuttontype",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'i', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+    
+    },
+    ConvertAnimType: {
+        completion: "constant native ConvertAnimType takes integer i returns animtype",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'i', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+    
+    },
+    ConvertSubAnimType: {
+        completion: "constant native ConvertSubAnimType takes integer i returns subanimtype",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'i', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+    
+    },
     OrderId: {
         completion: "constant native OrderId takes string orderIdString returns integer",
         description: "",
@@ -456,6 +480,48 @@ exports.cjfunctions = {
             { label: 'integer', name: 'objectId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
       ],
     
+    },
+    GetBJMaxPlayers: {
+        completion: "constant native GetBJMaxPlayers takes nothing returns integer",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    GetBJPlayerNeutralVictim: {
+        completion: "constant native GetBJPlayerNeutralVictim takes nothing returns integer",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    GetBJPlayerNeutralExtra: {
+        completion: "constant native GetBJPlayerNeutralExtra takes nothing returns integer",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    GetBJMaxPlayerSlots: {
+        completion: "constant native GetBJMaxPlayerSlots takes nothing returns integer",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    GetPlayerNeutralPassive: {
+        completion: "constant native GetPlayerNeutralPassive takes nothing returns integer",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    GetPlayerNeutralAggressive: {
+        completion: "constant native GetPlayerNeutralAggressive takes nothing returns integer",
+        description: "",
+        parameters: [
+      ],
+
     },
     Deg2Rad: {
         completion: "native Deg2Rad takes real degrees returns real",
@@ -10171,6 +10237,962 @@ exports.cjfunctions = {
       ],
     
     },
+    AutomationSetTestType: {
+        completion: "native AutomationSetTestType takes string testType returns nothing",
+        description: "",
+        parameters: [
+            { label: 'string', name: 'testType', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    AutomationTestStart: {
+        completion: "native AutomationTestStart takes string testName returns nothing",
+        description: "",
+        parameters: [
+            { label: 'string', name: 'testName', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    AutomationTestEnd: {
+        completion: "native AutomationTestEnd takes nothing returns nothing",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    AutomationTestingFinished: {
+        completion: "native AutomationTestingFinished takes nothing returns nothing",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    BlzGetTriggerPlayerMouseX: {
+        completion: "native BlzGetTriggerPlayerMouseX takes nothing returns real",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    BlzGetTriggerPlayerMouseY: {
+        completion: "native BlzGetTriggerPlayerMouseY takes nothing returns real",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    BlzGetTriggerPlayerMousePosition: {
+        completion: "native BlzGetTriggerPlayerMousePosition takes nothing returns location",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    BlzGetTriggerPlayerMouseButton: {
+        completion: "native BlzGetTriggerPlayerMouseButton takes nothing returns mousebuttontype",
+        description: "",
+        parameters: [
+      ],
+
+    },
+    BlzSetAbilityTooltip: {
+        completion: "native BlzSetAbilityTooltip takes integer abilCode, string tooltip, integer level returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'string', name: 'tooltip', documentation: "strings variables hold a series of characters" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityActivatedTooltip: {
+        completion: "native BlzSetAbilityActivatedTooltip takes integer abilCode, string tooltip, integer level returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'string', name: 'tooltip', documentation: "strings variables hold a series of characters" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityExtendedTooltip: {
+        completion: "native BlzSetAbilityExtendedTooltip takes integer abilCode, string extendedTooltip, integer level returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'string', name: 'extendedTooltip', documentation: "strings variables hold a series of characters" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityActivatedExtendedTooltip: {
+        completion: "native BlzSetAbilityActivatedExtendedTooltip takes integer abilCode, string extendedTooltip, integer level returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'string', name: 'extendedTooltip', documentation: "strings variables hold a series of characters" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityResearchTooltip: {
+        completion: "native BlzSetAbilityResearchTooltip takes integer abilCode, string researchTooltip, integer level returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'string', name: 'researchTooltip', documentation: "strings variables hold a series of characters" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityResearchExtendedTooltip: {
+        completion: "native BlzSetAbilityResearchExtendedTooltip takes integer abilCode, string researchExtendedTooltip, integer level returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'string', name: 'researchExtendedTooltip', documentation: "strings variables hold a series of characters" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityTooltip: {
+        completion: "native BlzGetAbilityTooltip takes integer abilCode, integer level returns string",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityActivatedTooltip: {
+        completion: "native BlzGetAbilityActivatedTooltip takes integer abilCode, integer level returns string",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityExtendedTooltip: {
+        completion: "native BlzGetAbilityExtendedTooltip takes integer abilCode, integer level returns string",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityActivatedExtendedTooltip: {
+        completion: "native BlzGetAbilityActivatedExtendedTooltip takes integer abilCode, integer level returns string",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityResearchTooltip: {
+        completion: "native BlzGetAbilityResearchTooltip takes integer abilCode, integer level returns string",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityResearchExtendedTooltip: {
+        completion: "native BlzGetAbilityResearchExtendedTooltip takes integer abilCode, integer level returns string",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityIcon: {
+        completion: "native BlzSetAbilityIcon takes integer abilCode, string iconPath returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'string', name: 'iconPath', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    BlzGetAbilityIcon: {
+        completion: "native BlzGetAbilityIcon takes integer abilCode returns string",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityActivatedIcon: {
+        completion: "native BlzSetAbilityActivatedIcon takes integer abilCode, string iconPath returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'string', name: 'iconPath', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    BlzGetAbilityActivatedIcon: {
+        completion: "native BlzGetAbilityActivatedIcon takes integer abilCode returns string",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityPosX: {
+        completion: "native BlzGetAbilityPosX takes integer abilCode returns integer",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityPosY: {
+        completion: "native BlzGetAbilityPosY takes integer abilCode returns integer",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityPosX: {
+        completion: "native BlzSetAbilityPosX takes integer abilCode, integer x returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'x', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityPosY: {
+        completion: "native BlzSetAbilityPosY takes integer abilCode, integer y returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'y', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityActivatedPosX: {
+        completion: "native BlzGetAbilityActivatedPosX takes integer abilCode returns integer",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityActivatedPosY: {
+        completion: "native BlzGetAbilityActivatedPosY takes integer abilCode returns integer",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityActivatedPosX: {
+        completion: "native BlzSetAbilityActivatedPosX takes integer abilCode, integer x returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'x', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetAbilityActivatedPosY: {
+        completion: "native BlzSetAbilityActivatedPosY takes integer abilCode, integer y returns nothing",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'y', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetUnitMaxHP: {
+        completion: "native BlzGetUnitMaxHP takes unit whichUnit returns integer",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
+    BlzSetUnitMaxHP: {
+        completion: "native BlzSetUnitMaxHP takes unit whichUnit, integer hp returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'hp', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetUnitMaxMana: {
+        completion: "native BlzGetUnitMaxMana takes unit whichUnit returns integer",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
+    BlzSetUnitMaxMana: {
+        completion: "native BlzSetUnitMaxMana takes unit whichUnit, integer mana returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'mana', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetItemName: {
+        completion: "native BlzSetItemName takes item whichItem, string name returns nothing",
+        description: "",
+        parameters: [
+            { label: 'item', name: 'whichItem', documentation: "a single item reference" },
+            { label: 'string', name: 'name', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    BlzSetItemDescription: {
+        completion: "native BlzSetItemDescription takes item whichItem, string description returns nothing",
+        description: "",
+        parameters: [
+            { label: 'item', name: 'whichItem', documentation: "a single item reference" },
+            { label: 'string', name: 'description', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    BlzGetItemDescription: {
+        completion: "native BlzGetItemDescription takes item whichItem returns string",
+        description: "",
+        parameters: [
+            { label: 'item', name: 'whichItem', documentation: "a single item reference" },
+      ],
+
+    },
+    BlzSetItemTooltip: {
+        completion: "native BlzSetItemTooltip takes item whichItem, string tooltip returns nothing",
+        description: "",
+        parameters: [
+            { label: 'item', name: 'whichItem', documentation: "a single item reference" },
+            { label: 'string', name: 'tooltip', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    BlzGetItemTooltip: {
+        completion: "native BlzGetItemTooltip takes item whichItem returns string",
+        description: "",
+        parameters: [
+            { label: 'item', name: 'whichItem', documentation: "a single item reference" },
+      ],
+
+    },
+    BlzSetItemExtendedTooltip: {
+        completion: "native BlzSetItemExtendedTooltip takes item whichItem, string extendedTooltip returns nothing",
+        description: "",
+        parameters: [
+            { label: 'item', name: 'whichItem', documentation: "a single item reference" },
+            { label: 'string', name: 'extendedTooltip', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    BlzGetItemExtendedTooltip: {
+        completion: "native BlzGetItemExtendedTooltip takes item whichItem returns string",
+        description: "",
+        parameters: [
+            { label: 'item', name: 'whichItem', documentation: "a single item reference" },
+      ],
+
+    },
+    BlzSetItemIconPath: {
+        completion: "native BlzSetItemIconPath takes item whichItem, string iconPath returns nothing",
+        description: "",
+        parameters: [
+            { label: 'item', name: 'whichItem', documentation: "a single item reference" },
+            { label: 'string', name: 'iconPath', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    BlzGetItemIconPath: {
+        completion: "native BlzGetItemIconPath takes item whichItem returns string",
+        description: "",
+        parameters: [
+            { label: 'item', name: 'whichItem', documentation: "a single item reference" },
+      ],
+
+    },
+    BlzSetUnitName: {
+        completion: "native BlzSetUnitName takes unit whichUnit, string name returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'string', name: 'name', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    BlzSetHeroProperName: {
+        completion: "native BlzSetHeroProperName takes unit whichUnit, string heroProperName returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'string', name: 'heroProperName', documentation: "strings variables hold a series of characters" },
+      ],
+
+    },
+    BlzGetUnitBaseDamage: {
+        completion: "native BlzGetUnitBaseDamage takes unit whichUnit, integer weaponIndex returns integer",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'weaponIndex', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetUnitBaseDamage: {
+        completion: "native BlzSetUnitBaseDamage takes unit whichUnit, integer baseDamage, integer weaponIndex returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'baseDamage', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'weaponIndex', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetUnitDiceNumber: {
+        completion: "native BlzGetUnitDiceNumber takes unit whichUnit, integer weaponIndex returns integer",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'weaponIndex', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetUnitDiceNumber: {
+        completion: "native BlzSetUnitDiceNumber takes unit whichUnit, integer diceNumber, integer weaponIndex returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'diceNumber', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'weaponIndex', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetUnitDiceSides: {
+        completion: "native BlzGetUnitDiceSides takes unit whichUnit, integer weaponIndex returns integer",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'weaponIndex', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetUnitDiceSides: {
+        completion: "native BlzSetUnitDiceSides takes unit whichUnit, integer diceSides, integer weaponIndex returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'diceSides', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'weaponIndex', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetUnitAttackCooldown: {
+        completion: "native BlzGetUnitAttackCooldown takes unit whichUnit, integer weaponIndex returns real",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'weaponIndex', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetUnitAttackCooldown: {
+        completion: "native BlzSetUnitAttackCooldown takes unit whichUnit, real cooldown, integer weaponIndex returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'real', name: 'cooldown', documentation: "real variables can hold rational numbers" },
+            { label: 'integer', name: 'weaponIndex', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetSpecialEffectColorByPlayer: {
+        completion: "native BlzSetSpecialEffectColorByPlayer takes effect whichEffect, player whichPlayer returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'player', name: 'whichPlayer', documentation: "a single player reference" },
+      ],
+
+    },
+    BlzSetSpecialEffectColor: {
+        completion: "native BlzSetSpecialEffectColor takes effect whichEffect, integer r, integer g, integer b returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'integer', name: 'r', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'g', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'b', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetSpecialEffectAlpha: {
+        completion: "native BlzSetSpecialEffectAlpha takes effect whichEffect, integer alpha returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'integer', name: 'alpha', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetSpecialEffectScale: {
+        completion: "native BlzSetSpecialEffectScale takes effect whichEffect, real scale returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'scale', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectPosition: {
+        completion: "native BlzSetSpecialEffectPosition takes effect whichEffect, real x, real y, real z returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'x', documentation: "real variables can hold rational numbers" },
+            { label: 'real', name: 'y', documentation: "real variables can hold rational numbers" },
+            { label: 'real', name: 'z', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectHeight: {
+        completion: "native BlzSetSpecialEffectHeight takes effect whichEffect, real height returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'height', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectTimeScale: {
+        completion: "native BlzSetSpecialEffectTimeScale takes effect whichEffect, real timeScale returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'timeScale', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectTime: {
+        completion: "native BlzSetSpecialEffectTime takes effect whichEffect, real time returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'time', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectOrientation: {
+        completion: "native BlzSetSpecialEffectOrientation takes effect whichEffect, real yaw, real pitch, real roll returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'yaw', documentation: "real variables can hold rational numbers" },
+            { label: 'real', name: 'pitch', documentation: "real variables can hold rational numbers" },
+            { label: 'real', name: 'roll', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectYaw: {
+        completion: "native BlzSetSpecialEffectYaw takes effect whichEffect, real yaw returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'yaw', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectPitch: {
+        completion: "native BlzSetSpecialEffectPitch takes effect whichEffect, real pitch returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'pitch', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectRoll: {
+        completion: "native BlzSetSpecialEffectRoll takes effect whichEffect, real roll returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'roll', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectX: {
+        completion: "native BlzSetSpecialEffectX takes effect whichEffect, real x returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'x', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectY: {
+        completion: "native BlzSetSpecialEffectY takes effect whichEffect, real y returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'y', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectZ: {
+        completion: "native BlzSetSpecialEffectZ takes effect whichEffect, real z returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'real', name: 'z', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzSetSpecialEffectPositionLoc: {
+        completion: "native BlzSetSpecialEffectPositionLoc takes effect whichEffect, location loc returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'location', name: 'loc', documentation: "" },
+      ],
+
+    },
+    BlzGetLocalSpecialEffectX: {
+        completion: "native BlzGetLocalSpecialEffectX takes effect whichEffect returns real",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+      ],
+
+    },
+    BlzGetLocalSpecialEffectY: {
+        completion: "native BlzGetLocalSpecialEffectY takes effect whichEffect returns real",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+      ],
+
+    },
+    BlzGetLocalSpecialEffectZ: {
+        completion: "native BlzGetLocalSpecialEffectZ takes effect whichEffect returns real",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+      ],
+
+    },
+    BlzSpecialEffectClearSubAnimations: {
+        completion: "native BlzSpecialEffectClearSubAnimations takes effect whichEffect returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+      ],
+
+    },
+    BlzSpecialEffectRemoveSubAnimation: {
+        completion: "native BlzSpecialEffectRemoveSubAnimation takes effect whichEffect, subanimtype whichSubAnim returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'subanimtype', name: 'whichSubAnim', documentation: "" },
+      ],
+
+    },
+    BlzSpecialEffectAddSubAnimation: {
+        completion: "native BlzSpecialEffectAddSubAnimation takes effect whichEffect, subanimtype whichSubAnim returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'subanimtype', name: 'whichSubAnim', documentation: "" },
+      ],
+
+    },
+    BlzPlaySpecialEffect: {
+        completion: "native BlzPlaySpecialEffect takes effect whichEffect, animtype whichAnim returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'animtype', name: 'whichAnim', documentation: "" },
+      ],
+
+    },
+    BlzPlaySpecialEffectWithTimeScale: {
+        completion: "native BlzPlaySpecialEffectWithTimeScale takes effect whichEffect, animtype whichAnim, real timeScale returns nothing",
+        description: "",
+        parameters: [
+            { label: 'effect', name: 'whichEffect', documentation: "" },
+            { label: 'animtype', name: 'whichAnim', documentation: "" },
+            { label: 'real', name: 'timeScale', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzGetAnimName: {
+        completion: "native BlzGetAnimName takes animtype whichAnim returns string",
+        description: "",
+        parameters: [
+            { label: 'animtype', name: 'whichAnim', documentation: "" },
+      ],
+
+    },
+    BlzGetUnitArmor: {
+        completion: "native BlzGetUnitArmor takes unit whichUnit returns real",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
+    BlzSetUnitArmor: {
+        completion: "native BlzSetUnitArmor takes unit whichUnit, real armorAmount returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'real', name: 'armorAmount', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzUnitHideAbility: {
+        completion: "native BlzUnitHideAbility takes unit whichUnit, integer abilId, boolean flag returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'abilId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'boolean', name: 'flag', documentation: "boolean variables can take the values true of false" },
+      ],
+
+    },
+    BlzUnitDisableAbility: {
+        completion: "native BlzUnitDisableAbility takes unit whichUnit, integer abilId, boolean flag, boolean hideUI returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'abilId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'boolean', name: 'flag', documentation: "boolean variables can take the values true of false" },
+            { label: 'boolean', name: 'hideUI', documentation: "boolean variables can take the values true of false" },
+      ],
+
+    },
+    BlzUnitCancelTimedLife: {
+        completion: "native BlzUnitCancelTimedLife takes unit whichUnit returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
+    BlzIsUnitSelectable: {
+        completion: "native BlzIsUnitSelectable takes unit whichUnit returns boolean",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
+    BlzIsUnitInvulnerable: {
+        completion: "native BlzIsUnitInvulnerable takes unit whichUnit returns boolean",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
+    BlzUnitInterruptAttack: {
+        completion: "native BlzUnitInterruptAttack takes unit whichUnit returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
+    BlzGetUnitCollisionSize: {
+        completion: "native BlzGetUnitCollisionSize takes unit whichUnit returns real",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
+    BlzGetAbilityManaCost: {
+        completion: "native BlzGetAbilityManaCost takes integer abilId, integer level returns integer",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetAbilityCooldown: {
+        completion: "native BlzGetAbilityCooldown takes integer abilId, integer level returns real",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'abilId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetUnitAbilityCooldown: {
+        completion: "native BlzSetUnitAbilityCooldown takes unit whichUnit, integer abilId, integer level, real cooldown returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'abilId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'real', name: 'cooldown', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    BlzGetUnitAbilityCooldown: {
+        completion: "native BlzGetUnitAbilityCooldown takes unit whichUnit, integer abilId, integer level returns real",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'abilId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetUnitAbilityCooldownRemaining: {
+        completion: "native BlzGetUnitAbilityCooldownRemaining takes unit whichUnit, integer abilId returns real",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'abilId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzEndUnitAbilityCooldown: {
+        completion: "native BlzEndUnitAbilityCooldown takes unit whichUnit, integer abilCode returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'abilCode', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetUnitAbilityManaCost: {
+        completion: "native BlzGetUnitAbilityManaCost takes unit whichUnit, integer abilId, integer level returns integer",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'abilId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetUnitAbilityManaCost: {
+        completion: "native BlzSetUnitAbilityManaCost takes unit whichUnit, integer abilId, integer level, integer manaCost returns nothing",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+            { label: 'integer', name: 'abilId', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'level', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'manaCost', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetLocalUnitZ: {
+        completion: "native BlzGetLocalUnitZ takes unit whichUnit returns real",
+        description: "",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
+    BlzDecPlayerTechResearched: {
+        completion: "native BlzDecPlayerTechResearched takes player whichPlayer, integer techid, integer levels returns nothing",
+        description: "",
+        parameters: [
+            { label: 'player', name: 'whichPlayer', documentation: "a single player reference" },
+            { label: 'integer', name: 'techid', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'levels', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzSetEventDamage: {
+        completion: "native BlzSetEventDamage takes real damage returns nothing",
+        description: "",
+        parameters: [
+            { label: 'real', name: 'damage', documentation: "real variables can hold rational numbers" },
+      ],
+
+    },
+    RequestExtraIntegerData: {
+        completion: "native RequestExtraIntegerData takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns integer",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'dataType', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'player', name: 'whichPlayer', documentation: "a single player reference" },
+            { label: 'string', name: 'param1', documentation: "strings variables hold a series of characters" },
+            { label: 'string', name: 'param2', documentation: "strings variables hold a series of characters" },
+            { label: 'boolean', name: 'param3', documentation: "boolean variables can take the values true of false" },
+            { label: 'integer', name: 'param4', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'param5', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'param6', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    RequestExtraBooleanData: {
+        completion: "native RequestExtraBooleanData takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns boolean",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'dataType', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'player', name: 'whichPlayer', documentation: "a single player reference" },
+            { label: 'string', name: 'param1', documentation: "strings variables hold a series of characters" },
+            { label: 'string', name: 'param2', documentation: "strings variables hold a series of characters" },
+            { label: 'boolean', name: 'param3', documentation: "boolean variables can take the values true of false" },
+            { label: 'integer', name: 'param4', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'param5', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'param6', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    RequestExtraStringData: {
+        completion: "native RequestExtraStringData takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns string",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'dataType', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'player', name: 'whichPlayer', documentation: "a single player reference" },
+            { label: 'string', name: 'param1', documentation: "strings variables hold a series of characters" },
+            { label: 'string', name: 'param2', documentation: "strings variables hold a series of characters" },
+            { label: 'boolean', name: 'param3', documentation: "boolean variables can take the values true of false" },
+            { label: 'integer', name: 'param4', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'param5', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'param6', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    RequestExtraRealData: {
+        completion: "native RequestExtraRealData takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns real",
+        description: "",
+        parameters: [
+            { label: 'integer', name: 'dataType', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'player', name: 'whichPlayer', documentation: "a single player reference" },
+            { label: 'string', name: 'param1', documentation: "strings variables hold a series of characters" },
+            { label: 'string', name: 'param2', documentation: "strings variables hold a series of characters" },
+            { label: 'boolean', name: 'param3', documentation: "boolean variables can take the values true of false" },
+            { label: 'integer', name: 'param4', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'param5', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+            { label: 'integer', name: 'param6', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
+      ],
+
+    },
+    BlzGetUnitZ: {
+        completion: "native BlzGetUnitZ takes unit whichUnit returns real",
+        description: "Add this function to follow the style of GetUnitX and GetUnitY, it has the same result as BlzGetLocalUnitZ",
+        parameters: [
+            { label: 'unit', name: 'whichUnit', documentation: "a single unit reference" },
+      ],
+
+    },
     
 };
 
@@ -12153,17 +13175,17 @@ exports.constants = {
 
     },
     JASS_MAX_ARRAY_SIZE: {
-        completion: "constant integer JASS_MAX_ARRAY_SIZE=8192",
+        completion: "constant integer JASS_MAX_ARRAY_SIZE=32768",
         description: "",
 
     },
     PLAYER_NEUTRAL_PASSIVE: {
-        completion: "constant integer PLAYER_NEUTRAL_PASSIVE=15",
+        completion: "constant integer PLAYER_NEUTRAL_PASSIVE=GetPlayerNeutralPassive()",
         description: "",
 
     },
     PLAYER_NEUTRAL_AGGRESSIVE: {
-        completion: "constant integer PLAYER_NEUTRAL_AGGRESSIVE=12",
+        completion: "constant integer PLAYER_NEUTRAL_AGGRESSIVE=GetPlayerNeutralAggressive()",
         description: "",
 
     },
@@ -12224,6 +13246,66 @@ exports.constants = {
     },
     PLAYER_COLOR_BROWN: {
         completion: "constant playercolor PLAYER_COLOR_BROWN=ConvertPlayerColor(11)",
+        description: "",
+
+    },
+    PLAYER_COLOR_MAROON: {
+        completion: "constant playercolor PLAYER_COLOR_MAROON=ConvertPlayerColor(12)",
+        description: "",
+
+    },
+    PLAYER_COLOR_NAVY: {
+        completion: "constant playercolor PLAYER_COLOR_NAVY=ConvertPlayerColor(13)",
+        description: "",
+
+    },
+    PLAYER_COLOR_TURQUOISE: {
+        completion: "constant playercolor PLAYER_COLOR_TURQUOISE=ConvertPlayerColor(14)",
+        description: "",
+
+    },
+    PLAYER_COLOR_VIOLET: {
+        completion: "constant playercolor PLAYER_COLOR_VIOLET=ConvertPlayerColor(15)",
+        description: "",
+
+    },
+    PLAYER_COLOR_WHEAT: {
+        completion: "constant playercolor PLAYER_COLOR_WHEAT=ConvertPlayerColor(16)",
+        description: "",
+
+    },
+    PLAYER_COLOR_PEACH: {
+        completion: "constant playercolor PLAYER_COLOR_PEACH=ConvertPlayerColor(17)",
+        description: "",
+
+    },
+    PLAYER_COLOR_MINT: {
+        completion: "constant playercolor PLAYER_COLOR_MINT=ConvertPlayerColor(18)",
+        description: "",
+
+    },
+    PLAYER_COLOR_LAVENDER: {
+        completion: "constant playercolor PLAYER_COLOR_LAVENDER=ConvertPlayerColor(19)",
+        description: "",
+
+    },
+    PLAYER_COLOR_COAL: {
+        completion: "constant playercolor PLAYER_COLOR_COAL=ConvertPlayerColor(20)",
+        description: "",
+
+    },
+    PLAYER_COLOR_SNOW: {
+        completion: "constant playercolor PLAYER_COLOR_SNOW=ConvertPlayerColor(21)",
+        description: "",
+
+    },
+    PLAYER_COLOR_EMERALD: {
+        completion: "constant playercolor PLAYER_COLOR_EMERALD=ConvertPlayerColor(22)",
+        description: "",
+
+    },
+    PLAYER_COLOR_PEANUT: {
+        completion: "constant playercolor PLAYER_COLOR_PEANUT=ConvertPlayerColor(23)",
         description: "",
 
     },
@@ -12639,6 +13721,336 @@ exports.constants = {
     },
     PATHING_TYPE_AMPHIBIOUSPATHING: {
         completion: "constant pathingtype PATHING_TYPE_AMPHIBIOUSPATHING=ConvertPathingType(7)",
+        description: "",
+
+    },
+    MOUSE_BUTTON_TYPE_LEFT: {
+        completion: "constant mousebuttontype MOUSE_BUTTON_TYPE_LEFT=ConvertMouseButtonType(1)",
+        description: "",
+
+    },
+    MOUSE_BUTTON_TYPE_MIDDLE: {
+        completion: "constant mousebuttontype MOUSE_BUTTON_TYPE_MIDDLE=ConvertMouseButtonType(2)",
+        description: "",
+
+    },
+    MOUSE_BUTTON_TYPE_RIGHT: {
+        completion: "constant mousebuttontype MOUSE_BUTTON_TYPE_RIGHT=ConvertMouseButtonType(3)",
+        description: "",
+
+    },
+    ANIM_TYPE_BIRTH: {
+        completion: "constant animtype ANIM_TYPE_BIRTH=ConvertAnimType(0)",
+        description: "",
+
+    },
+    ANIM_TYPE_DEATH: {
+        completion: "constant animtype ANIM_TYPE_DEATH=ConvertAnimType(1)",
+        description: "",
+
+    },
+    ANIM_TYPE_DECAY: {
+        completion: "constant animtype ANIM_TYPE_DECAY=ConvertAnimType(2)",
+        description: "",
+
+    },
+    ANIM_TYPE_DISSIPATE: {
+        completion: "constant animtype ANIM_TYPE_DISSIPATE=ConvertAnimType(3)",
+        description: "",
+
+    },
+    ANIM_TYPE_STAND: {
+        completion: "constant animtype ANIM_TYPE_STAND=ConvertAnimType(4)",
+        description: "",
+
+    },
+    ANIM_TYPE_WALK: {
+        completion: "constant animtype ANIM_TYPE_WALK=ConvertAnimType(5)",
+        description: "",
+
+    },
+    ANIM_TYPE_ATTACK: {
+        completion: "constant animtype ANIM_TYPE_ATTACK=ConvertAnimType(6)",
+        description: "",
+
+    },
+    ANIM_TYPE_MORPH: {
+        completion: "constant animtype ANIM_TYPE_MORPH=ConvertAnimType(7)",
+        description: "",
+
+    },
+    ANIM_TYPE_SLEEP: {
+        completion: "constant animtype ANIM_TYPE_SLEEP=ConvertAnimType(8)",
+        description: "",
+
+    },
+    ANIM_TYPE_SPELL: {
+        completion: "constant animtype ANIM_TYPE_SPELL=ConvertAnimType(9)",
+        description: "",
+
+    },
+    ANIM_TYPE_PORTRAIT: {
+        completion: "constant animtype ANIM_TYPE_PORTRAIT=ConvertAnimType(10)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_ROOTED: {
+        completion: "constant subanimtype SUBANIM_TYPE_ROOTED=ConvertSubAnimType(11)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_ALTERNATE_EX: {
+        completion: "constant subanimtype SUBANIM_TYPE_ALTERNATE_EX=ConvertSubAnimType(12)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_LOOPING: {
+        completion: "constant subanimtype SUBANIM_TYPE_LOOPING=ConvertSubAnimType(13)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_SLAM: {
+        completion: "constant subanimtype SUBANIM_TYPE_SLAM=ConvertSubAnimType(14)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_THROW: {
+        completion: "constant subanimtype SUBANIM_TYPE_THROW=ConvertSubAnimType(15)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_SPIKED: {
+        completion: "constant subanimtype SUBANIM_TYPE_SPIKED=ConvertSubAnimType(16)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FAST: {
+        completion: "constant subanimtype SUBANIM_TYPE_FAST=ConvertSubAnimType(17)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_SPIN: {
+        completion: "constant subanimtype SUBANIM_TYPE_SPIN=ConvertSubAnimType(18)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_READY: {
+        completion: "constant subanimtype SUBANIM_TYPE_READY=ConvertSubAnimType(19)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_CHANNEL: {
+        completion: "constant subanimtype SUBANIM_TYPE_CHANNEL=ConvertSubAnimType(20)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_DEFEND: {
+        completion: "constant subanimtype SUBANIM_TYPE_DEFEND=ConvertSubAnimType(21)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_VICTORY: {
+        completion: "constant subanimtype SUBANIM_TYPE_VICTORY=ConvertSubAnimType(22)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_TURN: {
+        completion: "constant subanimtype SUBANIM_TYPE_TURN=ConvertSubAnimType(23)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_LEFT: {
+        completion: "constant subanimtype SUBANIM_TYPE_LEFT=ConvertSubAnimType(24)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_RIGHT: {
+        completion: "constant subanimtype SUBANIM_TYPE_RIGHT=ConvertSubAnimType(25)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FIRE: {
+        completion: "constant subanimtype SUBANIM_TYPE_FIRE=ConvertSubAnimType(26)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FLESH: {
+        completion: "constant subanimtype SUBANIM_TYPE_FLESH=ConvertSubAnimType(27)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_HIT: {
+        completion: "constant subanimtype SUBANIM_TYPE_HIT=ConvertSubAnimType(28)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_WOUNDED: {
+        completion: "constant subanimtype SUBANIM_TYPE_WOUNDED=ConvertSubAnimType(29)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_LIGHT: {
+        completion: "constant subanimtype SUBANIM_TYPE_LIGHT=ConvertSubAnimType(30)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_MODERATE: {
+        completion: "constant subanimtype SUBANIM_TYPE_MODERATE=ConvertSubAnimType(31)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_SEVERE: {
+        completion: "constant subanimtype SUBANIM_TYPE_SEVERE=ConvertSubAnimType(32)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_CRITICAL: {
+        completion: "constant subanimtype SUBANIM_TYPE_CRITICAL=ConvertSubAnimType(33)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_COMPLETE: {
+        completion: "constant subanimtype SUBANIM_TYPE_COMPLETE=ConvertSubAnimType(34)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_GOLD: {
+        completion: "constant subanimtype SUBANIM_TYPE_GOLD=ConvertSubAnimType(35)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_LUMBER: {
+        completion: "constant subanimtype SUBANIM_TYPE_LUMBER=ConvertSubAnimType(36)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_WORK: {
+        completion: "constant subanimtype SUBANIM_TYPE_WORK=ConvertSubAnimType(37)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_TALK: {
+        completion: "constant subanimtype SUBANIM_TYPE_TALK=ConvertSubAnimType(38)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FIRST: {
+        completion: "constant subanimtype SUBANIM_TYPE_FIRST=ConvertSubAnimType(39)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_SECOND: {
+        completion: "constant subanimtype SUBANIM_TYPE_SECOND=ConvertSubAnimType(40)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_THIRD: {
+        completion: "constant subanimtype SUBANIM_TYPE_THIRD=ConvertSubAnimType(41)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FOURTH: {
+        completion: "constant subanimtype SUBANIM_TYPE_FOURTH=ConvertSubAnimType(42)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FIFTH: {
+        completion: "constant subanimtype SUBANIM_TYPE_FIFTH=ConvertSubAnimType(43)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_ONE: {
+        completion: "constant subanimtype SUBANIM_TYPE_ONE=ConvertSubAnimType(44)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_TWO: {
+        completion: "constant subanimtype SUBANIM_TYPE_TWO=ConvertSubAnimType(45)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_THREE: {
+        completion: "constant subanimtype SUBANIM_TYPE_THREE=ConvertSubAnimType(46)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FOUR: {
+        completion: "constant subanimtype SUBANIM_TYPE_FOUR=ConvertSubAnimType(47)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FIVE: {
+        completion: "constant subanimtype SUBANIM_TYPE_FIVE=ConvertSubAnimType(48)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_SMALL: {
+        completion: "constant subanimtype SUBANIM_TYPE_SMALL=ConvertSubAnimType(49)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_MEDIUM: {
+        completion: "constant subanimtype SUBANIM_TYPE_MEDIUM=ConvertSubAnimType(50)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_LARGE: {
+        completion: "constant subanimtype SUBANIM_TYPE_LARGE=ConvertSubAnimType(51)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_UPGRADE: {
+        completion: "constant subanimtype SUBANIM_TYPE_UPGRADE=ConvertSubAnimType(52)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_DRAIN: {
+        completion: "constant subanimtype SUBANIM_TYPE_DRAIN=ConvertSubAnimType(53)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FILL: {
+        completion: "constant subanimtype SUBANIM_TYPE_FILL=ConvertSubAnimType(54)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_CHAINLIGHTNING: {
+        completion: "constant subanimtype SUBANIM_TYPE_CHAINLIGHTNING=ConvertSubAnimType(55)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_EATTREE: {
+        completion: "constant subanimtype SUBANIM_TYPE_EATTREE=ConvertSubAnimType(56)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_PUKE: {
+        completion: "constant subanimtype SUBANIM_TYPE_PUKE=ConvertSubAnimType(57)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_FLAIL: {
+        completion: "constant subanimtype SUBANIM_TYPE_FLAIL=ConvertSubAnimType(58)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_OFF: {
+        completion: "constant subanimtype SUBANIM_TYPE_OFF=ConvertSubAnimType(59)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_SWIM: {
+        completion: "constant subanimtype SUBANIM_TYPE_SWIM=ConvertSubAnimType(60)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_ENTANGLE: {
+        completion: "constant subanimtype SUBANIM_TYPE_ENTANGLE=ConvertSubAnimType(61)",
+        description: "",
+
+    },
+    SUBANIM_TYPE_BERSERK: {
+        completion: "constant subanimtype SUBANIM_TYPE_BERSERK=ConvertSubAnimType(62)",
         description: "",
 
     },
@@ -13784,6 +15196,21 @@ exports.constants = {
     },
     EVENT_PLAYER_ARROW_UP_UP: {
         completion: "constant playerevent EVENT_PLAYER_ARROW_UP_UP=ConvertPlayerEvent(268)",
+        description: "",
+
+    },
+    EVENT_PLAYER_MOUSE_DOWN: {
+        completion: "constant playerevent EVENT_PLAYER_MOUSE_DOWN=ConvertPlayerEvent(305)",
+        description: "",
+
+    },
+    EVENT_PLAYER_MOUSE_UP: {
+        completion: "constant playerevent EVENT_PLAYER_MOUSE_UP=ConvertPlayerEvent(306)",
+        description: "",
+
+    },
+    EVENT_PLAYER_MOUSE_MOVE: {
+        completion: "constant playerevent EVENT_PLAYER_MOUSE_MOVE=ConvertPlayerEvent(307)",
         description: "",
 
     },
