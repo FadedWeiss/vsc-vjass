@@ -1,6 +1,7 @@
 # awesome-vjass-support README
 
 vJASS is a syntax used by World Editor for Warcraft 3. Its compiler is JassHelper by Cohadar/Vexorian.
+http://www.wc3c.net/vexorian/jasshelpermanual.html#keykeykey
 
 ## Features
 
