@@ -58,7 +58,10 @@
 			"name": "string.quoted.double.vjass",
 
 			"patterns": [
-				{ "include": "#interpolation" }
+				{
+					"name": "constant.character.escape.vjass",
+					"match": "\\\\."
+				}
 			]
 		},
 
