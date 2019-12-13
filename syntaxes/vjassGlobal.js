@@ -31,7 +31,7 @@ var regPatterns = [
     '(struct)' + namePattern,
     '(library)' + namePattern,
     '(interface function)' + namePattern,
-    '(hashtable|integer|real|boolean|string|handle|agent|event|player|widget|unit|destructable|item|ability|buff|force|group|trigger|triggercondition|triggeraction|timer|location|region|rect|boolexpr|sound|conditionfunc|filterfunc|unitpool|itempool|race|alliancetype|racepreference|gamestate|igamestate|fgamestate|playerstate|playerscore|playergameresult|unitstate|aidifficulty|eventid|gameevent|playerevent|playerunitevent|unitevent|limitop|widgetevent|dialogevent|unittype|gamespeed|gamedifficulty|gametype|mapflag|mapvisibility|mapsetting|mapdensity|mapcontrol|playerslotstate|volumegroup|camerafield|camerasetup|playercolor|placement|startlocprio|raritycontrol|blendmode|texmapflags|effect|effecttype|weathereffect|terraindeformation|fogstate|fogmodifier|dialog|button|quest|questitem|defeatcondition|timerdialog|leaderboard|multiboard|multiboarditem|trackable|gamecache|version|itemtype|texttag|attacktype|damagetype|weapontype|soundtype|lightning|pathingtype|mousebuttontype|animtype|subanimtype|image|ubersplat)(?:(\\s+array)*)' + namePattern,
+    '(integer|real|boolean|string|handle|agent|agent|event|player|widget|unit|destructable|item|ability|buff|force|group|trigger|triggercondition|triggeraction|timer|location|region|rect|boolexpr|sound|conditionfunc|filterfunc|unitpool|itempool|race|alliancetype|racepreference|gamestate|igamestate|fgamestate|playerstate|playerscore|playergameresult|unitstate|aidifficulty|eventid|gameevent|playerevent|playerunitevent|unitevent|limitop|widgetevent|dialogevent|unittype|gamespeed|gamedifficulty|gametype|mapflag|mapvisibility|mapsetting|mapdensity|mapcontrol|playerslotstate|volumegroup|camerafield|camerasetup|playercolor|placement|startlocprio|raritycontrol|blendmode|texmapflags|effect|effecttype|weathereffect|terraindeformation|fogstate|fogmodifier|dialog|button|quest|questitem|defeatcondition|timerdialog|leaderboard|multiboard|multiboarditem|trackable|gamecache|version|itemtype|texttag|attacktype|damagetype|weapontype|soundtype|lightning|pathingtype|mousebuttontype|animtype|subanimtype|image|ubersplat|hashtable|framehandle|originframetype|framepointtype|textaligntype|frameeventtype|oskeytype|abilityintegerfield|abilityrealfield|abilitybooleanfield|abilitystringfield|abilityintegerlevelfield|abilityreallevelfield|abilitybooleanlevelfield|abilitystringlevelfield|abilityintegerlevelarrayfield|abilityreallevelarrayfield|abilitybooleanlevelarrayfield|abilitystringlevelarrayfield|unitintegerfield|unitrealfield|unitbooleanfield|unitstringfield|unitweaponintegerfield|unitweaponrealfield|unitweaponbooleanfield|unitweaponstringfield|itemintegerfield|itemrealfield|itembooleanfield|itemstringfield|movetype|targetflag|armortype|heroattribute|defensetype|regentype|unitcategory|pathingflag)(?:(\s+array)*)' + namePattern,
 ];
 
 exports.searchPatterns = [
@@ -49,6 +49,1313 @@ exports.symbolPattern = /\b/.source + '(' + regPatterns[0] + '|' + regPatterns[1
 
 
 exports.cjfunctions = {
+	ConvertAbilityIntegerLevelArrayField: {
+		completion: "constant native ConvertAbilityIntegerLevelArrayField takes integer i returns abilityintegerlevelarrayfield",
+		description: "",
+		parameters: [
+			{ label: 'integer', name: 'i' },
+		],
+	},
+	ConvertAbilityRealLevelArrayField: {
+		completion: "constant native ConvertAbilityRealLevelArrayField takes integer i returns abilityreallevelarrayfield",
+		description: "",
+		parameters: [
+			{ label: 'integer', name: 'i' },
+		],
+	},
+	ConvertAbilityBooleanLevelArrayField: {
+		completion: "constant native ConvertAbilityBooleanLevelArrayField takes integer i returns abilitybooleanlevelarrayfield",
+		description: "",
+		parameters: [
+			{ label: 'integer', name: 'i' },
+		],
+	},
+	ConvertAbilityStringLevelArrayField: {
+		completion: "constant native ConvertAbilityStringLevelArrayField takes integer i returns abilitystringlevelarrayfield",
+		description: "",
+		parameters: [
+			{ label: 'integer', name: 'i' },
+		],
+	},
+	BlzGroupAddGroupFast: {
+		completion: "native BlzGroupAddGroupFast takes group whichGroup, group addGroup returns integer",
+		description: "",
+		parameters: [
+			{ label: 'group', name: 'whichGroup' },
+			{ label: 'group', name: 'addGroup' },
+		],
+	},
+	BlzGroupRemoveGroupFast: {
+		completion: "native BlzGroupRemoveGroupFast takes group whichGroup, group removeGroup returns integer",
+		description: "",
+		parameters: [
+			{ label: 'group', name: 'whichGroup' },
+			{ label: 'group', name: 'removeGroup' },
+		],
+	},
+	BlzGroupGetSize: {
+		completion: "native BlzGroupGetSize takes group whichGroup returns integer",
+		description: "",
+		parameters: [
+			{ label: 'group', name: 'whichGroup' },
+		],
+	},
+	BlzGroupUnitAt: {
+		completion: "native BlzGroupUnitAt takes group whichGroup, integer index returns unit",
+		description: "",
+		parameters: [
+			{ label: 'group', name: 'whichGroup' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzForceHasPlayer: {
+		completion: "native BlzForceHasPlayer takes force whichForce, player whichPlayer returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'force', name: 'whichForce' },
+			{ label: 'player', name: 'whichPlayer' },
+		],
+	},
+	SaveAgentHandle: {
+		completion: "native SaveAgentHandle takes hashtable table, integer parentKey, integer childKey, agent whichAgent returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'hashtable', name: 'table' },
+			{ label: 'integer', name: 'parentKey' },
+			{ label: 'integer', name: 'childKey' },
+			{ label: 'agent', name: 'whichAgent' },
+		],
+	},
+	SaveHashtableHandle: {
+		completion: "native SaveHashtableHandle takes hashtable table, integer parentKey, integer childKey, hashtable whichHashtable returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'hashtable', name: 'table' },
+			{ label: 'integer', name: 'parentKey' },
+			{ label: 'integer', name: 'childKey' },
+			{ label: 'hashtable', name: 'whichHashtable' },
+		],
+	},
+	SaveFrameHandle: {
+		completion: "native SaveFrameHandle takes hashtable table, integer parentKey, integer childKey, framehandle whichFrameHandle returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'hashtable', name: 'table' },
+			{ label: 'integer', name: 'parentKey' },
+			{ label: 'integer', name: 'childKey' },
+			{ label: 'framehandle', name: 'whichFrameHandle' },
+		],
+	},
+	LoadHashtableHandle: {
+		completion: "native LoadHashtableHandle takes hashtable table, integer parentKey, integer childKey returns hashtable",
+		description: "",
+		parameters: [
+			{ label: 'hashtable', name: 'table' },
+			{ label: 'integer', name: 'parentKey' },
+			{ label: 'integer', name: 'childKey' },
+		],
+	},
+	LoadFrameHandle: {
+		completion: "native LoadFrameHandle takes hashtable table, integer parentKey, integer childKey returns framehandle",
+		description: "",
+		parameters: [
+			{ label: 'hashtable', name: 'table' },
+			{ label: 'integer', name: 'parentKey' },
+			{ label: 'integer', name: 'childKey' },
+		],
+	},
+	BlzGetEventDamageTarget: {
+		completion: "native BlzGetEventDamageTarget takes nothing returns unit",
+		description: "",
+	},
+	BlzGetEventAttackType: {
+		completion: "native BlzGetEventAttackType takes nothing returns attacktype",
+		description: "",
+	},
+	BlzGetEventDamageType: {
+		completion: "native BlzGetEventDamageType takes nothing returns damagetype",
+		description: "",
+	},
+	BlzGetEventWeaponType: {
+		completion: "native BlzGetEventWeaponType takes nothing returns weapontype",
+		description: "",
+	},
+	BlzSetEventAttackType: {
+		completion: "native BlzSetEventAttackType takes attacktype attackType returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'attacktype', name: 'attackType' },
+		],
+	},
+	BlzSetEventDamageType: {
+		completion: "native BlzSetEventDamageType takes damagetype damageType returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'damagetype', name: 'damageType' },
+		],
+	},
+	BlzSetEventWeaponType: {
+		completion: "native BlzSetEventWeaponType takes weapontype weaponType returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'weapontype', name: 'weaponType' },
+		],
+	},
+	BlzEnableSelections: {
+		completion: "native BlzEnableSelections takes boolean enableSelection, boolean enableSelectionCircle returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'boolean', name: 'enableSelection' },
+			{ label: 'boolean', name: 'enableSelectionCircle' },
+		],
+	},
+	BlzIsSelectionEnabled: {
+		completion: "native BlzIsSelectionEnabled takes nothing returns boolean",
+		description: "",
+	},
+	BlzIsSelectionCircleEnabled: {
+		completion: "native BlzIsSelectionCircleEnabled takes nothing returns boolean",
+		description: "",
+	},
+	BlzCameraSetupApplyForceDurationSmooth: {
+		completion: "native BlzCameraSetupApplyForceDurationSmooth takes camerasetup whichSetup, boolean doPan, real forcedDuration, real easeInDuration, real easeOutDuration, real smoothFactor returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'camerasetup', name: 'whichSetup' },
+			{ label: 'boolean', name: 'doPan' },
+			{ label: 'real', name: 'forcedDuration' },
+			{ label: 'real', name: 'easeInDuration' },
+			{ label: 'real', name: 'easeOutDuration' },
+			{ label: 'real', name: 'smoothFactor' },
+		],
+	},
+	BlzEnableTargetIndicator: {
+		completion: "native BlzEnableTargetIndicator takes boolean enable returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'boolean', name: 'enable' },
+		],
+	},
+	BlzIsTargetIndicatorEnabled: {
+		completion: "native BlzIsTargetIndicatorEnabled takes nothing returns boolean",
+		description: "",
+	},
+	BlzGetOriginFrame: {
+		completion: "native BlzGetOriginFrame takes originframetype frameType, integer index returns framehandle",
+		description: "",
+		parameters: [
+			{ label: 'originframetype', name: 'frameType' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzEnableUIAutoPosition: {
+		completion: "native BlzEnableUIAutoPosition takes boolean enable returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'boolean', name: 'enable' },
+		],
+	},
+	BlzHideOriginFrames: {
+		completion: "native BlzHideOriginFrames takes boolean enable returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'boolean', name: 'enable' },
+		],
+	},
+	BlzConvertColor: {
+		completion: "native BlzConvertColor takes integer a, integer r, integer g, integer b returns integer",
+		description: "",
+		parameters: [
+			{ label: 'integer', name: 'a' },
+			{ label: 'integer', name: 'r' },
+			{ label: 'integer', name: 'g' },
+			{ label: 'integer', name: 'b' },
+		],
+	},
+	BlzLoadTOCFile: {
+		completion: "native BlzLoadTOCFile takes string TOCFile returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'string', name: 'TOCFile' },
+		],
+	},
+	BlzCreateFrame: {
+		completion: "native BlzCreateFrame takes string name, framehandle owner, integer priority, integer createContext returns framehandle",
+		description: "",
+		parameters: [
+			{ label: 'string', name: 'name' },
+			{ label: 'framehandle', name: 'owner' },
+			{ label: 'integer', name: 'priority' },
+			{ label: 'integer', name: 'createContext' },
+		],
+	},
+	BlzCreateSimpleFrame: {
+		completion: "native BlzCreateSimpleFrame takes string name, framehandle owner, integer createContext returns framehandle",
+		description: "",
+		parameters: [
+			{ label: 'string', name: 'name' },
+			{ label: 'framehandle', name: 'owner' },
+			{ label: 'integer', name: 'createContext' },
+		],
+	},
+	BlzCreateFrameByType: {
+		completion: "native BlzCreateFrameByType takes string typeName, string name, framehandle owner, string inherits, integer createContext returns framehandle",
+		description: "",
+		parameters: [
+			{ label: 'string', name: 'typeName' },
+			{ label: 'string', name: 'name' },
+			{ label: 'framehandle', name: 'owner' },
+			{ label: 'string', name: 'inherits' },
+			{ label: 'integer', name: 'createContext' },
+		],
+	},
+	BlzDestroyFrame: {
+		completion: "native BlzDestroyFrame takes framehandle frame returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameSetPoint: {
+		completion: "native BlzFrameSetPoint takes framehandle frame, framepointtype point, framehandle relative, framepointtype relativePoint, real x, real y returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'framepointtype', name: 'point' },
+			{ label: 'framehandle', name: 'relative' },
+			{ label: 'framepointtype', name: 'relativePoint' },
+			{ label: 'real', name: 'x' },
+			{ label: 'real', name: 'y' },
+		],
+	},
+	BlzFrameSetAbsPoint: {
+		completion: "native BlzFrameSetAbsPoint takes framehandle frame, framepointtype point, real x, real y returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'framepointtype', name: 'point' },
+			{ label: 'real', name: 'x' },
+			{ label: 'real', name: 'y' },
+		],
+	},
+	BlzFrameClearAllPoints: {
+		completion: "native BlzFrameClearAllPoints takes framehandle frame returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameSetAllPoints: {
+		completion: "native BlzFrameSetAllPoints takes framehandle frame, framehandle relative returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'framehandle', name: 'relative' },
+		],
+	},
+	BlzFrameSetVisible: {
+		completion: "native BlzFrameSetVisible takes framehandle frame, boolean visible returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'boolean', name: 'visible' },
+		],
+	},
+	BlzFrameIsVisible: {
+		completion: "native BlzFrameIsVisible takes framehandle frame returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzGetFrameByName: {
+		completion: "native BlzGetFrameByName takes string name, integer createContext returns framehandle",
+		description: "",
+		parameters: [
+			{ label: 'string', name: 'name' },
+			{ label: 'integer', name: 'createContext' },
+		],
+	},
+	BlzFrameGetName: {
+		completion: "native BlzFrameGetName takes framehandle frame returns string",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameClick: {
+		completion: "native BlzFrameClick takes framehandle frame returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameSetText: {
+		completion: "native BlzFrameSetText takes framehandle frame, string text returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'string', name: 'text' },
+		],
+	},
+	BlzFrameGetText: {
+		completion: "native BlzFrameGetText takes framehandle frame returns string",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameSetTextSizeLimit: {
+		completion: "native BlzFrameSetTextSizeLimit takes framehandle frame, integer size returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'integer', name: 'size' },
+		],
+	},
+	BlzFrameGetTextSizeLimit: {
+		completion: "native BlzFrameGetTextSizeLimit takes framehandle frame returns integer",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameSetTextColor: {
+		completion: "native BlzFrameSetTextColor takes framehandle frame, integer color returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'integer', name: 'color' },
+		],
+	},
+	BlzFrameSetFocus: {
+		completion: "native BlzFrameSetFocus takes framehandle frame, boolean flag returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'boolean', name: 'flag' },
+		],
+	},
+	BlzFrameSetModel: {
+		completion: "native BlzFrameSetModel takes framehandle frame, string modelFile, integer cameraIndex returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'string', name: 'modelFile' },
+			{ label: 'integer', name: 'cameraIndex' },
+		],
+	},
+	BlzFrameSetEnable: {
+		completion: "native BlzFrameSetEnable takes framehandle frame, boolean enabled returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'boolean', name: 'enabled' },
+		],
+	},
+	BlzFrameGetEnable: {
+		completion: "native BlzFrameGetEnable takes framehandle frame returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameSetAlpha: {
+		completion: "native BlzFrameSetAlpha takes framehandle frame, integer alpha returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'integer', name: 'alpha' },
+		],
+	},
+	BlzFrameGetAlpha: {
+		completion: "native BlzFrameGetAlpha takes framehandle frame returns integer",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameSetSpriteAnimate: {
+		completion: "native BlzFrameSetSpriteAnimate takes framehandle frame, integer primaryProp, integer flags returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'integer', name: 'primaryProp' },
+			{ label: 'integer', name: 'flags' },
+		],
+	},
+	BlzFrameSetTexture: {
+		completion: "native BlzFrameSetTexture takes framehandle frame, string texFile, integer flag, boolean blend returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'string', name: 'texFile' },
+			{ label: 'integer', name: 'flag' },
+			{ label: 'boolean', name: 'blend' },
+		],
+	},
+	BlzFrameSetScale: {
+		completion: "native BlzFrameSetScale takes framehandle frame, real scale returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'real', name: 'scale' },
+		],
+	},
+	BlzFrameSetTooltip: {
+		completion: "native BlzFrameSetTooltip takes framehandle frame, framehandle tooltip returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'framehandle', name: 'tooltip' },
+		],
+	},
+	BlzFrameCageMouse: {
+		completion: "native BlzFrameCageMouse takes framehandle frame, boolean enable returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'boolean', name: 'enable' },
+		],
+	},
+	BlzFrameSetValue: {
+		completion: "native BlzFrameSetValue takes framehandle frame, real value returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'real', name: 'value' },
+		],
+	},
+	BlzFrameGetValue: {
+		completion: "native BlzFrameGetValue takes framehandle frame returns real",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameSetMinMaxValue: {
+		completion: "native BlzFrameSetMinMaxValue takes framehandle frame, real minValue, real maxValue returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'real', name: 'minValue' },
+			{ label: 'real', name: 'maxValue' },
+		],
+	},
+	BlzFrameSetStepSize: {
+		completion: "native BlzFrameSetStepSize takes framehandle frame, real stepSize returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'real', name: 'stepSize' },
+		],
+	},
+	BlzFrameSetSize: {
+		completion: "native BlzFrameSetSize takes framehandle frame, real width, real height returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'real', name: 'width' },
+			{ label: 'real', name: 'height' },
+		],
+	},
+	BlzFrameSetVertexColor: {
+		completion: "native BlzFrameSetVertexColor takes framehandle frame, integer color returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'integer', name: 'color' },
+		],
+	},
+	BlzFrameSetLevel: {
+		completion: "native BlzFrameSetLevel takes framehandle frame, integer level returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'integer', name: 'level' },
+		],
+	},
+	BlzFrameSetParent: {
+		completion: "native BlzFrameSetParent takes framehandle frame, framehandle parent returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'framehandle', name: 'parent' },
+		],
+	},
+	BlzFrameGetParent: {
+		completion: "native BlzFrameGetParent takes framehandle frame returns framehandle",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameGetHeight: {
+		completion: "native BlzFrameGetHeight takes framehandle frame returns real",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameGetWidth: {
+		completion: "native BlzFrameGetWidth takes framehandle frame returns real",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+		],
+	},
+	BlzFrameSetFont: {
+		completion: "native BlzFrameSetFont takes framehandle frame, string fileName, real height, integer flags returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'string', name: 'fileName' },
+			{ label: 'real', name: 'height' },
+			{ label: 'integer', name: 'flags' },
+		],
+	},
+	BlzFrameSetTextAlignment: {
+		completion: "native BlzFrameSetTextAlignment takes framehandle frame, textaligntype vert, textaligntype horz returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'textaligntype', name: 'vert' },
+			{ label: 'textaligntype', name: 'horz' },
+		],
+	},
+	BlzTriggerRegisterFrameEvent: {
+		completion: "native BlzTriggerRegisterFrameEvent takes trigger whichTrigger, framehandle frame, frameeventtype eventId returns event",
+		description: "",
+		parameters: [
+			{ label: 'trigger', name: 'whichTrigger' },
+			{ label: 'framehandle', name: 'frame' },
+			{ label: 'frameeventtype', name: 'eventId' },
+		],
+	},
+	BlzGetTriggerFrame: {
+		completion: "native BlzGetTriggerFrame takes nothing returns framehandle",
+		description: "",
+	},
+	BlzGetTriggerFrameEvent: {
+		completion: "native BlzGetTriggerFrameEvent takes nothing returns frameeventtype",
+		description: "",
+	},
+	BlzTriggerRegisterPlayerSyncEvent: {
+		completion: "native BlzTriggerRegisterPlayerSyncEvent takes trigger whichTrigger, player whichPlayer, string prefix, boolean fromServer returns event",
+		description: "",
+		parameters: [
+			{ label: 'trigger', name: 'whichTrigger' },
+			{ label: 'player', name: 'whichPlayer' },
+			{ label: 'string', name: 'prefix' },
+			{ label: 'boolean', name: 'fromServer' },
+		],
+	},
+	BlzSendSyncData: {
+		completion: "native BlzSendSyncData takes string prefix, string data returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'string', name: 'prefix' },
+			{ label: 'string', name: 'data' },
+		],
+	},
+	BlzGetTriggerSyncPrefix: {
+		completion: "native BlzGetTriggerSyncPrefix takes nothing returns string",
+		description: "",
+	},
+	BlzGetTriggerSyncData: {
+		completion: "native BlzGetTriggerSyncData takes nothing returns string",
+		description: "",
+	},
+	BlzTriggerRegisterPlayerKeyEvent: {
+		completion: "native BlzTriggerRegisterPlayerKeyEvent takes trigger whichTrigger, player whichPlayer, oskeytype key, integer metaKey, boolean keyDown returns event",
+		description: "",
+		parameters: [
+			{ label: 'trigger', name: 'whichTrigger' },
+			{ label: 'player', name: 'whichPlayer' },
+			{ label: 'oskeytype', name: 'key' },
+			{ label: 'integer', name: 'metaKey' },
+			{ label: 'boolean', name: 'keyDown' },
+		],
+	},
+	BlzGetTriggerPlayerKey: {
+		completion: "native BlzGetTriggerPlayerKey takes nothing returns oskeytype",
+		description: "",
+	},
+	BlzGetTriggerPlayerMetaKey: {
+		completion: "native BlzGetTriggerPlayerMetaKey takes nothing returns integer",
+		description: "",
+	},
+	BlzGetTriggerPlayerIsKeyDown: {
+		completion: "native BlzGetTriggerPlayerIsKeyDown takes nothing returns boolean",
+		description: "",
+	},
+	BlzEnableCursor: {
+		completion: "native BlzEnableCursor takes boolean enable returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'boolean', name: 'enable' },
+		],
+	},
+	BlzSetMousePos: {
+		completion: "native BlzSetMousePos takes integer x, integer y returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'integer', name: 'x' },
+			{ label: 'integer', name: 'y' },
+		],
+	},
+	BlzGetLocalClientWidth: {
+		completion: "native BlzGetLocalClientWidth takes nothing returns integer",
+		description: "",
+	},
+	BlzGetLocalClientHeight: {
+		completion: "native BlzGetLocalClientHeight takes nothing returns integer",
+		description: "",
+	},
+	BlzIsLocalClientActive: {
+		completion: "native BlzIsLocalClientActive takes nothing returns boolean",
+		description: "",
+	},
+	BlzGetMouseFocusUnit: {
+		completion: "native BlzGetMouseFocusUnit takes nothing returns unit",
+		description: "",
+	},
+	BlzChangeMinimapTerrainTex: {
+		completion: "native BlzChangeMinimapTerrainTex takes string texFile returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'string', name: 'texFile' },
+		],
+	},
+	BlzGetLocale: {
+		completion: "native BlzGetLocale takes nothing returns string",
+		description: "",
+	},
+	BlzGetSpecialEffectScale: {
+		completion: "native BlzGetSpecialEffectScale takes effect whichEffect returns real",
+		description: "",
+		parameters: [
+			{ label: 'effect', name: 'whichEffect' },
+		],
+	},
+	BlzSetSpecialEffectMatrixScale: {
+		completion: "native BlzSetSpecialEffectMatrixScale takes effect whichEffect, real x, real y, real z returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'effect', name: 'whichEffect' },
+			{ label: 'real', name: 'x' },
+			{ label: 'real', name: 'y' },
+			{ label: 'real', name: 'z' },
+		],
+	},
+	BlzResetSpecialEffectMatrix: {
+		completion: "native BlzResetSpecialEffectMatrix takes effect whichEffect returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'effect', name: 'whichEffect' },
+		],
+	},
+	BlzGetUnitAbilityByIndex: {
+		completion: "native BlzGetUnitAbilityByIndex takes unit whichUnit, integer index returns ability",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzDisplayChatMessage: {
+		completion: "native BlzDisplayChatMessage takes player whichPlayer, integer recipient, string message returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'player', name: 'whichPlayer' },
+			{ label: 'integer', name: 'recipient' },
+			{ label: 'string', name: 'message' },
+		],
+	},
+	BlzPauseUnitEx: {
+		completion: "native BlzPauseUnitEx takes unit whichUnit, boolean flag returns nothing",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'boolean', name: 'flag' },
+		],
+	},
+	BlzBitOr: {
+		completion: "native BlzBitOr takes integer x, integer y returns integer",
+		description: "",
+		parameters: [
+			{ label: 'integer', name: 'x' },
+			{ label: 'integer', name: 'y' },
+		],
+	},
+	BlzBitAnd: {
+		completion: "native BlzBitAnd takes integer x, integer y returns integer",
+		description: "",
+		parameters: [
+			{ label: 'integer', name: 'x' },
+			{ label: 'integer', name: 'y' },
+		],
+	},
+	BlzBitXor: {
+		completion: "native BlzBitXor takes integer x, integer y returns integer",
+		description: "",
+		parameters: [
+			{ label: 'integer', name: 'x' },
+			{ label: 'integer', name: 'y' },
+		],
+	},
+	BlzGetAbilityBooleanField: {
+		completion: "native BlzGetAbilityBooleanField takes ability whichAbility, abilitybooleanfield whichField returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitybooleanfield', name: 'whichField' },
+		],
+	},
+	BlzGetAbilityIntegerField: {
+		completion: "native BlzGetAbilityIntegerField takes ability whichAbility, abilityintegerfield whichField returns integer",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityintegerfield', name: 'whichField' },
+		],
+	},
+	BlzGetAbilityRealField: {
+		completion: "native BlzGetAbilityRealField takes ability whichAbility, abilityrealfield whichField returns real",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityrealfield', name: 'whichField' },
+		],
+	},
+	BlzGetAbilityStringField: {
+		completion: "native BlzGetAbilityStringField takes ability whichAbility, abilitystringfield whichField returns string",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitystringfield', name: 'whichField' },
+		],
+	},
+	BlzGetAbilityBooleanLevelField: {
+		completion: "native BlzGetAbilityBooleanLevelField takes ability whichAbility, abilitybooleanlevelfield whichField, integer level returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitybooleanlevelfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+		],
+	},
+	BlzGetAbilityIntegerLevelField: {
+		completion: "native BlzGetAbilityIntegerLevelField takes ability whichAbility, abilityintegerlevelfield whichField, integer level returns integer",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityintegerlevelfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+		],
+	},
+	BlzGetAbilityRealLevelField: {
+		completion: "native BlzGetAbilityRealLevelField takes ability whichAbility, abilityreallevelfield whichField, integer level returns real",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityreallevelfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+		],
+	},
+	BlzGetAbilityStringLevelField: {
+		completion: "native BlzGetAbilityStringLevelField takes ability whichAbility, abilitystringlevelfield whichField, integer level returns string",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitystringlevelfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+		],
+	},
+	BlzGetAbilityBooleanLevelArrayField: {
+		completion: "native BlzGetAbilityBooleanLevelArrayField takes ability whichAbility, abilitybooleanlevelarrayfield whichField, integer level, integer index returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitybooleanlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzGetAbilityIntegerLevelArrayField: {
+		completion: "native BlzGetAbilityIntegerLevelArrayField takes ability whichAbility, abilityintegerlevelarrayfield whichField, integer level, integer index returns integer",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityintegerlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzGetAbilityRealLevelArrayField: {
+		completion: "native BlzGetAbilityRealLevelArrayField takes ability whichAbility, abilityreallevelarrayfield whichField, integer level, integer index returns real",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityreallevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzGetAbilityStringLevelArrayField: {
+		completion: "native BlzGetAbilityStringLevelArrayField takes ability whichAbility, abilitystringlevelarrayfield whichField, integer level, integer index returns string",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitystringlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzSetAbilityBooleanField: {
+		completion: "native BlzSetAbilityBooleanField takes ability whichAbility, abilitybooleanfield whichField, boolean value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitybooleanfield', name: 'whichField' },
+			{ label: 'boolean', name: 'value' },
+		],
+	},
+	BlzSetAbilityIntegerField: {
+		completion: "native BlzSetAbilityIntegerField takes ability whichAbility, abilityintegerfield whichField, integer value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityintegerfield', name: 'whichField' },
+			{ label: 'integer', name: 'value' },
+		],
+	},
+	BlzSetAbilityRealField: {
+		completion: "native BlzSetAbilityRealField takes ability whichAbility, abilityrealfield whichField, real value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityrealfield', name: 'whichField' },
+			{ label: 'real', name: 'value' },
+		],
+	},
+	BlzSetAbilityStringField: {
+		completion: "native BlzSetAbilityStringField takes ability whichAbility, abilitystringfield whichField, string value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitystringfield', name: 'whichField' },
+			{ label: 'string', name: 'value' },
+		],
+	},
+	BlzSetAbilityBooleanLevelField: {
+		completion: "native BlzSetAbilityBooleanLevelField takes ability whichAbility, abilitybooleanlevelfield whichField, integer level, boolean value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitybooleanlevelfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'boolean', name: 'value' },
+		],
+	},
+	BlzSetAbilityIntegerLevelField: {
+		completion: "native BlzSetAbilityIntegerLevelField takes ability whichAbility, abilityintegerlevelfield whichField, integer level, integer value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityintegerlevelfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'value' },
+		],
+	},
+	BlzSetAbilityRealLevelField: {
+		completion: "native BlzSetAbilityRealLevelField takes ability whichAbility, abilityreallevelfield whichField, integer level, real value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityreallevelfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'real', name: 'value' },
+		],
+	},
+	BlzSetAbilityStringLevelField: {
+		completion: "native BlzSetAbilityStringLevelField takes ability whichAbility, abilitystringlevelfield whichField, integer level, string value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitystringlevelfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'string', name: 'value' },
+		],
+	},
+	BlzSetAbilityBooleanLevelArrayField: {
+		completion: "native BlzSetAbilityBooleanLevelArrayField takes ability whichAbility, abilitybooleanlevelarrayfield whichField, integer level, integer index, boolean value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitybooleanlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'index' },
+			{ label: 'boolean', name: 'value' },
+		],
+	},
+	BlzSetAbilityIntegerLevelArrayField: {
+		completion: "native BlzSetAbilityIntegerLevelArrayField takes ability whichAbility, abilityintegerlevelarrayfield whichField, integer level, integer index, integer value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityintegerlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'index' },
+			{ label: 'integer', name: 'value' },
+		],
+	},
+	BlzSetAbilityRealLevelArrayField: {
+		completion: "native BlzSetAbilityRealLevelArrayField takes ability whichAbility, abilityreallevelarrayfield whichField, integer level, integer index, real value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityreallevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'index' },
+			{ label: 'real', name: 'value' },
+		],
+	},
+	BlzSetAbilityStringLevelArrayField: {
+		completion: "native BlzSetAbilityStringLevelArrayField takes ability whichAbility, abilitystringlevelarrayfield whichField, integer level, integer index, string value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitystringlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'index' },
+			{ label: 'string', name: 'value' },
+		],
+	},
+	BlzAddAbilityBooleanLevelArrayField: {
+		completion: "native BlzAddAbilityBooleanLevelArrayField takes ability whichAbility, abilitybooleanlevelarrayfield whichField, integer level, boolean value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitybooleanlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'boolean', name: 'value' },
+		],
+	},
+	BlzAddAbilityIntegerLevelArrayField: {
+		completion: "native BlzAddAbilityIntegerLevelArrayField takes ability whichAbility, abilityintegerlevelarrayfield whichField, integer level, integer value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityintegerlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'value' },
+		],
+	},
+	BlzAddAbilityRealLevelArrayField: {
+		completion: "native BlzAddAbilityRealLevelArrayField takes ability whichAbility, abilityreallevelarrayfield whichField, integer level, real value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityreallevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'real', name: 'value' },
+		],
+	},
+	BlzAddAbilityStringLevelArrayField: {
+		completion: "native BlzAddAbilityStringLevelArrayField takes ability whichAbility, abilitystringlevelarrayfield whichField, integer level, string value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitystringlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'string', name: 'value' },
+		],
+	},
+	BlzRemoveAbilityBooleanLevelArrayField: {
+		completion: "native BlzRemoveAbilityBooleanLevelArrayField takes ability whichAbility, abilitybooleanlevelarrayfield whichField, integer level, boolean value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitybooleanlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'boolean', name: 'value' },
+		],
+	},
+	BlzRemoveAbilityIntegerLevelArrayField: {
+		completion: "native BlzRemoveAbilityIntegerLevelArrayField takes ability whichAbility, abilityintegerlevelarrayfield whichField, integer level, integer value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityintegerlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'integer', name: 'value' },
+		],
+	},
+	BlzRemoveAbilityRealLevelArrayField: {
+		completion: "native BlzRemoveAbilityRealLevelArrayField takes ability whichAbility, abilityreallevelarrayfield whichField, integer level, real value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilityreallevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'real', name: 'value' },
+		],
+	},
+	BlzRemoveAbilityStringLevelArrayField: {
+		completion: "native BlzRemoveAbilityStringLevelArrayField takes ability whichAbility, abilitystringlevelarrayfield whichField, integer level, string value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'ability', name: 'whichAbility' },
+			{ label: 'abilitystringlevelarrayfield', name: 'whichField' },
+			{ label: 'integer', name: 'level' },
+			{ label: 'string', name: 'value' },
+		],
+	},
+	BlzGetItemAbilityByIndex: {
+		completion: "native BlzGetItemAbilityByIndex takes item whichItem, integer index returns ability",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzGetItemAbility: {
+		completion: "native BlzGetItemAbility takes item whichItem, integer abilCode returns ability",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'integer', name: 'abilCode' },
+		],
+	},
+	BlzItemAddAbility: {
+		completion: "native BlzItemAddAbility takes item whichItem, integer abilCode returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'integer', name: 'abilCode' },
+		],
+	},
+	BlzGetItemBooleanField: {
+		completion: "native BlzGetItemBooleanField takes item whichItem, itembooleanfield whichField returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'itembooleanfield', name: 'whichField' },
+		],
+	},
+	BlzGetItemIntegerField: {
+		completion: "native BlzGetItemIntegerField takes item whichItem, itemintegerfield whichField returns integer",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'itemintegerfield', name: 'whichField' },
+		],
+	},
+	BlzGetItemRealField: {
+		completion: "native BlzGetItemRealField takes item whichItem, itemrealfield whichField returns real",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'itemrealfield', name: 'whichField' },
+		],
+	},
+	BlzGetItemStringField: {
+		completion: "native BlzGetItemStringField takes item whichItem, itemstringfield whichField returns string",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'itemstringfield', name: 'whichField' },
+		],
+	},
+	BlzSetItemBooleanField: {
+		completion: "native BlzSetItemBooleanField takes item whichItem, itembooleanfield whichField, boolean value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'itembooleanfield', name: 'whichField' },
+			{ label: 'boolean', name: 'value' },
+		],
+	},
+	BlzSetItemIntegerField: {
+		completion: "native BlzSetItemIntegerField takes item whichItem, itemintegerfield whichField, integer value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'itemintegerfield', name: 'whichField' },
+			{ label: 'integer', name: 'value' },
+		],
+	},
+	BlzSetItemRealField: {
+		completion: "native BlzSetItemRealField takes item whichItem, itemrealfield whichField, real value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'itemrealfield', name: 'whichField' },
+			{ label: 'real', name: 'value' },
+		],
+	},
+	BlzSetItemStringField: {
+		completion: "native BlzSetItemStringField takes item whichItem, itemstringfield whichField, string value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'itemstringfield', name: 'whichField' },
+			{ label: 'string', name: 'value' },
+		],
+	},
+	BlzItemRemoveAbility: {
+		completion: "native BlzItemRemoveAbility takes item whichItem, integer abilCode returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'item', name: 'whichItem' },
+			{ label: 'integer', name: 'abilCode' },
+		],
+	},
+	BlzGetUnitBooleanField: {
+		completion: "native BlzGetUnitBooleanField takes unit whichUnit, unitbooleanfield whichField returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitbooleanfield', name: 'whichField' },
+		],
+	},
+	BlzGetUnitIntegerField: {
+		completion: "native BlzGetUnitIntegerField takes unit whichUnit, unitintegerfield whichField returns integer",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitintegerfield', name: 'whichField' },
+		],
+	},
+	BlzGetUnitRealField: {
+		completion: "native BlzGetUnitRealField takes unit whichUnit, unitrealfield whichField returns real",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitrealfield', name: 'whichField' },
+		],
+	},
+	BlzGetUnitStringField: {
+		completion: "native BlzGetUnitStringField takes unit whichUnit, unitstringfield whichField returns string",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitstringfield', name: 'whichField' },
+		],
+	},
+	BlzSetUnitBooleanField: {
+		completion: "native BlzSetUnitBooleanField takes unit whichUnit, unitbooleanfield whichField, boolean value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitbooleanfield', name: 'whichField' },
+			{ label: 'boolean', name: 'value' },
+		],
+	},
+	BlzSetUnitIntegerField: {
+		completion: "native BlzSetUnitIntegerField takes unit whichUnit, unitintegerfield whichField, integer value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitintegerfield', name: 'whichField' },
+			{ label: 'integer', name: 'value' },
+		],
+	},
+	BlzSetUnitRealField: {
+		completion: "native BlzSetUnitRealField takes unit whichUnit, unitrealfield whichField, real value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitrealfield', name: 'whichField' },
+			{ label: 'real', name: 'value' },
+		],
+	},
+	BlzSetUnitStringField: {
+		completion: "native BlzSetUnitStringField takes unit whichUnit, unitstringfield whichField, string value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitstringfield', name: 'whichField' },
+			{ label: 'string', name: 'value' },
+		],
+	},
+	BlzGetUnitWeaponBooleanField: {
+		completion: "native BlzGetUnitWeaponBooleanField takes unit whichUnit, unitweaponbooleanfield whichField, integer index returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitweaponbooleanfield', name: 'whichField' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzGetUnitWeaponIntegerField: {
+		completion: "native BlzGetUnitWeaponIntegerField takes unit whichUnit, unitweaponintegerfield whichField, integer index returns integer",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitweaponintegerfield', name: 'whichField' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzGetUnitWeaponRealField: {
+		completion: "native BlzGetUnitWeaponRealField takes unit whichUnit, unitweaponrealfield whichField, integer index returns real",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitweaponrealfield', name: 'whichField' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzGetUnitWeaponStringField: {
+		completion: "native BlzGetUnitWeaponStringField takes unit whichUnit, unitweaponstringfield whichField, integer index returns string",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitweaponstringfield', name: 'whichField' },
+			{ label: 'integer', name: 'index' },
+		],
+	},
+	BlzSetUnitWeaponBooleanField: {
+		completion: "native BlzSetUnitWeaponBooleanField takes unit whichUnit, unitweaponbooleanfield whichField, integer index, boolean value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitweaponbooleanfield', name: 'whichField' },
+			{ label: 'integer', name: 'index' },
+			{ label: 'boolean', name: 'value' },
+		],
+	},
+	BlzSetUnitWeaponIntegerField: {
+		completion: "native BlzSetUnitWeaponIntegerField takes unit whichUnit, unitweaponintegerfield whichField, integer index, integer value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitweaponintegerfield', name: 'whichField' },
+			{ label: 'integer', name: 'index' },
+			{ label: 'integer', name: 'value' },
+		],
+	},
+	BlzSetUnitWeaponRealField: {
+		completion: "native BlzSetUnitWeaponRealField takes unit whichUnit, unitweaponrealfield whichField, integer index, real value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitweaponrealfield', name: 'whichField' },
+			{ label: 'integer', name: 'index' },
+			{ label: 'real', name: 'value' },
+		],
+	},
+	BlzSetUnitWeaponStringField: {
+		completion: "native BlzSetUnitWeaponStringField takes unit whichUnit, unitweaponstringfield whichField, integer index, string value returns boolean",
+		description: "",
+		parameters: [
+			{ label: 'unit', name: 'whichUnit' },
+			{ label: 'unitweaponstringfield', name: 'whichField' },
+			{ label: 'integer', name: 'index' },
+			{ label: 'string', name: 'value' },
+		],
+	},
     ConvertRace: {
         completion: "constant native ConvertRace takes integer i returns race",
         description: "",
@@ -72,6 +1379,7 @@ exports.cjfunctions = {
             { label: 'integer', name: 'i', documentation: "integer variables can hold the range of integral numbers ranging from -2147483647 to 2147483647" },
       ],
     
+
     },
     ConvertIGameState: {
         completion: "constant native ConvertIGameState takes integer i returns igamestate",
@@ -13172,6 +14480,4666 @@ exports.bjfunctions = {
 }
 
 exports.constants = {
+	EVENT_PLAYER_UNIT_DAMAGED: {
+		completion: "constant playerunitevent EVENT_PLAYER_UNIT_DAMAGED = ConvertPlayerUnitEvent(308)",
+		description: "",
+	},
+	EVENT_PLAYER_UNIT_DAMAGING: {
+		completion: "constant playerunitevent EVENT_PLAYER_UNIT_DAMAGING = ConvertPlayerUnitEvent(315)",
+		description: "",
+	},
+	EVENT_UNIT_DAMAGING: {
+		completion: "constant unitevent EVENT_UNIT_DAMAGING = ConvertUnitEvent(314)",
+		description: "",
+	},
+	EVENT_GAME_CUSTOM_UI_FRAME: {
+		completion: "constant gameevent EVENT_GAME_CUSTOM_UI_FRAME = ConvertGameEvent(310)",
+		description: "",
+	},
+	EVENT_PLAYER_SYNC_DATA: {
+		completion: "constant playerevent EVENT_PLAYER_SYNC_DATA = ConvertPlayerEvent(309)",
+		description: "",
+	},
+	EVENT_PLAYER_KEY: {
+		completion: "constant playerevent EVENT_PLAYER_KEY = ConvertPlayerEvent(311)",
+		description: "",
+	},
+	EVENT_PLAYER_KEY_DOWN: {
+		completion: "constant playerevent EVENT_PLAYER_KEY_DOWN = ConvertPlayerEvent(312)",
+		description: "",
+	},
+	EVENT_PLAYER_KEY_UP: {
+		completion: "constant playerevent EVENT_PLAYER_KEY_UP = ConvertPlayerEvent(313)",
+		description: "",
+	},
+	CAMERA_FIELD_NEARZ: {
+		completion: "constant camerafield CAMERA_FIELD_NEARZ = ConvertCameraField(7)",
+		description: "",
+	},
+	CAMERA_FIELD_LOCAL_PITCH: {
+		completion: "constant camerafield CAMERA_FIELD_LOCAL_PITCH = ConvertCameraField(8)",
+		description: "",
+	},
+	CAMERA_FIELD_LOCAL_YAW: {
+		completion: "constant camerafield CAMERA_FIELD_LOCAL_YAW = ConvertCameraField(9)",
+		description: "",
+	},
+	CAMERA_FIELD_LOCAL_ROLL: {
+		completion: "constant camerafield CAMERA_FIELD_LOCAL_ROLL = ConvertCameraField(10)",
+		description: "",
+	},
+	ORIGIN_FRAME_GAME_UI: {
+		completion: "constant originframetype ORIGIN_FRAME_GAME_UI = ConvertOriginFrameType(0)",
+		description: "",
+	},
+	ORIGIN_FRAME_COMMAND_BUTTON: {
+		completion: "constant originframetype ORIGIN_FRAME_COMMAND_BUTTON = ConvertOriginFrameType(1)",
+		description: "",
+	},
+	ORIGIN_FRAME_HERO_BAR: {
+		completion: "constant originframetype ORIGIN_FRAME_HERO_BAR = ConvertOriginFrameType(2)",
+		description: "",
+	},
+	ORIGIN_FRAME_HERO_BUTTON: {
+		completion: "constant originframetype ORIGIN_FRAME_HERO_BUTTON = ConvertOriginFrameType(3)",
+		description: "",
+	},
+	ORIGIN_FRAME_HERO_HP_BAR: {
+		completion: "constant originframetype ORIGIN_FRAME_HERO_HP_BAR = ConvertOriginFrameType(4)",
+		description: "",
+	},
+	ORIGIN_FRAME_HERO_MANA_BAR: {
+		completion: "constant originframetype ORIGIN_FRAME_HERO_MANA_BAR = ConvertOriginFrameType(5)",
+		description: "",
+	},
+	ORIGIN_FRAME_HERO_BUTTON_INDICATOR: {
+		completion: "constant originframetype ORIGIN_FRAME_HERO_BUTTON_INDICATOR = ConvertOriginFrameType(6)",
+		description: "",
+	},
+	ORIGIN_FRAME_ITEM_BUTTON: {
+		completion: "constant originframetype ORIGIN_FRAME_ITEM_BUTTON = ConvertOriginFrameType(7)",
+		description: "",
+	},
+	ORIGIN_FRAME_MINIMAP: {
+		completion: "constant originframetype ORIGIN_FRAME_MINIMAP = ConvertOriginFrameType(8)",
+		description: "",
+	},
+	ORIGIN_FRAME_MINIMAP_BUTTON: {
+		completion: "constant originframetype ORIGIN_FRAME_MINIMAP_BUTTON = ConvertOriginFrameType(9)",
+		description: "",
+	},
+	ORIGIN_FRAME_SYSTEM_BUTTON: {
+		completion: "constant originframetype ORIGIN_FRAME_SYSTEM_BUTTON = ConvertOriginFrameType(10)",
+		description: "",
+	},
+	ORIGIN_FRAME_TOOLTIP: {
+		completion: "constant originframetype ORIGIN_FRAME_TOOLTIP = ConvertOriginFrameType(11)",
+		description: "",
+	},
+	ORIGIN_FRAME_UBERTOOLTIP: {
+		completion: "constant originframetype ORIGIN_FRAME_UBERTOOLTIP = ConvertOriginFrameType(12)",
+		description: "",
+	},
+	ORIGIN_FRAME_CHAT_MSG: {
+		completion: "constant originframetype ORIGIN_FRAME_CHAT_MSG = ConvertOriginFrameType(13)",
+		description: "",
+	},
+	ORIGIN_FRAME_UNIT_MSG: {
+		completion: "constant originframetype ORIGIN_FRAME_UNIT_MSG = ConvertOriginFrameType(14)",
+		description: "",
+	},
+	ORIGIN_FRAME_TOP_MSG: {
+		completion: "constant originframetype ORIGIN_FRAME_TOP_MSG = ConvertOriginFrameType(15)",
+		description: "",
+	},
+	ORIGIN_FRAME_PORTRAIT: {
+		completion: "constant originframetype ORIGIN_FRAME_PORTRAIT = ConvertOriginFrameType(16)",
+		description: "",
+	},
+	ORIGIN_FRAME_WORLD_FRAME: {
+		completion: "constant originframetype ORIGIN_FRAME_WORLD_FRAME = ConvertOriginFrameType(17)",
+		description: "",
+	},
+	FRAMEPOINT_TOPLEFT: {
+		completion: "constant framepointtype FRAMEPOINT_TOPLEFT = ConvertFramePointType(0)",
+		description: "",
+	},
+	FRAMEPOINT_TOP: {
+		completion: "constant framepointtype FRAMEPOINT_TOP = ConvertFramePointType(1)",
+		description: "",
+	},
+	FRAMEPOINT_TOPRIGHT: {
+		completion: "constant framepointtype FRAMEPOINT_TOPRIGHT = ConvertFramePointType(2)",
+		description: "",
+	},
+	FRAMEPOINT_LEFT: {
+		completion: "constant framepointtype FRAMEPOINT_LEFT = ConvertFramePointType(3)",
+		description: "",
+	},
+	FRAMEPOINT_CENTER: {
+		completion: "constant framepointtype FRAMEPOINT_CENTER = ConvertFramePointType(4)",
+		description: "",
+	},
+	FRAMEPOINT_RIGHT: {
+		completion: "constant framepointtype FRAMEPOINT_RIGHT = ConvertFramePointType(5)",
+		description: "",
+	},
+	FRAMEPOINT_BOTTOMLEFT: {
+		completion: "constant framepointtype FRAMEPOINT_BOTTOMLEFT = ConvertFramePointType(6)",
+		description: "",
+	},
+	FRAMEPOINT_BOTTOM: {
+		completion: "constant framepointtype FRAMEPOINT_BOTTOM = ConvertFramePointType(7)",
+		description: "",
+	},
+	FRAMEPOINT_BOTTOMRIGHT: {
+		completion: "constant framepointtype FRAMEPOINT_BOTTOMRIGHT = ConvertFramePointType(8)",
+		description: "",
+	},
+	TEXT_JUSTIFY_TOP: {
+		completion: "constant textaligntype TEXT_JUSTIFY_TOP = ConvertTextAlignType(0)",
+		description: "",
+	},
+	TEXT_JUSTIFY_MIDDLE: {
+		completion: "constant textaligntype TEXT_JUSTIFY_MIDDLE = ConvertTextAlignType(1)",
+		description: "",
+	},
+	TEXT_JUSTIFY_BOTTOM: {
+		completion: "constant textaligntype TEXT_JUSTIFY_BOTTOM = ConvertTextAlignType(2)",
+		description: "",
+	},
+	TEXT_JUSTIFY_LEFT: {
+		completion: "constant textaligntype TEXT_JUSTIFY_LEFT = ConvertTextAlignType(3)",
+		description: "",
+	},
+	TEXT_JUSTIFY_CENTER: {
+		completion: "constant textaligntype TEXT_JUSTIFY_CENTER = ConvertTextAlignType(4)",
+		description: "",
+	},
+	TEXT_JUSTIFY_RIGHT: {
+		completion: "constant textaligntype TEXT_JUSTIFY_RIGHT = ConvertTextAlignType(5)",
+		description: "",
+	},
+	FRAMEEVENT_CONTROL_CLICK: {
+		completion: "constant frameeventtype FRAMEEVENT_CONTROL_CLICK = ConvertFrameEventType(1)",
+		description: "",
+	},
+	FRAMEEVENT_MOUSE_ENTER: {
+		completion: "constant frameeventtype FRAMEEVENT_MOUSE_ENTER = ConvertFrameEventType(2)",
+		description: "",
+	},
+	FRAMEEVENT_MOUSE_LEAVE: {
+		completion: "constant frameeventtype FRAMEEVENT_MOUSE_LEAVE = ConvertFrameEventType(3)",
+		description: "",
+	},
+	FRAMEEVENT_MOUSE_UP: {
+		completion: "constant frameeventtype FRAMEEVENT_MOUSE_UP = ConvertFrameEventType(4)",
+		description: "",
+	},
+	FRAMEEVENT_MOUSE_DOWN: {
+		completion: "constant frameeventtype FRAMEEVENT_MOUSE_DOWN = ConvertFrameEventType(5)",
+		description: "",
+	},
+	FRAMEEVENT_MOUSE_WHEEL: {
+		completion: "constant frameeventtype FRAMEEVENT_MOUSE_WHEEL = ConvertFrameEventType(6)",
+		description: "",
+	},
+	FRAMEEVENT_CHECKBOX_CHECKED: {
+		completion: "constant frameeventtype FRAMEEVENT_CHECKBOX_CHECKED = ConvertFrameEventType(7)",
+		description: "",
+	},
+	FRAMEEVENT_CHECKBOX_UNCHECKED: {
+		completion: "constant frameeventtype FRAMEEVENT_CHECKBOX_UNCHECKED = ConvertFrameEventType(8)",
+		description: "",
+	},
+	FRAMEEVENT_EDITBOX_TEXT_CHANGED: {
+		completion: "constant frameeventtype FRAMEEVENT_EDITBOX_TEXT_CHANGED = ConvertFrameEventType(9)",
+		description: "",
+	},
+	FRAMEEVENT_POPUPMENU_ITEM_CHANGED: {
+		completion: "constant frameeventtype FRAMEEVENT_POPUPMENU_ITEM_CHANGED = ConvertFrameEventType(10)",
+		description: "",
+	},
+	FRAMEEVENT_MOUSE_DOUBLECLICK: {
+		completion: "constant frameeventtype FRAMEEVENT_MOUSE_DOUBLECLICK = ConvertFrameEventType(11)",
+		description: "",
+	},
+	FRAMEEVENT_SPRITE_ANIM_UPDATE: {
+		completion: "constant frameeventtype FRAMEEVENT_SPRITE_ANIM_UPDATE = ConvertFrameEventType(12)",
+		description: "",
+	},
+	FRAMEEVENT_SLIDER_VALUE_CHANGED: {
+		completion: "constant frameeventtype FRAMEEVENT_SLIDER_VALUE_CHANGED = ConvertFrameEventType(13)",
+		description: "",
+	},
+	FRAMEEVENT_DIALOG_CANCEL: {
+		completion: "constant frameeventtype FRAMEEVENT_DIALOG_CANCEL = ConvertFrameEventType(14)",
+		description: "",
+	},
+	FRAMEEVENT_DIALOG_ACCEPT: {
+		completion: "constant frameeventtype FRAMEEVENT_DIALOG_ACCEPT = ConvertFrameEventType(15)",
+		description: "",
+	},
+	FRAMEEVENT_EDITBOX_ENTER: {
+		completion: "constant frameeventtype FRAMEEVENT_EDITBOX_ENTER = ConvertFrameEventType(16)",
+		description: "",
+	},
+	OSKEY_BACKSPACE: {
+		completion: "constant oskeytype OSKEY_BACKSPACE = ConvertOsKeyType($08)",
+		description: "",
+	},
+	OSKEY_TAB: {
+		completion: "constant oskeytype OSKEY_TAB = ConvertOsKeyType($09)",
+		description: "",
+	},
+	OSKEY_CLEAR: {
+		completion: "constant oskeytype OSKEY_CLEAR = ConvertOsKeyType($0C)",
+		description: "",
+	},
+	OSKEY_RETURN: {
+		completion: "constant oskeytype OSKEY_RETURN = ConvertOsKeyType($0D)",
+		description: "",
+	},
+	OSKEY_SHIFT: {
+		completion: "constant oskeytype OSKEY_SHIFT = ConvertOsKeyType($10)",
+		description: "",
+	},
+	OSKEY_CONTROL: {
+		completion: "constant oskeytype OSKEY_CONTROL = ConvertOsKeyType($11)",
+		description: "",
+	},
+	OSKEY_ALT: {
+		completion: "constant oskeytype OSKEY_ALT = ConvertOsKeyType($12)",
+		description: "",
+	},
+	OSKEY_PAUSE: {
+		completion: "constant oskeytype OSKEY_PAUSE = ConvertOsKeyType($13)",
+		description: "",
+	},
+	OSKEY_CAPSLOCK: {
+		completion: "constant oskeytype OSKEY_CAPSLOCK = ConvertOsKeyType($14)",
+		description: "",
+	},
+	OSKEY_KANA: {
+		completion: "constant oskeytype OSKEY_KANA = ConvertOsKeyType($15)",
+		description: "",
+	},
+	OSKEY_HANGUL: {
+		completion: "constant oskeytype OSKEY_HANGUL = ConvertOsKeyType($15)",
+		description: "",
+	},
+	OSKEY_JUNJA: {
+		completion: "constant oskeytype OSKEY_JUNJA = ConvertOsKeyType($17)",
+		description: "",
+	},
+	OSKEY_FINAL: {
+		completion: "constant oskeytype OSKEY_FINAL = ConvertOsKeyType($18)",
+		description: "",
+	},
+	OSKEY_HANJA: {
+		completion: "constant oskeytype OSKEY_HANJA = ConvertOsKeyType($19)",
+		description: "",
+	},
+	OSKEY_KANJI: {
+		completion: "constant oskeytype OSKEY_KANJI = ConvertOsKeyType($19)",
+		description: "",
+	},
+	OSKEY_ESCAPE: {
+		completion: "constant oskeytype OSKEY_ESCAPE = ConvertOsKeyType($1B)",
+		description: "",
+	},
+	OSKEY_CONVERT: {
+		completion: "constant oskeytype OSKEY_CONVERT = ConvertOsKeyType($1C)",
+		description: "",
+	},
+	OSKEY_NONCONVERT: {
+		completion: "constant oskeytype OSKEY_NONCONVERT = ConvertOsKeyType($1D)",
+		description: "",
+	},
+	OSKEY_ACCEPT: {
+		completion: "constant oskeytype OSKEY_ACCEPT = ConvertOsKeyType($1E)",
+		description: "",
+	},
+	OSKEY_MODECHANGE: {
+		completion: "constant oskeytype OSKEY_MODECHANGE = ConvertOsKeyType($1F)",
+		description: "",
+	},
+	OSKEY_SPACE: {
+		completion: "constant oskeytype OSKEY_SPACE = ConvertOsKeyType($20)",
+		description: "",
+	},
+	OSKEY_PAGEUP: {
+		completion: "constant oskeytype OSKEY_PAGEUP = ConvertOsKeyType($21)",
+		description: "",
+	},
+	OSKEY_PAGEDOWN: {
+		completion: "constant oskeytype OSKEY_PAGEDOWN = ConvertOsKeyType($22)",
+		description: "",
+	},
+	OSKEY_END: {
+		completion: "constant oskeytype OSKEY_END = ConvertOsKeyType($23)",
+		description: "",
+	},
+	OSKEY_HOME: {
+		completion: "constant oskeytype OSKEY_HOME = ConvertOsKeyType($24)",
+		description: "",
+	},
+	OSKEY_LEFT: {
+		completion: "constant oskeytype OSKEY_LEFT = ConvertOsKeyType($25)",
+		description: "",
+	},
+	OSKEY_UP: {
+		completion: "constant oskeytype OSKEY_UP = ConvertOsKeyType($26)",
+		description: "",
+	},
+	OSKEY_RIGHT: {
+		completion: "constant oskeytype OSKEY_RIGHT = ConvertOsKeyType($27)",
+		description: "",
+	},
+	OSKEY_DOWN: {
+		completion: "constant oskeytype OSKEY_DOWN = ConvertOsKeyType($28)",
+		description: "",
+	},
+	OSKEY_SELECT: {
+		completion: "constant oskeytype OSKEY_SELECT = ConvertOsKeyType($29)",
+		description: "",
+	},
+	OSKEY_PRINT: {
+		completion: "constant oskeytype OSKEY_PRINT = ConvertOsKeyType($2A)",
+		description: "",
+	},
+	OSKEY_EXECUTE: {
+		completion: "constant oskeytype OSKEY_EXECUTE = ConvertOsKeyType($2B)",
+		description: "",
+	},
+	OSKEY_PRINTSCREEN: {
+		completion: "constant oskeytype OSKEY_PRINTSCREEN = ConvertOsKeyType($2C)",
+		description: "",
+	},
+	OSKEY_INSERT: {
+		completion: "constant oskeytype OSKEY_INSERT = ConvertOsKeyType($2D)",
+		description: "",
+	},
+	OSKEY_DELETE: {
+		completion: "constant oskeytype OSKEY_DELETE = ConvertOsKeyType($2E)",
+		description: "",
+	},
+	OSKEY_HELP: {
+		completion: "constant oskeytype OSKEY_HELP = ConvertOsKeyType($2F)",
+		description: "",
+	},
+	OSKEY_0: {
+		completion: "constant oskeytype OSKEY_0 = ConvertOsKeyType($30)",
+		description: "",
+	},
+	OSKEY_1: {
+		completion: "constant oskeytype OSKEY_1 = ConvertOsKeyType($31)",
+		description: "",
+	},
+	OSKEY_2: {
+		completion: "constant oskeytype OSKEY_2 = ConvertOsKeyType($32)",
+		description: "",
+	},
+	OSKEY_3: {
+		completion: "constant oskeytype OSKEY_3 = ConvertOsKeyType($33)",
+		description: "",
+	},
+	OSKEY_4: {
+		completion: "constant oskeytype OSKEY_4 = ConvertOsKeyType($34)",
+		description: "",
+	},
+	OSKEY_5: {
+		completion: "constant oskeytype OSKEY_5 = ConvertOsKeyType($35)",
+		description: "",
+	},
+	OSKEY_6: {
+		completion: "constant oskeytype OSKEY_6 = ConvertOsKeyType($36)",
+		description: "",
+	},
+	OSKEY_7: {
+		completion: "constant oskeytype OSKEY_7 = ConvertOsKeyType($37)",
+		description: "",
+	},
+	OSKEY_8: {
+		completion: "constant oskeytype OSKEY_8 = ConvertOsKeyType($38)",
+		description: "",
+	},
+	OSKEY_9: {
+		completion: "constant oskeytype OSKEY_9 = ConvertOsKeyType($39)",
+		description: "",
+	},
+	OSKEY_A: {
+		completion: "constant oskeytype OSKEY_A = ConvertOsKeyType($41)",
+		description: "",
+	},
+	OSKEY_B: {
+		completion: "constant oskeytype OSKEY_B = ConvertOsKeyType($42)",
+		description: "",
+	},
+	OSKEY_C: {
+		completion: "constant oskeytype OSKEY_C = ConvertOsKeyType($43)",
+		description: "",
+	},
+	OSKEY_D: {
+		completion: "constant oskeytype OSKEY_D = ConvertOsKeyType($44)",
+		description: "",
+	},
+	OSKEY_E: {
+		completion: "constant oskeytype OSKEY_E = ConvertOsKeyType($45)",
+		description: "",
+	},
+	OSKEY_F: {
+		completion: "constant oskeytype OSKEY_F = ConvertOsKeyType($46)",
+		description: "",
+	},
+	OSKEY_G: {
+		completion: "constant oskeytype OSKEY_G = ConvertOsKeyType($47)",
+		description: "",
+	},
+	OSKEY_H: {
+		completion: "constant oskeytype OSKEY_H = ConvertOsKeyType($48)",
+		description: "",
+	},
+	OSKEY_I: {
+		completion: "constant oskeytype OSKEY_I = ConvertOsKeyType($49)",
+		description: "",
+	},
+	OSKEY_J: {
+		completion: "constant oskeytype OSKEY_J = ConvertOsKeyType($4A)",
+		description: "",
+	},
+	OSKEY_K: {
+		completion: "constant oskeytype OSKEY_K = ConvertOsKeyType($4B)",
+		description: "",
+	},
+	OSKEY_L: {
+		completion: "constant oskeytype OSKEY_L = ConvertOsKeyType($4C)",
+		description: "",
+	},
+	OSKEY_M: {
+		completion: "constant oskeytype OSKEY_M = ConvertOsKeyType($4D)",
+		description: "",
+	},
+	OSKEY_N: {
+		completion: "constant oskeytype OSKEY_N = ConvertOsKeyType($4E)",
+		description: "",
+	},
+	OSKEY_O: {
+		completion: "constant oskeytype OSKEY_O = ConvertOsKeyType($4F)",
+		description: "",
+	},
+	OSKEY_P: {
+		completion: "constant oskeytype OSKEY_P = ConvertOsKeyType($50)",
+		description: "",
+	},
+	OSKEY_Q: {
+		completion: "constant oskeytype OSKEY_Q = ConvertOsKeyType($51)",
+		description: "",
+	},
+	OSKEY_R: {
+		completion: "constant oskeytype OSKEY_R = ConvertOsKeyType($52)",
+		description: "",
+	},
+	OSKEY_S: {
+		completion: "constant oskeytype OSKEY_S = ConvertOsKeyType($53)",
+		description: "",
+	},
+	OSKEY_T: {
+		completion: "constant oskeytype OSKEY_T = ConvertOsKeyType($54)",
+		description: "",
+	},
+	OSKEY_U: {
+		completion: "constant oskeytype OSKEY_U = ConvertOsKeyType($55)",
+		description: "",
+	},
+	OSKEY_V: {
+		completion: "constant oskeytype OSKEY_V = ConvertOsKeyType($56)",
+		description: "",
+	},
+	OSKEY_W: {
+		completion: "constant oskeytype OSKEY_W = ConvertOsKeyType($57)",
+		description: "",
+	},
+	OSKEY_X: {
+		completion: "constant oskeytype OSKEY_X = ConvertOsKeyType($58)",
+		description: "",
+	},
+	OSKEY_Y: {
+		completion: "constant oskeytype OSKEY_Y = ConvertOsKeyType($59)",
+		description: "",
+	},
+	OSKEY_Z: {
+		completion: "constant oskeytype OSKEY_Z = ConvertOsKeyType($5A)",
+		description: "",
+	},
+	OSKEY_LMETA: {
+		completion: "constant oskeytype OSKEY_LMETA = ConvertOsKeyType($5B)",
+		description: "",
+	},
+	OSKEY_RMETA: {
+		completion: "constant oskeytype OSKEY_RMETA = ConvertOsKeyType($5C)",
+		description: "",
+	},
+	OSKEY_APPS: {
+		completion: "constant oskeytype OSKEY_APPS = ConvertOsKeyType($5D)",
+		description: "",
+	},
+	OSKEY_SLEEP: {
+		completion: "constant oskeytype OSKEY_SLEEP = ConvertOsKeyType($5F)",
+		description: "",
+	},
+	OSKEY_NUMPAD0: {
+		completion: "constant oskeytype OSKEY_NUMPAD0 = ConvertOsKeyType($60)",
+		description: "",
+	},
+	OSKEY_NUMPAD1: {
+		completion: "constant oskeytype OSKEY_NUMPAD1 = ConvertOsKeyType($61)",
+		description: "",
+	},
+	OSKEY_NUMPAD2: {
+		completion: "constant oskeytype OSKEY_NUMPAD2 = ConvertOsKeyType($62)",
+		description: "",
+	},
+	OSKEY_NUMPAD3: {
+		completion: "constant oskeytype OSKEY_NUMPAD3 = ConvertOsKeyType($63)",
+		description: "",
+	},
+	OSKEY_NUMPAD4: {
+		completion: "constant oskeytype OSKEY_NUMPAD4 = ConvertOsKeyType($64)",
+		description: "",
+	},
+	OSKEY_NUMPAD5: {
+		completion: "constant oskeytype OSKEY_NUMPAD5 = ConvertOsKeyType($65)",
+		description: "",
+	},
+	OSKEY_NUMPAD6: {
+		completion: "constant oskeytype OSKEY_NUMPAD6 = ConvertOsKeyType($66)",
+		description: "",
+	},
+	OSKEY_NUMPAD7: {
+		completion: "constant oskeytype OSKEY_NUMPAD7 = ConvertOsKeyType($67)",
+		description: "",
+	},
+	OSKEY_NUMPAD8: {
+		completion: "constant oskeytype OSKEY_NUMPAD8 = ConvertOsKeyType($68)",
+		description: "",
+	},
+	OSKEY_NUMPAD9: {
+		completion: "constant oskeytype OSKEY_NUMPAD9 = ConvertOsKeyType($69)",
+		description: "",
+	},
+	OSKEY_MULTIPLY: {
+		completion: "constant oskeytype OSKEY_MULTIPLY = ConvertOsKeyType($6A)",
+		description: "",
+	},
+	OSKEY_ADD: {
+		completion: "constant oskeytype OSKEY_ADD = ConvertOsKeyType($6B)",
+		description: "",
+	},
+	OSKEY_SEPARATOR: {
+		completion: "constant oskeytype OSKEY_SEPARATOR = ConvertOsKeyType($6C)",
+		description: "",
+	},
+	OSKEY_SUBTRACT: {
+		completion: "constant oskeytype OSKEY_SUBTRACT = ConvertOsKeyType($6D)",
+		description: "",
+	},
+	OSKEY_DECIMAL: {
+		completion: "constant oskeytype OSKEY_DECIMAL = ConvertOsKeyType($6E)",
+		description: "",
+	},
+	OSKEY_DIVIDE: {
+		completion: "constant oskeytype OSKEY_DIVIDE = ConvertOsKeyType($6F)",
+		description: "",
+	},
+	OSKEY_F1: {
+		completion: "constant oskeytype OSKEY_F1 = ConvertOsKeyType($70)",
+		description: "",
+	},
+	OSKEY_F2: {
+		completion: "constant oskeytype OSKEY_F2 = ConvertOsKeyType($71)",
+		description: "",
+	},
+	OSKEY_F3: {
+		completion: "constant oskeytype OSKEY_F3 = ConvertOsKeyType($72)",
+		description: "",
+	},
+	OSKEY_F4: {
+		completion: "constant oskeytype OSKEY_F4 = ConvertOsKeyType($73)",
+		description: "",
+	},
+	OSKEY_F5: {
+		completion: "constant oskeytype OSKEY_F5 = ConvertOsKeyType($74)",
+		description: "",
+	},
+	OSKEY_F6: {
+		completion: "constant oskeytype OSKEY_F6 = ConvertOsKeyType($75)",
+		description: "",
+	},
+	OSKEY_F7: {
+		completion: "constant oskeytype OSKEY_F7 = ConvertOsKeyType($76)",
+		description: "",
+	},
+	OSKEY_F8: {
+		completion: "constant oskeytype OSKEY_F8 = ConvertOsKeyType($77)",
+		description: "",
+	},
+	OSKEY_F9: {
+		completion: "constant oskeytype OSKEY_F9 = ConvertOsKeyType($78)",
+		description: "",
+	},
+	OSKEY_F10: {
+		completion: "constant oskeytype OSKEY_F10 = ConvertOsKeyType($79)",
+		description: "",
+	},
+	OSKEY_F11: {
+		completion: "constant oskeytype OSKEY_F11 = ConvertOsKeyType($7A)",
+		description: "",
+	},
+	OSKEY_F12: {
+		completion: "constant oskeytype OSKEY_F12 = ConvertOsKeyType($7B)",
+		description: "",
+	},
+	OSKEY_F13: {
+		completion: "constant oskeytype OSKEY_F13 = ConvertOsKeyType($7C)",
+		description: "",
+	},
+	OSKEY_F14: {
+		completion: "constant oskeytype OSKEY_F14 = ConvertOsKeyType($7D)",
+		description: "",
+	},
+	OSKEY_F15: {
+		completion: "constant oskeytype OSKEY_F15 = ConvertOsKeyType($7E)",
+		description: "",
+	},
+	OSKEY_F16: {
+		completion: "constant oskeytype OSKEY_F16 = ConvertOsKeyType($7F)",
+		description: "",
+	},
+	OSKEY_F17: {
+		completion: "constant oskeytype OSKEY_F17 = ConvertOsKeyType($80)",
+		description: "",
+	},
+	OSKEY_F18: {
+		completion: "constant oskeytype OSKEY_F18 = ConvertOsKeyType($81)",
+		description: "",
+	},
+	OSKEY_F19: {
+		completion: "constant oskeytype OSKEY_F19 = ConvertOsKeyType($82)",
+		description: "",
+	},
+	OSKEY_F20: {
+		completion: "constant oskeytype OSKEY_F20 = ConvertOsKeyType($83)",
+		description: "",
+	},
+	OSKEY_F21: {
+		completion: "constant oskeytype OSKEY_F21 = ConvertOsKeyType($84)",
+		description: "",
+	},
+	OSKEY_F22: {
+		completion: "constant oskeytype OSKEY_F22 = ConvertOsKeyType($85)",
+		description: "",
+	},
+	OSKEY_F23: {
+		completion: "constant oskeytype OSKEY_F23 = ConvertOsKeyType($86)",
+		description: "",
+	},
+	OSKEY_F24: {
+		completion: "constant oskeytype OSKEY_F24 = ConvertOsKeyType($87)",
+		description: "",
+	},
+	OSKEY_NUMLOCK: {
+		completion: "constant oskeytype OSKEY_NUMLOCK = ConvertOsKeyType($90)",
+		description: "",
+	},
+	OSKEY_SCROLLLOCK: {
+		completion: "constant oskeytype OSKEY_SCROLLLOCK = ConvertOsKeyType($91)",
+		description: "",
+	},
+	OSKEY_OEM_NEC_EQUAL: {
+		completion: "constant oskeytype OSKEY_OEM_NEC_EQUAL = ConvertOsKeyType($92)",
+		description: "",
+	},
+	OSKEY_OEM_FJ_JISHO: {
+		completion: "constant oskeytype OSKEY_OEM_FJ_JISHO = ConvertOsKeyType($92)",
+		description: "",
+	},
+	OSKEY_OEM_FJ_MASSHOU: {
+		completion: "constant oskeytype OSKEY_OEM_FJ_MASSHOU = ConvertOsKeyType($93)",
+		description: "",
+	},
+	OSKEY_OEM_FJ_TOUROKU: {
+		completion: "constant oskeytype OSKEY_OEM_FJ_TOUROKU = ConvertOsKeyType($94)",
+		description: "",
+	},
+	OSKEY_OEM_FJ_LOYA: {
+		completion: "constant oskeytype OSKEY_OEM_FJ_LOYA = ConvertOsKeyType($95)",
+		description: "",
+	},
+	OSKEY_OEM_FJ_ROYA: {
+		completion: "constant oskeytype OSKEY_OEM_FJ_ROYA = ConvertOsKeyType($96)",
+		description: "",
+	},
+	OSKEY_LSHIFT: {
+		completion: "constant oskeytype OSKEY_LSHIFT = ConvertOsKeyType($A0)",
+		description: "",
+	},
+	OSKEY_RSHIFT: {
+		completion: "constant oskeytype OSKEY_RSHIFT = ConvertOsKeyType($A1)",
+		description: "",
+	},
+	OSKEY_LCONTROL: {
+		completion: "constant oskeytype OSKEY_LCONTROL = ConvertOsKeyType($A2)",
+		description: "",
+	},
+	OSKEY_RCONTROL: {
+		completion: "constant oskeytype OSKEY_RCONTROL = ConvertOsKeyType($A3)",
+		description: "",
+	},
+	OSKEY_LALT: {
+		completion: "constant oskeytype OSKEY_LALT = ConvertOsKeyType($A4)",
+		description: "",
+	},
+	OSKEY_RALT: {
+		completion: "constant oskeytype OSKEY_RALT = ConvertOsKeyType($A5)",
+		description: "",
+	},
+	OSKEY_BROWSER_BACK: {
+		completion: "constant oskeytype OSKEY_BROWSER_BACK = ConvertOsKeyType($A6)",
+		description: "",
+	},
+	OSKEY_BROWSER_FORWARD: {
+		completion: "constant oskeytype OSKEY_BROWSER_FORWARD = ConvertOsKeyType($A7)",
+		description: "",
+	},
+	OSKEY_BROWSER_REFRESH: {
+		completion: "constant oskeytype OSKEY_BROWSER_REFRESH = ConvertOsKeyType($A8)",
+		description: "",
+	},
+	OSKEY_BROWSER_STOP: {
+		completion: "constant oskeytype OSKEY_BROWSER_STOP = ConvertOsKeyType($A9)",
+		description: "",
+	},
+	OSKEY_BROWSER_SEARCH: {
+		completion: "constant oskeytype OSKEY_BROWSER_SEARCH = ConvertOsKeyType($AA)",
+		description: "",
+	},
+	OSKEY_BROWSER_FAVORITES: {
+		completion: "constant oskeytype OSKEY_BROWSER_FAVORITES = ConvertOsKeyType($AB)",
+		description: "",
+	},
+	OSKEY_BROWSER_HOME: {
+		completion: "constant oskeytype OSKEY_BROWSER_HOME = ConvertOsKeyType($AC)",
+		description: "",
+	},
+	OSKEY_VOLUME_MUTE: {
+		completion: "constant oskeytype OSKEY_VOLUME_MUTE = ConvertOsKeyType($AD)",
+		description: "",
+	},
+	OSKEY_VOLUME_DOWN: {
+		completion: "constant oskeytype OSKEY_VOLUME_DOWN = ConvertOsKeyType($AE)",
+		description: "",
+	},
+	OSKEY_VOLUME_UP: {
+		completion: "constant oskeytype OSKEY_VOLUME_UP = ConvertOsKeyType($AF)",
+		description: "",
+	},
+	OSKEY_MEDIA_NEXT_TRACK: {
+		completion: "constant oskeytype OSKEY_MEDIA_NEXT_TRACK = ConvertOsKeyType($B0)",
+		description: "",
+	},
+	OSKEY_MEDIA_PREV_TRACK: {
+		completion: "constant oskeytype OSKEY_MEDIA_PREV_TRACK = ConvertOsKeyType($B1)",
+		description: "",
+	},
+	OSKEY_MEDIA_STOP: {
+		completion: "constant oskeytype OSKEY_MEDIA_STOP = ConvertOsKeyType($B2)",
+		description: "",
+	},
+	OSKEY_MEDIA_PLAY_PAUSE: {
+		completion: "constant oskeytype OSKEY_MEDIA_PLAY_PAUSE = ConvertOsKeyType($B3)",
+		description: "",
+	},
+	OSKEY_LAUNCH_MAIL: {
+		completion: "constant oskeytype OSKEY_LAUNCH_MAIL = ConvertOsKeyType($B4)",
+		description: "",
+	},
+	OSKEY_LAUNCH_MEDIA_SELECT: {
+		completion: "constant oskeytype OSKEY_LAUNCH_MEDIA_SELECT = ConvertOsKeyType($B5)",
+		description: "",
+	},
+	OSKEY_LAUNCH_APP1: {
+		completion: "constant oskeytype OSKEY_LAUNCH_APP1 = ConvertOsKeyType($B6)",
+		description: "",
+	},
+	OSKEY_LAUNCH_APP2: {
+		completion: "constant oskeytype OSKEY_LAUNCH_APP2 = ConvertOsKeyType($B7)",
+		description: "",
+	},
+	OSKEY_OEM_1: {
+		completion: "constant oskeytype OSKEY_OEM_1 = ConvertOsKeyType($BA)",
+		description: "",
+	},
+	OSKEY_OEM_PLUS: {
+		completion: "constant oskeytype OSKEY_OEM_PLUS = ConvertOsKeyType($BB)",
+		description: "",
+	},
+	OSKEY_OEM_COMMA: {
+		completion: "constant oskeytype OSKEY_OEM_COMMA = ConvertOsKeyType($BC)",
+		description: "",
+	},
+	OSKEY_OEM_MINUS: {
+		completion: "constant oskeytype OSKEY_OEM_MINUS = ConvertOsKeyType($BD)",
+		description: "",
+	},
+	OSKEY_OEM_PERIOD: {
+		completion: "constant oskeytype OSKEY_OEM_PERIOD = ConvertOsKeyType($BE)",
+		description: "",
+	},
+	OSKEY_OEM_2: {
+		completion: "constant oskeytype OSKEY_OEM_2 = ConvertOsKeyType($BF)",
+		description: "",
+	},
+	OSKEY_OEM_3: {
+		completion: "constant oskeytype OSKEY_OEM_3 = ConvertOsKeyType($C0)",
+		description: "",
+	},
+	OSKEY_OEM_4: {
+		completion: "constant oskeytype OSKEY_OEM_4 = ConvertOsKeyType($DB)",
+		description: "",
+	},
+	OSKEY_OEM_5: {
+		completion: "constant oskeytype OSKEY_OEM_5 = ConvertOsKeyType($DC)",
+		description: "",
+	},
+	OSKEY_OEM_6: {
+		completion: "constant oskeytype OSKEY_OEM_6 = ConvertOsKeyType($DD)",
+		description: "",
+	},
+	OSKEY_OEM_7: {
+		completion: "constant oskeytype OSKEY_OEM_7 = ConvertOsKeyType($DE)",
+		description: "",
+	},
+	OSKEY_OEM_8: {
+		completion: "constant oskeytype OSKEY_OEM_8 = ConvertOsKeyType($DF)",
+		description: "",
+	},
+	OSKEY_OEM_AX: {
+		completion: "constant oskeytype OSKEY_OEM_AX = ConvertOsKeyType($E1)",
+		description: "",
+	},
+	OSKEY_OEM_102: {
+		completion: "constant oskeytype OSKEY_OEM_102 = ConvertOsKeyType($E2)",
+		description: "",
+	},
+	OSKEY_ICO_HELP: {
+		completion: "constant oskeytype OSKEY_ICO_HELP = ConvertOsKeyType($E3)",
+		description: "",
+	},
+	OSKEY_ICO_00: {
+		completion: "constant oskeytype OSKEY_ICO_00 = ConvertOsKeyType($E4)",
+		description: "",
+	},
+	OSKEY_PROCESSKEY: {
+		completion: "constant oskeytype OSKEY_PROCESSKEY = ConvertOsKeyType($E5)",
+		description: "",
+	},
+	OSKEY_ICO_CLEAR: {
+		completion: "constant oskeytype OSKEY_ICO_CLEAR = ConvertOsKeyType($E6)",
+		description: "",
+	},
+	OSKEY_PACKET: {
+		completion: "constant oskeytype OSKEY_PACKET = ConvertOsKeyType($E7)",
+		description: "",
+	},
+	OSKEY_OEM_RESET: {
+		completion: "constant oskeytype OSKEY_OEM_RESET = ConvertOsKeyType($E9)",
+		description: "",
+	},
+	OSKEY_OEM_JUMP: {
+		completion: "constant oskeytype OSKEY_OEM_JUMP = ConvertOsKeyType($EA)",
+		description: "",
+	},
+	OSKEY_OEM_PA1: {
+		completion: "constant oskeytype OSKEY_OEM_PA1 = ConvertOsKeyType($EB)",
+		description: "",
+	},
+	OSKEY_OEM_PA2: {
+		completion: "constant oskeytype OSKEY_OEM_PA2 = ConvertOsKeyType($EC)",
+		description: "",
+	},
+	OSKEY_OEM_PA3: {
+		completion: "constant oskeytype OSKEY_OEM_PA3 = ConvertOsKeyType($ED)",
+		description: "",
+	},
+	OSKEY_OEM_WSCTRL: {
+		completion: "constant oskeytype OSKEY_OEM_WSCTRL = ConvertOsKeyType($EE)",
+		description: "",
+	},
+	OSKEY_OEM_CUSEL: {
+		completion: "constant oskeytype OSKEY_OEM_CUSEL = ConvertOsKeyType($EF)",
+		description: "",
+	},
+	OSKEY_OEM_ATTN: {
+		completion: "constant oskeytype OSKEY_OEM_ATTN = ConvertOsKeyType($F0)",
+		description: "",
+	},
+	OSKEY_OEM_FINISH: {
+		completion: "constant oskeytype OSKEY_OEM_FINISH = ConvertOsKeyType($F1)",
+		description: "",
+	},
+	OSKEY_OEM_COPY: {
+		completion: "constant oskeytype OSKEY_OEM_COPY = ConvertOsKeyType($F2)",
+		description: "",
+	},
+	OSKEY_OEM_AUTO: {
+		completion: "constant oskeytype OSKEY_OEM_AUTO = ConvertOsKeyType($F3)",
+		description: "",
+	},
+	OSKEY_OEM_ENLW: {
+		completion: "constant oskeytype OSKEY_OEM_ENLW = ConvertOsKeyType($F4)",
+		description: "",
+	},
+	OSKEY_OEM_BACKTAB: {
+		completion: "constant oskeytype OSKEY_OEM_BACKTAB = ConvertOsKeyType($F5)",
+		description: "",
+	},
+	OSKEY_ATTN: {
+		completion: "constant oskeytype OSKEY_ATTN = ConvertOsKeyType($F6)",
+		description: "",
+	},
+	OSKEY_CRSEL: {
+		completion: "constant oskeytype OSKEY_CRSEL = ConvertOsKeyType($F7)",
+		description: "",
+	},
+	OSKEY_EXSEL: {
+		completion: "constant oskeytype OSKEY_EXSEL = ConvertOsKeyType($F8)",
+		description: "",
+	},
+	OSKEY_EREOF: {
+		completion: "constant oskeytype OSKEY_EREOF = ConvertOsKeyType($F9)",
+		description: "",
+	},
+	OSKEY_PLAY: {
+		completion: "constant oskeytype OSKEY_PLAY = ConvertOsKeyType($FA)",
+		description: "",
+	},
+	OSKEY_ZOOM: {
+		completion: "constant oskeytype OSKEY_ZOOM = ConvertOsKeyType($FB)",
+		description: "",
+	},
+	OSKEY_NONAME: {
+		completion: "constant oskeytype OSKEY_NONAME = ConvertOsKeyType($FC)",
+		description: "",
+	},
+	OSKEY_PA1: {
+		completion: "constant oskeytype OSKEY_PA1 = ConvertOsKeyType($FD)",
+		description: "",
+	},
+	OSKEY_OEM_CLEAR: {
+		completion: "constant oskeytype OSKEY_OEM_CLEAR = ConvertOsKeyType($FE)",
+		description: "",
+	},
+	ABILITY_IF_BUTTON_POSITION_NORMAL_X: {
+		completion: "constant abilityintegerfield ABILITY_IF_BUTTON_POSITION_NORMAL_X = ConvertAbilityIntegerField('abpx')",
+		description: "",
+	},
+	ABILITY_IF_BUTTON_POSITION_NORMAL_Y: {
+		completion: "constant abilityintegerfield ABILITY_IF_BUTTON_POSITION_NORMAL_Y = ConvertAbilityIntegerField('abpy')",
+		description: "",
+	},
+	ABILITY_IF_BUTTON_POSITION_ACTIVATED_X: {
+		completion: "constant abilityintegerfield ABILITY_IF_BUTTON_POSITION_ACTIVATED_X = ConvertAbilityIntegerField('aubx')",
+		description: "",
+	},
+	ABILITY_IF_BUTTON_POSITION_ACTIVATED_Y: {
+		completion: "constant abilityintegerfield ABILITY_IF_BUTTON_POSITION_ACTIVATED_Y = ConvertAbilityIntegerField('auby')",
+		description: "",
+	},
+	ABILITY_IF_BUTTON_POSITION_RESEARCH_X: {
+		completion: "constant abilityintegerfield ABILITY_IF_BUTTON_POSITION_RESEARCH_X = ConvertAbilityIntegerField('arpx')",
+		description: "",
+	},
+	ABILITY_IF_BUTTON_POSITION_RESEARCH_Y: {
+		completion: "constant abilityintegerfield ABILITY_IF_BUTTON_POSITION_RESEARCH_Y = ConvertAbilityIntegerField('arpy')",
+		description: "",
+	},
+	ABILITY_IF_MISSILE_SPEED: {
+		completion: "constant abilityintegerfield ABILITY_IF_MISSILE_SPEED = ConvertAbilityIntegerField('amsp')",
+		description: "",
+	},
+	ABILITY_IF_TARGET_ATTACHMENTS: {
+		completion: "constant abilityintegerfield ABILITY_IF_TARGET_ATTACHMENTS = ConvertAbilityIntegerField('atac')",
+		description: "",
+	},
+	ABILITY_IF_CASTER_ATTACHMENTS: {
+		completion: "constant abilityintegerfield ABILITY_IF_CASTER_ATTACHMENTS = ConvertAbilityIntegerField('acac')",
+		description: "",
+	},
+	ABILITY_IF_PRIORITY: {
+		completion: "constant abilityintegerfield ABILITY_IF_PRIORITY = ConvertAbilityIntegerField('apri')",
+		description: "",
+	},
+	ABILITY_IF_LEVELS: {
+		completion: "constant abilityintegerfield ABILITY_IF_LEVELS = ConvertAbilityIntegerField('alev')",
+		description: "",
+	},
+	ABILITY_IF_REQUIRED_LEVEL: {
+		completion: "constant abilityintegerfield ABILITY_IF_REQUIRED_LEVEL = ConvertAbilityIntegerField('arlv')",
+		description: "",
+	},
+	ABILITY_IF_LEVEL_SKIP_REQUIREMENT: {
+		completion: "constant abilityintegerfield ABILITY_IF_LEVEL_SKIP_REQUIREMENT = ConvertAbilityIntegerField('alsk')",
+		description: "",
+	},
+	ABILITY_BF_HERO_ABILITY: {
+		completion: "constant abilitybooleanfield ABILITY_BF_HERO_ABILITY = ConvertAbilityBooleanField('aher') // Get only",
+		description: "",
+	},
+	ABILITY_BF_ITEM_ABILITY: {
+		completion: "constant abilitybooleanfield ABILITY_BF_ITEM_ABILITY = ConvertAbilityBooleanField('aite')",
+		description: "",
+	},
+	ABILITY_BF_CHECK_DEPENDENCIES: {
+		completion: "constant abilitybooleanfield ABILITY_BF_CHECK_DEPENDENCIES = ConvertAbilityBooleanField('achd')",
+		description: "",
+	},
+	ABILITY_RF_ARF_MISSILE_ARC: {
+		completion: "constant abilityrealfield ABILITY_RF_ARF_MISSILE_ARC = ConvertAbilityRealField('amac')",
+		description: "",
+	},
+	ABILITY_SF_NAME: {
+		completion: "constant abilitystringfield ABILITY_SF_NAME = ConvertAbilityStringField('anam') // Get Only",
+		description: "",
+	},
+	ABILITY_SF_ICON_ACTIVATED: {
+		completion: "constant abilitystringfield ABILITY_SF_ICON_ACTIVATED = ConvertAbilityStringField('auar')",
+		description: "",
+	},
+	ABILITY_SF_ICON_RESEARCH: {
+		completion: "constant abilitystringfield ABILITY_SF_ICON_RESEARCH = ConvertAbilityStringField('arar')",
+		description: "",
+	},
+	ABILITY_SF_EFFECT_SOUND: {
+		completion: "constant abilitystringfield ABILITY_SF_EFFECT_SOUND = ConvertAbilityStringField('aefs')",
+		description: "",
+	},
+	ABILITY_SF_EFFECT_SOUND_LOOPING: {
+		completion: "constant abilitystringfield ABILITY_SF_EFFECT_SOUND_LOOPING = ConvertAbilityStringField('aefl')",
+		description: "",
+	},
+	ABILITY_ILF_MANA_COST: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MANA_COST = ConvertAbilityIntegerLevelField('amcs')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_WAVES: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_WAVES = ConvertAbilityIntegerLevelField('Hbz1')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_SHARDS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_SHARDS = ConvertAbilityIntegerLevelField('Hbz3')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_UNITS_TELEPORTED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_UNITS_TELEPORTED = ConvertAbilityIntegerLevelField('Hmt1')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_COUNT_HWE2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_COUNT_HWE2 = ConvertAbilityIntegerLevelField('Hwe2')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_IMAGES: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_IMAGES = ConvertAbilityIntegerLevelField('Omi1')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_CORPSES_RAISED_UAN1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_CORPSES_RAISED_UAN1 = ConvertAbilityIntegerLevelField('Uan1')",
+		description: "",
+	},
+	ABILITY_ILF_MORPHING_FLAGS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MORPHING_FLAGS = ConvertAbilityIntegerLevelField('Eme2')",
+		description: "",
+	},
+	ABILITY_ILF_STRENGTH_BONUS_NRG5: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_STRENGTH_BONUS_NRG5 = ConvertAbilityIntegerLevelField('Nrg5')",
+		description: "",
+	},
+	ABILITY_ILF_DEFENSE_BONUS_NRG6: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DEFENSE_BONUS_NRG6 = ConvertAbilityIntegerLevelField('Nrg6')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_TARGETS_HIT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_TARGETS_HIT = ConvertAbilityIntegerLevelField('Ocl2')",
+		description: "",
+	},
+	ABILITY_ILF_DETECTION_TYPE_OFS1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DETECTION_TYPE_OFS1 = ConvertAbilityIntegerLevelField('Ofs1')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_OSF2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_OSF2 = ConvertAbilityIntegerLevelField('Osf2')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_EFN1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_EFN1 = ConvertAbilityIntegerLevelField('Efn1')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_CORPSES_RAISED_HRE1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_CORPSES_RAISED_HRE1 = ConvertAbilityIntegerLevelField('Hre1')",
+		description: "",
+	},
+	ABILITY_ILF_STACK_FLAGS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_STACK_FLAGS = ConvertAbilityIntegerLevelField('Hca4')",
+		description: "",
+	},
+	ABILITY_ILF_MINIMUM_NUMBER_OF_UNITS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MINIMUM_NUMBER_OF_UNITS = ConvertAbilityIntegerLevelField('Ndp2')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_NUMBER_OF_UNITS_NDP3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_NUMBER_OF_UNITS_NDP3 = ConvertAbilityIntegerLevelField('Ndp3')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_UNITS_CREATED_NRC2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_UNITS_CREATED_NRC2 = ConvertAbilityIntegerLevelField('Nrc2')",
+		description: "",
+	},
+	ABILITY_ILF_SHIELD_LIFE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SHIELD_LIFE = ConvertAbilityIntegerLevelField('Ams3')",
+		description: "",
+	},
+	ABILITY_ILF_MANA_LOSS_AMS4: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MANA_LOSS_AMS4 = ConvertAbilityIntegerLevelField('Ams4')",
+		description: "",
+	},
+	ABILITY_ILF_GOLD_PER_INTERVAL_BGM1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_GOLD_PER_INTERVAL_BGM1 = ConvertAbilityIntegerLevelField('Bgm1')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_NUMBER_OF_MINERS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_NUMBER_OF_MINERS = ConvertAbilityIntegerLevelField('Bgm3')",
+		description: "",
+	},
+	ABILITY_ILF_CARGO_CAPACITY: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_CARGO_CAPACITY = ConvertAbilityIntegerLevelField('Car1')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_CREEP_LEVEL_DEV3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_CREEP_LEVEL_DEV3 = ConvertAbilityIntegerLevelField('Dev3')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_CREEP_LEVEL_DEV1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_CREEP_LEVEL_DEV1 = ConvertAbilityIntegerLevelField('Dev1')",
+		description: "",
+	},
+	ABILITY_ILF_GOLD_PER_INTERVAL_EGM1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_GOLD_PER_INTERVAL_EGM1 = ConvertAbilityIntegerLevelField('Egm1')",
+		description: "",
+	},
+	ABILITY_ILF_DEFENSE_REDUCTION: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DEFENSE_REDUCTION = ConvertAbilityIntegerLevelField('Fae1')",
+		description: "",
+	},
+	ABILITY_ILF_DETECTION_TYPE_FLA1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DETECTION_TYPE_FLA1 = ConvertAbilityIntegerLevelField('Fla1')",
+		description: "",
+	},
+	ABILITY_ILF_FLARE_COUNT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_FLARE_COUNT = ConvertAbilityIntegerLevelField('Fla3')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_GOLD: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_GOLD = ConvertAbilityIntegerLevelField('Gld1')",
+		description: "",
+	},
+	ABILITY_ILF_MINING_CAPACITY: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MINING_CAPACITY = ConvertAbilityIntegerLevelField('Gld3')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_NUMBER_OF_CORPSES_GYD1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_NUMBER_OF_CORPSES_GYD1 = ConvertAbilityIntegerLevelField('Gyd1')",
+		description: "",
+	},
+	ABILITY_ILF_DAMAGE_TO_TREE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DAMAGE_TO_TREE = ConvertAbilityIntegerLevelField('Har1')",
+		description: "",
+	},
+	ABILITY_ILF_LUMBER_CAPACITY: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_LUMBER_CAPACITY = ConvertAbilityIntegerLevelField('Har2')",
+		description: "",
+	},
+	ABILITY_ILF_GOLD_CAPACITY: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_GOLD_CAPACITY = ConvertAbilityIntegerLevelField('Har3')",
+		description: "",
+	},
+	ABILITY_ILF_DEFENSE_INCREASE_INF2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DEFENSE_INCREASE_INF2 = ConvertAbilityIntegerLevelField('Inf2')",
+		description: "",
+	},
+	ABILITY_ILF_INTERACTION_TYPE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_INTERACTION_TYPE = ConvertAbilityIntegerLevelField('Neu2')",
+		description: "",
+	},
+	ABILITY_ILF_GOLD_COST_NDT1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_GOLD_COST_NDT1 = ConvertAbilityIntegerLevelField('Ndt1')",
+		description: "",
+	},
+	ABILITY_ILF_LUMBER_COST_NDT2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_LUMBER_COST_NDT2 = ConvertAbilityIntegerLevelField('Ndt2')",
+		description: "",
+	},
+	ABILITY_ILF_DETECTION_TYPE_NDT3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DETECTION_TYPE_NDT3 = ConvertAbilityIntegerLevelField('Ndt3')",
+		description: "",
+	},
+	ABILITY_ILF_STACKING_TYPE_POI4: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_STACKING_TYPE_POI4 = ConvertAbilityIntegerLevelField('Poi4')",
+		description: "",
+	},
+	ABILITY_ILF_STACKING_TYPE_POA5: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_STACKING_TYPE_POA5 = ConvertAbilityIntegerLevelField('Poa5')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_CREEP_LEVEL_PLY1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_CREEP_LEVEL_PLY1 = ConvertAbilityIntegerLevelField('Ply1')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_CREEP_LEVEL_POS1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_CREEP_LEVEL_POS1 = ConvertAbilityIntegerLevelField('Pos1')",
+		description: "",
+	},
+	ABILITY_ILF_MOVEMENT_UPDATE_FREQUENCY_PRG1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MOVEMENT_UPDATE_FREQUENCY_PRG1 = ConvertAbilityIntegerLevelField('Prg1')",
+		description: "",
+	},
+	ABILITY_ILF_ATTACK_UPDATE_FREQUENCY_PRG2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ATTACK_UPDATE_FREQUENCY_PRG2 = ConvertAbilityIntegerLevelField('Prg2')",
+		description: "",
+	},
+	ABILITY_ILF_MANA_LOSS_PRG6: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MANA_LOSS_PRG6 = ConvertAbilityIntegerLevelField('Prg6')",
+		description: "",
+	},
+	ABILITY_ILF_UNITS_SUMMONED_TYPE_ONE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UNITS_SUMMONED_TYPE_ONE = ConvertAbilityIntegerLevelField('Rai1')",
+		description: "",
+	},
+	ABILITY_ILF_UNITS_SUMMONED_TYPE_TWO: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UNITS_SUMMONED_TYPE_TWO = ConvertAbilityIntegerLevelField('Rai2')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_UNITS_SUMMONED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_UNITS_SUMMONED = ConvertAbilityIntegerLevelField('Ucb5')",
+		description: "",
+	},
+	ABILITY_ILF_ALLOW_WHEN_FULL_REJ3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ALLOW_WHEN_FULL_REJ3 = ConvertAbilityIntegerLevelField('Rej3')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_UNITS_CHARGED_TO_CASTER: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_UNITS_CHARGED_TO_CASTER = ConvertAbilityIntegerLevelField('Rpb5')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_UNITS_AFFECTED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_UNITS_AFFECTED = ConvertAbilityIntegerLevelField('Rpb6')",
+		description: "",
+	},
+	ABILITY_ILF_DEFENSE_INCREASE_ROA2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DEFENSE_INCREASE_ROA2 = ConvertAbilityIntegerLevelField('Roa2')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_UNITS_ROA7: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_UNITS_ROA7 = ConvertAbilityIntegerLevelField('Roa7')",
+		description: "",
+	},
+	ABILITY_ILF_ROOTED_WEAPONS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ROOTED_WEAPONS = ConvertAbilityIntegerLevelField('Roo1')",
+		description: "",
+	},
+	ABILITY_ILF_UPROOTED_WEAPONS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UPROOTED_WEAPONS = ConvertAbilityIntegerLevelField('Roo2')",
+		description: "",
+	},
+	ABILITY_ILF_UPROOTED_DEFENSE_TYPE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UPROOTED_DEFENSE_TYPE = ConvertAbilityIntegerLevelField('Roo4')",
+		description: "",
+	},
+	ABILITY_ILF_ACCUMULATION_STEP: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ACCUMULATION_STEP = ConvertAbilityIntegerLevelField('Sal2')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_OWLS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_OWLS = ConvertAbilityIntegerLevelField('Esn4')",
+		description: "",
+	},
+	ABILITY_ILF_STACKING_TYPE_SPO4: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_STACKING_TYPE_SPO4 = ConvertAbilityIntegerLevelField('Spo4')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_UNITS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_UNITS = ConvertAbilityIntegerLevelField('Sod1')",
+		description: "",
+	},
+	ABILITY_ILF_SPIDER_CAPACITY: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SPIDER_CAPACITY = ConvertAbilityIntegerLevelField('Spa1')",
+		description: "",
+	},
+	ABILITY_ILF_INTERVALS_BEFORE_CHANGING_TREES: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_INTERVALS_BEFORE_CHANGING_TREES = ConvertAbilityIntegerLevelField('Wha2')",
+		description: "",
+	},
+	ABILITY_ILF_AGILITY_BONUS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_AGILITY_BONUS = ConvertAbilityIntegerLevelField('Iagi')",
+		description: "",
+	},
+	ABILITY_ILF_INTELLIGENCE_BONUS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_INTELLIGENCE_BONUS = ConvertAbilityIntegerLevelField('Iint')",
+		description: "",
+	},
+	ABILITY_ILF_STRENGTH_BONUS_ISTR: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_STRENGTH_BONUS_ISTR = ConvertAbilityIntegerLevelField('Istr')",
+		description: "",
+	},
+	ABILITY_ILF_ATTACK_BONUS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ATTACK_BONUS = ConvertAbilityIntegerLevelField('Iatt')",
+		description: "",
+	},
+	ABILITY_ILF_DEFENSE_BONUS_IDEF: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DEFENSE_BONUS_IDEF = ConvertAbilityIntegerLevelField('Idef')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMON_1_AMOUNT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMON_1_AMOUNT = ConvertAbilityIntegerLevelField('Isn1')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMON_2_AMOUNT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMON_2_AMOUNT = ConvertAbilityIntegerLevelField('Isn2')",
+		description: "",
+	},
+	ABILITY_ILF_EXPERIENCE_GAINED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_EXPERIENCE_GAINED = ConvertAbilityIntegerLevelField('Ixpg')",
+		description: "",
+	},
+	ABILITY_ILF_HIT_POINTS_GAINED_IHPG: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_HIT_POINTS_GAINED_IHPG = ConvertAbilityIntegerLevelField('Ihpg')",
+		description: "",
+	},
+	ABILITY_ILF_MANA_POINTS_GAINED_IMPG: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MANA_POINTS_GAINED_IMPG = ConvertAbilityIntegerLevelField('Impg')",
+		description: "",
+	},
+	ABILITY_ILF_HIT_POINTS_GAINED_IHP2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_HIT_POINTS_GAINED_IHP2 = ConvertAbilityIntegerLevelField('Ihp2')",
+		description: "",
+	},
+	ABILITY_ILF_MANA_POINTS_GAINED_IMP2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MANA_POINTS_GAINED_IMP2 = ConvertAbilityIntegerLevelField('Imp2')",
+		description: "",
+	},
+	ABILITY_ILF_DAMAGE_BONUS_DICE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DAMAGE_BONUS_DICE = ConvertAbilityIntegerLevelField('Idic')",
+		description: "",
+	},
+	ABILITY_ILF_ARMOR_PENALTY_IARP: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ARMOR_PENALTY_IARP = ConvertAbilityIntegerLevelField('Iarp')",
+		description: "",
+	},
+	ABILITY_ILF_ENABLED_ATTACK_INDEX_IOB5: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ENABLED_ATTACK_INDEX_IOB5 = ConvertAbilityIntegerLevelField('Iob5')",
+		description: "",
+	},
+	ABILITY_ILF_LEVELS_GAINED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_LEVELS_GAINED = ConvertAbilityIntegerLevelField('Ilev')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_LIFE_GAINED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_LIFE_GAINED = ConvertAbilityIntegerLevelField('Ilif')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_MANA_GAINED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_MANA_GAINED = ConvertAbilityIntegerLevelField('Iman')",
+		description: "",
+	},
+	ABILITY_ILF_GOLD_GIVEN: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_GOLD_GIVEN = ConvertAbilityIntegerLevelField('Igol')",
+		description: "",
+	},
+	ABILITY_ILF_LUMBER_GIVEN: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_LUMBER_GIVEN = ConvertAbilityIntegerLevelField('Ilum')",
+		description: "",
+	},
+	ABILITY_ILF_DETECTION_TYPE_IFA1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DETECTION_TYPE_IFA1 = ConvertAbilityIntegerLevelField('Ifa1')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_CREEP_LEVEL_ICRE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_CREEP_LEVEL_ICRE = ConvertAbilityIntegerLevelField('Icre')",
+		description: "",
+	},
+	ABILITY_ILF_MOVEMENT_SPEED_BONUS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MOVEMENT_SPEED_BONUS = ConvertAbilityIntegerLevelField('Imvb')",
+		description: "",
+	},
+	ABILITY_ILF_HIT_POINTS_REGENERATED_PER_SECOND: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_HIT_POINTS_REGENERATED_PER_SECOND = ConvertAbilityIntegerLevelField('Ihpr')",
+		description: "",
+	},
+	ABILITY_ILF_SIGHT_RANGE_BONUS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SIGHT_RANGE_BONUS = ConvertAbilityIntegerLevelField('Isib')",
+		description: "",
+	},
+	ABILITY_ILF_DAMAGE_PER_DURATION: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DAMAGE_PER_DURATION = ConvertAbilityIntegerLevelField('Icfd')",
+		description: "",
+	},
+	ABILITY_ILF_MANA_USED_PER_SECOND: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MANA_USED_PER_SECOND = ConvertAbilityIntegerLevelField('Icfm')",
+		description: "",
+	},
+	ABILITY_ILF_EXTRA_MANA_REQUIRED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_EXTRA_MANA_REQUIRED = ConvertAbilityIntegerLevelField('Icfx')",
+		description: "",
+	},
+	ABILITY_ILF_DETECTION_RADIUS_IDET: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DETECTION_RADIUS_IDET = ConvertAbilityIntegerLevelField('Idet')",
+		description: "",
+	},
+	ABILITY_ILF_MANA_LOSS_PER_UNIT_IDIM: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MANA_LOSS_PER_UNIT_IDIM = ConvertAbilityIntegerLevelField('Idim')",
+		description: "",
+	},
+	ABILITY_ILF_DAMAGE_TO_SUMMONED_UNITS_IDID: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DAMAGE_TO_SUMMONED_UNITS_IDID = ConvertAbilityIntegerLevelField('Idid')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_NUMBER_OF_UNITS_IREC: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_NUMBER_OF_UNITS_IREC = ConvertAbilityIntegerLevelField('Irec')",
+		description: "",
+	},
+	ABILITY_ILF_DELAY_AFTER_DEATH_SECONDS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DELAY_AFTER_DEATH_SECONDS = ConvertAbilityIntegerLevelField('Ircd')",
+		description: "",
+	},
+	ABILITY_ILF_RESTORED_LIFE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_RESTORED_LIFE = ConvertAbilityIntegerLevelField('irc2')",
+		description: "",
+	},
+	ABILITY_ILF_RESTORED_MANA__1_FOR_CURRENT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_RESTORED_MANA__1_FOR_CURRENT = ConvertAbilityIntegerLevelField('irc3')",
+		description: "",
+	},
+	ABILITY_ILF_HIT_POINTS_RESTORED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_HIT_POINTS_RESTORED = ConvertAbilityIntegerLevelField('Ihps')",
+		description: "",
+	},
+	ABILITY_ILF_MANA_POINTS_RESTORED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MANA_POINTS_RESTORED = ConvertAbilityIntegerLevelField('Imps')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_NUMBER_OF_UNITS_ITPM: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_NUMBER_OF_UNITS_ITPM = ConvertAbilityIntegerLevelField('Itpm')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_CORPSES_RAISED_CAD1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_CORPSES_RAISED_CAD1 = ConvertAbilityIntegerLevelField('Cad1')",
+		description: "",
+	},
+	ABILITY_ILF_TERRAIN_DEFORMATION_DURATION_MS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_TERRAIN_DEFORMATION_DURATION_MS = ConvertAbilityIntegerLevelField('Wrs3')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_UNITS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_UNITS = ConvertAbilityIntegerLevelField('Uds1')",
+		description: "",
+	},
+	ABILITY_ILF_DETECTION_TYPE_DET1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DETECTION_TYPE_DET1 = ConvertAbilityIntegerLevelField('Det1')",
+		description: "",
+	},
+	ABILITY_ILF_GOLD_COST_PER_STRUCTURE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_GOLD_COST_PER_STRUCTURE = ConvertAbilityIntegerLevelField('Nsp1')",
+		description: "",
+	},
+	ABILITY_ILF_LUMBER_COST_PER_USE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_LUMBER_COST_PER_USE = ConvertAbilityIntegerLevelField('Nsp2')",
+		description: "",
+	},
+	ABILITY_ILF_DETECTION_TYPE_NSP3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DETECTION_TYPE_NSP3 = ConvertAbilityIntegerLevelField('Nsp3')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_SWARM_UNITS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_SWARM_UNITS = ConvertAbilityIntegerLevelField('Uls1')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_SWARM_UNITS_PER_TARGET: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_SWARM_UNITS_PER_TARGET = ConvertAbilityIntegerLevelField('Uls3')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_NBA2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_NBA2 = ConvertAbilityIntegerLevelField('Nba2')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_CREEP_LEVEL_NCH1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_CREEP_LEVEL_NCH1 = ConvertAbilityIntegerLevelField('Nch1')",
+		description: "",
+	},
+	ABILITY_ILF_ATTACKS_PREVENTED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ATTACKS_PREVENTED = ConvertAbilityIntegerLevelField('Nsi1')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_NUMBER_OF_TARGETS_EFK3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_NUMBER_OF_TARGETS_EFK3 = ConvertAbilityIntegerLevelField('Efk3')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_ESV1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_ESV1 = ConvertAbilityIntegerLevelField('Esv1')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_NUMBER_OF_CORPSES_EXH1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_NUMBER_OF_CORPSES_EXH1 = ConvertAbilityIntegerLevelField('exh1')",
+		description: "",
+	},
+	ABILITY_ILF_ITEM_CAPACITY: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ITEM_CAPACITY = ConvertAbilityIntegerLevelField('inv1')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_NUMBER_OF_TARGETS_SPL2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_NUMBER_OF_TARGETS_SPL2 = ConvertAbilityIntegerLevelField('spl2')",
+		description: "",
+	},
+	ABILITY_ILF_ALLOW_WHEN_FULL_IRL3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ALLOW_WHEN_FULL_IRL3 = ConvertAbilityIntegerLevelField('irl3')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_DISPELLED_UNITS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_DISPELLED_UNITS = ConvertAbilityIntegerLevelField('idc3')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_LURES: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_LURES = ConvertAbilityIntegerLevelField('imo1')",
+		description: "",
+	},
+	ABILITY_ILF_NEW_TIME_OF_DAY_HOUR: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NEW_TIME_OF_DAY_HOUR = ConvertAbilityIntegerLevelField('ict1')",
+		description: "",
+	},
+	ABILITY_ILF_NEW_TIME_OF_DAY_MINUTE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NEW_TIME_OF_DAY_MINUTE = ConvertAbilityIntegerLevelField('ict2')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_UNITS_CREATED_MEC1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_UNITS_CREATED_MEC1 = ConvertAbilityIntegerLevelField('mec1')",
+		description: "",
+	},
+	ABILITY_ILF_MINIMUM_SPELLS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MINIMUM_SPELLS = ConvertAbilityIntegerLevelField('spb3')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_SPELLS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_SPELLS = ConvertAbilityIntegerLevelField('spb4')",
+		description: "",
+	},
+	ABILITY_ILF_DISABLED_ATTACK_INDEX: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DISABLED_ATTACK_INDEX = ConvertAbilityIntegerLevelField('gra3')",
+		description: "",
+	},
+	ABILITY_ILF_ENABLED_ATTACK_INDEX_GRA4: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ENABLED_ATTACK_INDEX_GRA4 = ConvertAbilityIntegerLevelField('gra4')",
+		description: "",
+	},
+	ABILITY_ILF_MAXIMUM_ATTACKS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAXIMUM_ATTACKS = ConvertAbilityIntegerLevelField('gra5')",
+		description: "",
+	},
+	ABILITY_ILF_BUILDING_TYPES_ALLOWED_NPR1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_BUILDING_TYPES_ALLOWED_NPR1 = ConvertAbilityIntegerLevelField('Npr1')",
+		description: "",
+	},
+	ABILITY_ILF_BUILDING_TYPES_ALLOWED_NSA1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_BUILDING_TYPES_ALLOWED_NSA1 = ConvertAbilityIntegerLevelField('Nsa1')",
+		description: "",
+	},
+	ABILITY_ILF_ATTACK_MODIFICATION: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ATTACK_MODIFICATION = ConvertAbilityIntegerLevelField('Iaa1')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_COUNT_NPA5: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_COUNT_NPA5 = ConvertAbilityIntegerLevelField('Npa5')",
+		description: "",
+	},
+	ABILITY_ILF_UPGRADE_LEVELS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UPGRADE_LEVELS = ConvertAbilityIntegerLevelField('Igl1')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_NDO2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_SUMMONED_UNITS_NDO2 = ConvertAbilityIntegerLevelField('Ndo2')",
+		description: "",
+	},
+	ABILITY_ILF_BEASTS_PER_SECOND: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_BEASTS_PER_SECOND = ConvertAbilityIntegerLevelField('Nst1')",
+		description: "",
+	},
+	ABILITY_ILF_TARGET_TYPE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_TARGET_TYPE = ConvertAbilityIntegerLevelField('Ncl2')",
+		description: "",
+	},
+	ABILITY_ILF_OPTIONS: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_OPTIONS = ConvertAbilityIntegerLevelField('Ncl3')",
+		description: "",
+	},
+	ABILITY_ILF_ARMOR_PENALTY_NAB3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ARMOR_PENALTY_NAB3 = ConvertAbilityIntegerLevelField('Nab3')",
+		description: "",
+	},
+	ABILITY_ILF_WAVE_COUNT_NHS6: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_WAVE_COUNT_NHS6 = ConvertAbilityIntegerLevelField('Nhs6')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_CREEP_LEVEL_NTM3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_CREEP_LEVEL_NTM3 = ConvertAbilityIntegerLevelField('Ntm3')",
+		description: "",
+	},
+	ABILITY_ILF_MISSILE_COUNT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MISSILE_COUNT = ConvertAbilityIntegerLevelField('Ncs3')",
+		description: "",
+	},
+	ABILITY_ILF_SPLIT_ATTACK_COUNT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SPLIT_ATTACK_COUNT = ConvertAbilityIntegerLevelField('Nlm3')",
+		description: "",
+	},
+	ABILITY_ILF_GENERATION_COUNT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_GENERATION_COUNT = ConvertAbilityIntegerLevelField('Nlm6')",
+		description: "",
+	},
+	ABILITY_ILF_ROCK_RING_COUNT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ROCK_RING_COUNT = ConvertAbilityIntegerLevelField('Nvc1')",
+		description: "",
+	},
+	ABILITY_ILF_WAVE_COUNT_NVC2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_WAVE_COUNT_NVC2 = ConvertAbilityIntegerLevelField('Nvc2')",
+		description: "",
+	},
+	ABILITY_ILF_PREFER_HOSTILES_TAU1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_PREFER_HOSTILES_TAU1 = ConvertAbilityIntegerLevelField('Tau1')",
+		description: "",
+	},
+	ABILITY_ILF_PREFER_FRIENDLIES_TAU2: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_PREFER_FRIENDLIES_TAU2 = ConvertAbilityIntegerLevelField('Tau2')",
+		description: "",
+	},
+	ABILITY_ILF_MAX_UNITS_TAU3: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_MAX_UNITS_TAU3 = ConvertAbilityIntegerLevelField('Tau3')",
+		description: "",
+	},
+	ABILITY_ILF_NUMBER_OF_PULSES: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NUMBER_OF_PULSES = ConvertAbilityIntegerLevelField('Tau4')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_TYPE_HWE1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_TYPE_HWE1 = ConvertAbilityIntegerLevelField('Hwe1')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_UIN4: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_UIN4 = ConvertAbilityIntegerLevelField('Uin4')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_OSF1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_OSF1 = ConvertAbilityIntegerLevelField('Osf1')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_TYPE_EFNU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_TYPE_EFNU = ConvertAbilityIntegerLevelField('Efnu')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_TYPE_NBAU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_TYPE_NBAU = ConvertAbilityIntegerLevelField('Nbau')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_TYPE_NTOU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_TYPE_NTOU = ConvertAbilityIntegerLevelField('Ntou')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_TYPE_ESVU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_TYPE_ESVU = ConvertAbilityIntegerLevelField('Esvu')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_TYPES: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_TYPES = ConvertAbilityIntegerLevelField('Nef1')",
+		description: "",
+	},
+	ABILITY_ILF_SUMMONED_UNIT_TYPE_NDOU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SUMMONED_UNIT_TYPE_NDOU = ConvertAbilityIntegerLevelField('Ndou')",
+		description: "",
+	},
+	ABILITY_ILF_ALTERNATE_FORM_UNIT_EMEU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ALTERNATE_FORM_UNIT_EMEU = ConvertAbilityIntegerLevelField('Emeu')",
+		description: "",
+	},
+	ABILITY_ILF_PLAGUE_WARD_UNIT_TYPE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_PLAGUE_WARD_UNIT_TYPE = ConvertAbilityIntegerLevelField('Aplu')",
+		description: "",
+	},
+	ABILITY_ILF_ALLOWED_UNIT_TYPE_BTL1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ALLOWED_UNIT_TYPE_BTL1 = ConvertAbilityIntegerLevelField('Btl1')",
+		description: "",
+	},
+	ABILITY_ILF_NEW_UNIT_TYPE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_NEW_UNIT_TYPE = ConvertAbilityIntegerLevelField('Cha1')",
+		description: "",
+	},
+	ABILITY_ILF_RESULTING_UNIT_TYPE_ENT1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_RESULTING_UNIT_TYPE_ENT1 = ConvertAbilityIntegerLevelField('ent1')",
+		description: "",
+	},
+	ABILITY_ILF_CORPSE_UNIT_TYPE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_CORPSE_UNIT_TYPE = ConvertAbilityIntegerLevelField('Gydu')",
+		description: "",
+	},
+	ABILITY_ILF_ALLOWED_UNIT_TYPE_LOA1: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_ALLOWED_UNIT_TYPE_LOA1 = ConvertAbilityIntegerLevelField('Loa1')",
+		description: "",
+	},
+	ABILITY_ILF_UNIT_TYPE_FOR_LIMIT_CHECK: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UNIT_TYPE_FOR_LIMIT_CHECK = ConvertAbilityIntegerLevelField('Raiu')",
+		description: "",
+	},
+	ABILITY_ILF_WARD_UNIT_TYPE_STAU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_WARD_UNIT_TYPE_STAU = ConvertAbilityIntegerLevelField('Stau')",
+		description: "",
+	},
+	ABILITY_ILF_EFFECT_ABILITY: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_EFFECT_ABILITY = ConvertAbilityIntegerLevelField('Iobu')",
+		description: "",
+	},
+	ABILITY_ILF_CONVERSION_UNIT: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_CONVERSION_UNIT = ConvertAbilityIntegerLevelField('Ndc2')",
+		description: "",
+	},
+	ABILITY_ILF_UNIT_TO_PRESERVE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UNIT_TO_PRESERVE = ConvertAbilityIntegerLevelField('Nsl1')",
+		description: "",
+	},
+	ABILITY_ILF_UNIT_TYPE_ALLOWED: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UNIT_TYPE_ALLOWED = ConvertAbilityIntegerLevelField('Chl1')",
+		description: "",
+	},
+	ABILITY_ILF_SWARM_UNIT_TYPE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SWARM_UNIT_TYPE = ConvertAbilityIntegerLevelField('Ulsu')",
+		description: "",
+	},
+	ABILITY_ILF_RESULTING_UNIT_TYPE_COAU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_RESULTING_UNIT_TYPE_COAU = ConvertAbilityIntegerLevelField('coau')",
+		description: "",
+	},
+	ABILITY_ILF_UNIT_TYPE_EXHU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UNIT_TYPE_EXHU = ConvertAbilityIntegerLevelField('exhu')",
+		description: "",
+	},
+	ABILITY_ILF_WARD_UNIT_TYPE_HWDU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_WARD_UNIT_TYPE_HWDU = ConvertAbilityIntegerLevelField('hwdu')",
+		description: "",
+	},
+	ABILITY_ILF_LURE_UNIT_TYPE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_LURE_UNIT_TYPE = ConvertAbilityIntegerLevelField('imou')",
+		description: "",
+	},
+	ABILITY_ILF_UNIT_TYPE_IPMU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UNIT_TYPE_IPMU = ConvertAbilityIntegerLevelField('ipmu')",
+		description: "",
+	},
+	ABILITY_ILF_FACTORY_UNIT_ID: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_FACTORY_UNIT_ID = ConvertAbilityIntegerLevelField('Nsyu')",
+		description: "",
+	},
+	ABILITY_ILF_SPAWN_UNIT_ID_NFYU: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_SPAWN_UNIT_ID_NFYU = ConvertAbilityIntegerLevelField('Nfyu')",
+		description: "",
+	},
+	ABILITY_ILF_DESTRUCTIBLE_ID: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_DESTRUCTIBLE_ID = ConvertAbilityIntegerLevelField('Nvcu')",
+		description: "",
+	},
+	ABILITY_ILF_UPGRADE_TYPE: {
+		completion: "constant abilityintegerlevelfield ABILITY_ILF_UPGRADE_TYPE = ConvertAbilityIntegerLevelField('Iglu')",
+		description: "",
+	},
+	ABILITY_RLF_CASTING_TIME: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CASTING_TIME = ConvertAbilityRealLevelField('acas')",
+		description: "",
+	},
+	ABILITY_RLF_DURATION_NORMAL: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DURATION_NORMAL = ConvertAbilityRealLevelField('adur')",
+		description: "",
+	},
+	ABILITY_RLF_DURATION_HERO: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DURATION_HERO = ConvertAbilityRealLevelField('ahdu')",
+		description: "",
+	},
+	ABILITY_RLF_COOLDOWN: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_COOLDOWN = ConvertAbilityRealLevelField('acdn')",
+		description: "",
+	},
+	ABILITY_RLF_AREA_OF_EFFECT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AREA_OF_EFFECT = ConvertAbilityRealLevelField('aare')",
+		description: "",
+	},
+	ABILITY_RLF_CAST_RANGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CAST_RANGE = ConvertAbilityRealLevelField('aran')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_HBZ2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_HBZ2 = ConvertAbilityRealLevelField('Hbz2')",
+		description: "",
+	},
+	ABILITY_RLF_BUILDING_REDUCTION_HBZ4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BUILDING_REDUCTION_HBZ4 = ConvertAbilityRealLevelField('Hbz4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_HBZ5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_HBZ5 = ConvertAbilityRealLevelField('Hbz5')",
+		description: "",
+	},
+	ABILITY_RLF_MAXIMUM_DAMAGE_PER_WAVE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAXIMUM_DAMAGE_PER_WAVE = ConvertAbilityRealLevelField('Hbz6')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_REGENERATION_INCREASE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_REGENERATION_INCREASE = ConvertAbilityRealLevelField('Hab1')",
+		description: "",
+	},
+	ABILITY_RLF_CASTING_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CASTING_DELAY = ConvertAbilityRealLevelField('Hmt2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_OWW1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_OWW1 = ConvertAbilityRealLevelField('Oww1')",
+		description: "",
+	},
+	ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_OWW2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_OWW2 = ConvertAbilityRealLevelField('Oww2')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_CRITICAL_STRIKE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_CRITICAL_STRIKE = ConvertAbilityRealLevelField('Ocr1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_MULTIPLIER_OCR2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_MULTIPLIER_OCR2 = ConvertAbilityRealLevelField('Ocr2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_OCR3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_OCR3 = ConvertAbilityRealLevelField('Ocr3')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_EVADE_OCR4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_EVADE_OCR4 = ConvertAbilityRealLevelField('Ocr4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_DEALT_PERCENT_OMI2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_DEALT_PERCENT_OMI2 = ConvertAbilityRealLevelField('Omi2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_TAKEN_PERCENT_OMI3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_TAKEN_PERCENT_OMI3 = ConvertAbilityRealLevelField('Omi3')",
+		description: "",
+	},
+	ABILITY_RLF_ANIMATION_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ANIMATION_DELAY = ConvertAbilityRealLevelField('Omi4')",
+		description: "",
+	},
+	ABILITY_RLF_TRANSITION_TIME: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_TRANSITION_TIME = ConvertAbilityRealLevelField('Owk1')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_INCREASE_PERCENT_OWK2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_INCREASE_PERCENT_OWK2 = ConvertAbilityRealLevelField('Owk2')",
+		description: "",
+	},
+	ABILITY_RLF_BACKSTAB_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BACKSTAB_DAMAGE = ConvertAbilityRealLevelField('Owk3')",
+		description: "",
+	},
+	ABILITY_RLF_AMOUNT_HEALED_DAMAGED_UDC1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AMOUNT_HEALED_DAMAGED_UDC1 = ConvertAbilityRealLevelField('Udc1')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_CONVERTED_TO_MANA: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_CONVERTED_TO_MANA = ConvertAbilityRealLevelField('Udp1')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_CONVERTED_TO_LIFE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_CONVERTED_TO_LIFE = ConvertAbilityRealLevelField('Udp2')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_INCREASE_PERCENT_UAU1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_INCREASE_PERCENT_UAU1 = ConvertAbilityRealLevelField('Uau1')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_REGENERATION_INCREASE_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_REGENERATION_INCREASE_PERCENT = ConvertAbilityRealLevelField('Uau2')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_EVADE_EEV1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_EVADE_EEV1 = ConvertAbilityRealLevelField('Eev1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_INTERVAL: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_INTERVAL = ConvertAbilityRealLevelField('Eim1')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_DRAINED_PER_SECOND_EIM2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_DRAINED_PER_SECOND_EIM2 = ConvertAbilityRealLevelField('Eim2')",
+		description: "",
+	},
+	ABILITY_RLF_BUFFER_MANA_REQUIRED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BUFFER_MANA_REQUIRED = ConvertAbilityRealLevelField('Eim3')",
+		description: "",
+	},
+	ABILITY_RLF_MAX_MANA_DRAINED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAX_MANA_DRAINED = ConvertAbilityRealLevelField('Emb1')",
+		description: "",
+	},
+	ABILITY_RLF_BOLT_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BOLT_DELAY = ConvertAbilityRealLevelField('Emb2')",
+		description: "",
+	},
+	ABILITY_RLF_BOLT_LIFETIME: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BOLT_LIFETIME = ConvertAbilityRealLevelField('Emb3')",
+		description: "",
+	},
+	ABILITY_RLF_ALTITUDE_ADJUSTMENT_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ALTITUDE_ADJUSTMENT_DURATION = ConvertAbilityRealLevelField('Eme3')",
+		description: "",
+	},
+	ABILITY_RLF_LANDING_DELAY_TIME: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LANDING_DELAY_TIME = ConvertAbilityRealLevelField('Eme4')",
+		description: "",
+	},
+	ABILITY_RLF_ALTERNATE_FORM_HIT_POINT_BONUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ALTERNATE_FORM_HIT_POINT_BONUS = ConvertAbilityRealLevelField('Eme5')",
+		description: "",
+	},
+	ABILITY_RLF_MOVE_SPEED_BONUS_INFO_PANEL_ONLY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVE_SPEED_BONUS_INFO_PANEL_ONLY = ConvertAbilityRealLevelField('Ncr5')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_BONUS_INFO_PANEL_ONLY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_BONUS_INFO_PANEL_ONLY = ConvertAbilityRealLevelField('Ncr6')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_REGENERATION_RATE_PER_SECOND: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_REGENERATION_RATE_PER_SECOND = ConvertAbilityRealLevelField('ave5')",
+		description: "",
+	},
+	ABILITY_RLF_STUN_DURATION_USL1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_STUN_DURATION_USL1 = ConvertAbilityRealLevelField('Usl1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_DAMAGE_STOLEN_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_DAMAGE_STOLEN_PERCENT = ConvertAbilityRealLevelField('Uav1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_UCS1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_UCS1 = ConvertAbilityRealLevelField('Ucs1')",
+		description: "",
+	},
+	ABILITY_RLF_MAX_DAMAGE_UCS2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAX_DAMAGE_UCS2 = ConvertAbilityRealLevelField('Ucs2')",
+		description: "",
+	},
+	ABILITY_RLF_DISTANCE_UCS3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DISTANCE_UCS3 = ConvertAbilityRealLevelField('Ucs3')",
+		description: "",
+	},
+	ABILITY_RLF_FINAL_AREA_UCS4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FINAL_AREA_UCS4 = ConvertAbilityRealLevelField('Ucs4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_UIN1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_UIN1 = ConvertAbilityRealLevelField('Uin1')",
+		description: "",
+	},
+	ABILITY_RLF_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DURATION = ConvertAbilityRealLevelField('Uin2')",
+		description: "",
+	},
+	ABILITY_RLF_IMPACT_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_IMPACT_DELAY = ConvertAbilityRealLevelField('Uin3')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_TARGET_OCL1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_TARGET_OCL1 = ConvertAbilityRealLevelField('Ocl1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_REDUCTION_PER_TARGET: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_REDUCTION_PER_TARGET = ConvertAbilityRealLevelField('Ocl3')",
+		description: "",
+	},
+	ABILITY_RLF_EFFECT_DELAY_OEQ1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_EFFECT_DELAY_OEQ1 = ConvertAbilityRealLevelField('Oeq1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_TO_BUILDINGS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_TO_BUILDINGS = ConvertAbilityRealLevelField('Oeq2')",
+		description: "",
+	},
+	ABILITY_RLF_UNITS_SLOWED_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_UNITS_SLOWED_PERCENT = ConvertAbilityRealLevelField('Oeq3')",
+		description: "",
+	},
+	ABILITY_RLF_FINAL_AREA_OEQ4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FINAL_AREA_OEQ4 = ConvertAbilityRealLevelField('Oeq4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_EER1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_EER1 = ConvertAbilityRealLevelField('Eer1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_DEALT_TO_ATTACKERS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_DEALT_TO_ATTACKERS = ConvertAbilityRealLevelField('Eah1')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_HEALED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_HEALED = ConvertAbilityRealLevelField('Etq1')",
+		description: "",
+	},
+	ABILITY_RLF_HEAL_INTERVAL: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HEAL_INTERVAL = ConvertAbilityRealLevelField('Etq2')",
+		description: "",
+	},
+	ABILITY_RLF_BUILDING_REDUCTION_ETQ3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BUILDING_REDUCTION_ETQ3 = ConvertAbilityRealLevelField('Etq3')",
+		description: "",
+	},
+	ABILITY_RLF_INITIAL_IMMUNITY_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_INITIAL_IMMUNITY_DURATION = ConvertAbilityRealLevelField('Etq4')",
+		description: "",
+	},
+	ABILITY_RLF_MAX_LIFE_DRAINED_PER_SECOND_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAX_LIFE_DRAINED_PER_SECOND_PERCENT = ConvertAbilityRealLevelField('Udd1')",
+		description: "",
+	},
+	ABILITY_RLF_BUILDING_REDUCTION_UDD2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BUILDING_REDUCTION_UDD2 = ConvertAbilityRealLevelField('Udd2')",
+		description: "",
+	},
+	ABILITY_RLF_ARMOR_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ARMOR_DURATION = ConvertAbilityRealLevelField('Ufa1')",
+		description: "",
+	},
+	ABILITY_RLF_ARMOR_BONUS_UFA2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ARMOR_BONUS_UFA2 = ConvertAbilityRealLevelField('Ufa2')",
+		description: "",
+	},
+	ABILITY_RLF_AREA_OF_EFFECT_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AREA_OF_EFFECT_DAMAGE = ConvertAbilityRealLevelField('Ufn1')",
+		description: "",
+	},
+	ABILITY_RLF_SPECIFIC_TARGET_DAMAGE_UFN2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SPECIFIC_TARGET_DAMAGE_UFN2 = ConvertAbilityRealLevelField('Ufn2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_HFA1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_HFA1 = ConvertAbilityRealLevelField('Hfa1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_DEALT_ESF1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_DEALT_ESF1 = ConvertAbilityRealLevelField('Esf1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_INTERVAL_ESF2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_INTERVAL_ESF2 = ConvertAbilityRealLevelField('Esf2')",
+		description: "",
+	},
+	ABILITY_RLF_BUILDING_REDUCTION_ESF3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BUILDING_REDUCTION_ESF3 = ConvertAbilityRealLevelField('Esf3')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_PERCENT = ConvertAbilityRealLevelField('Ear1')",
+		description: "",
+	},
+	ABILITY_RLF_DEFENSE_BONUS_HAV1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DEFENSE_BONUS_HAV1 = ConvertAbilityRealLevelField('Hav1')",
+		description: "",
+	},
+	ABILITY_RLF_HIT_POINT_BONUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HIT_POINT_BONUS = ConvertAbilityRealLevelField('Hav2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_HAV3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_HAV3 = ConvertAbilityRealLevelField('Hav3')",
+		description: "",
+	},
+	ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_HAV4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_HAV4 = ConvertAbilityRealLevelField('Hav4')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_BASH: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_BASH = ConvertAbilityRealLevelField('Hbh1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_MULTIPLIER_HBH2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_MULTIPLIER_HBH2 = ConvertAbilityRealLevelField('Hbh2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_HBH3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_HBH3 = ConvertAbilityRealLevelField('Hbh3')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_MISS_HBH4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_MISS_HBH4 = ConvertAbilityRealLevelField('Hbh4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_HTB1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_HTB1 = ConvertAbilityRealLevelField('Htb1')",
+		description: "",
+	},
+	ABILITY_RLF_AOE_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AOE_DAMAGE = ConvertAbilityRealLevelField('Htc1')",
+		description: "",
+	},
+	ABILITY_RLF_SPECIFIC_TARGET_DAMAGE_HTC2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SPECIFIC_TARGET_DAMAGE_HTC2 = ConvertAbilityRealLevelField('Htc2')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_HTC3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_HTC3 = ConvertAbilityRealLevelField('Htc3')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_HTC4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_HTC4 = ConvertAbilityRealLevelField('Htc4')",
+		description: "",
+	},
+	ABILITY_RLF_ARMOR_BONUS_HAD1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ARMOR_BONUS_HAD1 = ConvertAbilityRealLevelField('Had1')",
+		description: "",
+	},
+	ABILITY_RLF_AMOUNT_HEALED_DAMAGED_HHB1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AMOUNT_HEALED_DAMAGED_HHB1 = ConvertAbilityRealLevelField('Hhb1')",
+		description: "",
+	},
+	ABILITY_RLF_EXTRA_DAMAGE_HCA1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_EXTRA_DAMAGE_HCA1 = ConvertAbilityRealLevelField('Hca1')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_FACTOR_HCA2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_FACTOR_HCA2 = ConvertAbilityRealLevelField('Hca2')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_FACTOR_HCA3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_FACTOR_HCA3 = ConvertAbilityRealLevelField('Hca3')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_INCREASE_PERCENT_OAE1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_INCREASE_PERCENT_OAE1 = ConvertAbilityRealLevelField('Oae1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_INCREASE_PERCENT_OAE2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_INCREASE_PERCENT_OAE2 = ConvertAbilityRealLevelField('Oae2')",
+		description: "",
+	},
+	ABILITY_RLF_REINCARNATION_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_REINCARNATION_DELAY = ConvertAbilityRealLevelField('Ore1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_OSH1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_OSH1 = ConvertAbilityRealLevelField('Osh1')",
+		description: "",
+	},
+	ABILITY_RLF_MAXIMUM_DAMAGE_OSH2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAXIMUM_DAMAGE_OSH2 = ConvertAbilityRealLevelField('Osh2')",
+		description: "",
+	},
+	ABILITY_RLF_DISTANCE_OSH3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DISTANCE_OSH3 = ConvertAbilityRealLevelField('Osh3')",
+		description: "",
+	},
+	ABILITY_RLF_FINAL_AREA_OSH4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FINAL_AREA_OSH4 = ConvertAbilityRealLevelField('Osh4')",
+		description: "",
+	},
+	ABILITY_RLF_GRAPHIC_DELAY_NFD1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_GRAPHIC_DELAY_NFD1 = ConvertAbilityRealLevelField('Nfd1')",
+		description: "",
+	},
+	ABILITY_RLF_GRAPHIC_DURATION_NFD2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_GRAPHIC_DURATION_NFD2 = ConvertAbilityRealLevelField('Nfd2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_NFD3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_NFD3 = ConvertAbilityRealLevelField('Nfd3')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_UNIT_DAMAGE_AMS1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_UNIT_DAMAGE_AMS1 = ConvertAbilityRealLevelField('Ams1')",
+		description: "",
+	},
+	ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_AMS2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_AMS2 = ConvertAbilityRealLevelField('Ams2')",
+		description: "",
+	},
+	ABILITY_RLF_AURA_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AURA_DURATION = ConvertAbilityRealLevelField('Apl1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_APL2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_APL2 = ConvertAbilityRealLevelField('Apl2')",
+		description: "",
+	},
+	ABILITY_RLF_DURATION_OF_PLAGUE_WARD: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DURATION_OF_PLAGUE_WARD = ConvertAbilityRealLevelField('Apl3')",
+		description: "",
+	},
+	ABILITY_RLF_AMOUNT_OF_HIT_POINTS_REGENERATED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AMOUNT_OF_HIT_POINTS_REGENERATED = ConvertAbilityRealLevelField('Oar1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_DAMAGE_INCREASE_AKB1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_DAMAGE_INCREASE_AKB1 = ConvertAbilityRealLevelField('Akb1')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_LOSS_ADM1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_LOSS_ADM1 = ConvertAbilityRealLevelField('Adm1')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_UNIT_DAMAGE_ADM2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_UNIT_DAMAGE_ADM2 = ConvertAbilityRealLevelField('Adm2')",
+		description: "",
+	},
+	ABILITY_RLF_EXPANSION_AMOUNT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_EXPANSION_AMOUNT = ConvertAbilityRealLevelField('Bli1')",
+		description: "",
+	},
+	ABILITY_RLF_INTERVAL_DURATION_BGM2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_INTERVAL_DURATION_BGM2 = ConvertAbilityRealLevelField('Bgm2')",
+		description: "",
+	},
+	ABILITY_RLF_RADIUS_OF_MINING_RING: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_RADIUS_OF_MINING_RING = ConvertAbilityRealLevelField('Bgm4')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_INCREASE_PERCENT_BLO1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_INCREASE_PERCENT_BLO1 = ConvertAbilityRealLevelField('Blo1')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_INCREASE_PERCENT_BLO2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_INCREASE_PERCENT_BLO2 = ConvertAbilityRealLevelField('Blo2')",
+		description: "",
+	},
+	ABILITY_RLF_SCALING_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SCALING_FACTOR = ConvertAbilityRealLevelField('Blo3')",
+		description: "",
+	},
+	ABILITY_RLF_HIT_POINTS_PER_SECOND_CAN1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HIT_POINTS_PER_SECOND_CAN1 = ConvertAbilityRealLevelField('Can1')",
+		description: "",
+	},
+	ABILITY_RLF_MAX_HIT_POINTS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAX_HIT_POINTS = ConvertAbilityRealLevelField('Can2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_DEV2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_DEV2 = ConvertAbilityRealLevelField('Dev2')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_UPDATE_FREQUENCY_CHD1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_UPDATE_FREQUENCY_CHD1 = ConvertAbilityRealLevelField('Chd1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_UPDATE_FREQUENCY_CHD2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_UPDATE_FREQUENCY_CHD2 = ConvertAbilityRealLevelField('Chd2')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_UNIT_DAMAGE_CHD3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_UNIT_DAMAGE_CHD3 = ConvertAbilityRealLevelField('Chd3')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_CRI1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_CRI1 = ConvertAbilityRealLevelField('Cri1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_CRI2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_CRI2 = ConvertAbilityRealLevelField('Cri2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_REDUCTION_CRI3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_REDUCTION_CRI3 = ConvertAbilityRealLevelField('Cri3')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_MISS_CRS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_MISS_CRS = ConvertAbilityRealLevelField('Crs1')",
+		description: "",
+	},
+	ABILITY_RLF_FULL_DAMAGE_RADIUS_DDA1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FULL_DAMAGE_RADIUS_DDA1 = ConvertAbilityRealLevelField('Dda1')",
+		description: "",
+	},
+	ABILITY_RLF_FULL_DAMAGE_AMOUNT_DDA2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FULL_DAMAGE_AMOUNT_DDA2 = ConvertAbilityRealLevelField('Dda2')",
+		description: "",
+	},
+	ABILITY_RLF_PARTIAL_DAMAGE_RADIUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_PARTIAL_DAMAGE_RADIUS = ConvertAbilityRealLevelField('Dda3')",
+		description: "",
+	},
+	ABILITY_RLF_PARTIAL_DAMAGE_AMOUNT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_PARTIAL_DAMAGE_AMOUNT = ConvertAbilityRealLevelField('Dda4')",
+		description: "",
+	},
+	ABILITY_RLF_BUILDING_DAMAGE_FACTOR_SDS1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BUILDING_DAMAGE_FACTOR_SDS1 = ConvertAbilityRealLevelField('Sds1')",
+		description: "",
+	},
+	ABILITY_RLF_MAX_DAMAGE_UCO5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAX_DAMAGE_UCO5 = ConvertAbilityRealLevelField('Uco5')",
+		description: "",
+	},
+	ABILITY_RLF_MOVE_SPEED_BONUS_UCO6: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVE_SPEED_BONUS_UCO6 = ConvertAbilityRealLevelField('Uco6')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_TAKEN_PERCENT_DEF1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_TAKEN_PERCENT_DEF1 = ConvertAbilityRealLevelField('Def1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_DEALT_PERCENT_DEF2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_DEALT_PERCENT_DEF2 = ConvertAbilityRealLevelField('Def2')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_FACTOR_DEF3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_FACTOR_DEF3 = ConvertAbilityRealLevelField('Def3')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_FACTOR_DEF4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_FACTOR_DEF4 = ConvertAbilityRealLevelField('Def4')",
+		description: "",
+	},
+	ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_DEF5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_DEF5 = ConvertAbilityRealLevelField('Def5')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_DEFLECT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_DEFLECT = ConvertAbilityRealLevelField('Def6')",
+		description: "",
+	},
+	ABILITY_RLF_DEFLECT_DAMAGE_TAKEN_PIERCING: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DEFLECT_DAMAGE_TAKEN_PIERCING = ConvertAbilityRealLevelField('Def7')",
+		description: "",
+	},
+	ABILITY_RLF_DEFLECT_DAMAGE_TAKEN_SPELLS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DEFLECT_DAMAGE_TAKEN_SPELLS = ConvertAbilityRealLevelField('Def8')",
+		description: "",
+	},
+	ABILITY_RLF_RIP_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_RIP_DELAY = ConvertAbilityRealLevelField('Eat1')",
+		description: "",
+	},
+	ABILITY_RLF_EAT_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_EAT_DELAY = ConvertAbilityRealLevelField('Eat2')",
+		description: "",
+	},
+	ABILITY_RLF_HIT_POINTS_GAINED_EAT3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HIT_POINTS_GAINED_EAT3 = ConvertAbilityRealLevelField('Eat3')",
+		description: "",
+	},
+	ABILITY_RLF_AIR_UNIT_LOWER_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AIR_UNIT_LOWER_DURATION = ConvertAbilityRealLevelField('Ens1')",
+		description: "",
+	},
+	ABILITY_RLF_AIR_UNIT_HEIGHT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AIR_UNIT_HEIGHT = ConvertAbilityRealLevelField('Ens2')",
+		description: "",
+	},
+	ABILITY_RLF_MELEE_ATTACK_RANGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MELEE_ATTACK_RANGE = ConvertAbilityRealLevelField('Ens3')",
+		description: "",
+	},
+	ABILITY_RLF_INTERVAL_DURATION_EGM2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_INTERVAL_DURATION_EGM2 = ConvertAbilityRealLevelField('Egm2')",
+		description: "",
+	},
+	ABILITY_RLF_EFFECT_DELAY_FLA2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_EFFECT_DELAY_FLA2 = ConvertAbilityRealLevelField('Fla2')",
+		description: "",
+	},
+	ABILITY_RLF_MINING_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MINING_DURATION = ConvertAbilityRealLevelField('Gld2')",
+		description: "",
+	},
+	ABILITY_RLF_RADIUS_OF_GRAVESTONES: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_RADIUS_OF_GRAVESTONES = ConvertAbilityRealLevelField('Gyd2')",
+		description: "",
+	},
+	ABILITY_RLF_RADIUS_OF_CORPSES: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_RADIUS_OF_CORPSES = ConvertAbilityRealLevelField('Gyd3')",
+		description: "",
+	},
+	ABILITY_RLF_HIT_POINTS_GAINED_HEA1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HIT_POINTS_GAINED_HEA1 = ConvertAbilityRealLevelField('Hea1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_INCREASE_PERCENT_INF1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_INCREASE_PERCENT_INF1 = ConvertAbilityRealLevelField('Inf1')",
+		description: "",
+	},
+	ABILITY_RLF_AUTOCAST_RANGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AUTOCAST_RANGE = ConvertAbilityRealLevelField('Inf3')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_REGEN_RATE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_REGEN_RATE = ConvertAbilityRealLevelField('Inf4')",
+		description: "",
+	},
+	ABILITY_RLF_GRAPHIC_DELAY_LIT1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_GRAPHIC_DELAY_LIT1 = ConvertAbilityRealLevelField('Lit1')",
+		description: "",
+	},
+	ABILITY_RLF_GRAPHIC_DURATION_LIT2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_GRAPHIC_DURATION_LIT2 = ConvertAbilityRealLevelField('Lit2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_LSH1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_LSH1 = ConvertAbilityRealLevelField('Lsh1')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_GAINED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_GAINED = ConvertAbilityRealLevelField('Mbt1')",
+		description: "",
+	},
+	ABILITY_RLF_HIT_POINTS_GAINED_MBT2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HIT_POINTS_GAINED_MBT2 = ConvertAbilityRealLevelField('Mbt2')",
+		description: "",
+	},
+	ABILITY_RLF_AUTOCAST_REQUIREMENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AUTOCAST_REQUIREMENT = ConvertAbilityRealLevelField('Mbt3')",
+		description: "",
+	},
+	ABILITY_RLF_WATER_HEIGHT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_WATER_HEIGHT = ConvertAbilityRealLevelField('Mbt4')",
+		description: "",
+	},
+	ABILITY_RLF_ACTIVATION_DELAY_MIN1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ACTIVATION_DELAY_MIN1 = ConvertAbilityRealLevelField('Min1')",
+		description: "",
+	},
+	ABILITY_RLF_INVISIBILITY_TRANSITION_TIME: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_INVISIBILITY_TRANSITION_TIME = ConvertAbilityRealLevelField('Min2')",
+		description: "",
+	},
+	ABILITY_RLF_ACTIVATION_RADIUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ACTIVATION_RADIUS = ConvertAbilityRealLevelField('Neu1')",
+		description: "",
+	},
+	ABILITY_RLF_AMOUNT_REGENERATED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AMOUNT_REGENERATED = ConvertAbilityRealLevelField('Arm1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_POI1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_POI1 = ConvertAbilityRealLevelField('Poi1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_FACTOR_POI2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_FACTOR_POI2 = ConvertAbilityRealLevelField('Poi2')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_FACTOR_POI3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_FACTOR_POI3 = ConvertAbilityRealLevelField('Poi3')",
+		description: "",
+	},
+	ABILITY_RLF_EXTRA_DAMAGE_POA1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_EXTRA_DAMAGE_POA1 = ConvertAbilityRealLevelField('Poa1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_POA2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_POA2 = ConvertAbilityRealLevelField('Poa2')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_FACTOR_POA3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_FACTOR_POA3 = ConvertAbilityRealLevelField('Poa3')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_FACTOR_POA4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_FACTOR_POA4 = ConvertAbilityRealLevelField('Poa4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_AMPLIFICATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_AMPLIFICATION = ConvertAbilityRealLevelField('Pos2')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_STOMP_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_STOMP_PERCENT = ConvertAbilityRealLevelField('War1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_DEALT_WAR2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_DEALT_WAR2 = ConvertAbilityRealLevelField('War2')",
+		description: "",
+	},
+	ABILITY_RLF_FULL_DAMAGE_RADIUS_WAR3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FULL_DAMAGE_RADIUS_WAR3 = ConvertAbilityRealLevelField('War3')",
+		description: "",
+	},
+	ABILITY_RLF_HALF_DAMAGE_RADIUS_WAR4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HALF_DAMAGE_RADIUS_WAR4 = ConvertAbilityRealLevelField('War4')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_UNIT_DAMAGE_PRG3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_UNIT_DAMAGE_PRG3 = ConvertAbilityRealLevelField('Prg3')",
+		description: "",
+	},
+	ABILITY_RLF_UNIT_PAUSE_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_UNIT_PAUSE_DURATION = ConvertAbilityRealLevelField('Prg4')",
+		description: "",
+	},
+	ABILITY_RLF_HERO_PAUSE_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HERO_PAUSE_DURATION = ConvertAbilityRealLevelField('Prg5')",
+		description: "",
+	},
+	ABILITY_RLF_HIT_POINTS_GAINED_REJ1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HIT_POINTS_GAINED_REJ1 = ConvertAbilityRealLevelField('Rej1')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_POINTS_GAINED_REJ2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_POINTS_GAINED_REJ2 = ConvertAbilityRealLevelField('Rej2')",
+		description: "",
+	},
+	ABILITY_RLF_MINIMUM_LIFE_REQUIRED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MINIMUM_LIFE_REQUIRED = ConvertAbilityRealLevelField('Rpb3')",
+		description: "",
+	},
+	ABILITY_RLF_MINIMUM_MANA_REQUIRED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MINIMUM_MANA_REQUIRED = ConvertAbilityRealLevelField('Rpb4')",
+		description: "",
+	},
+	ABILITY_RLF_REPAIR_COST_RATIO: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_REPAIR_COST_RATIO = ConvertAbilityRealLevelField('Rep1')",
+		description: "",
+	},
+	ABILITY_RLF_REPAIR_TIME_RATIO: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_REPAIR_TIME_RATIO = ConvertAbilityRealLevelField('Rep2')",
+		description: "",
+	},
+	ABILITY_RLF_POWERBUILD_COST: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_POWERBUILD_COST = ConvertAbilityRealLevelField('Rep3')",
+		description: "",
+	},
+	ABILITY_RLF_POWERBUILD_RATE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_POWERBUILD_RATE = ConvertAbilityRealLevelField('Rep4')",
+		description: "",
+	},
+	ABILITY_RLF_NAVAL_RANGE_BONUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_NAVAL_RANGE_BONUS = ConvertAbilityRealLevelField('Rep5')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_INCREASE_PERCENT_ROA1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_INCREASE_PERCENT_ROA1 = ConvertAbilityRealLevelField('Roa1')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_REGENERATION_RATE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_REGENERATION_RATE = ConvertAbilityRealLevelField('Roa3')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_REGEN: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_REGEN = ConvertAbilityRealLevelField('Roa4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_INCREASE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_INCREASE = ConvertAbilityRealLevelField('Nbr1')",
+		description: "",
+	},
+	ABILITY_RLF_SALVAGE_COST_RATIO: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SALVAGE_COST_RATIO = ConvertAbilityRealLevelField('Sal1')",
+		description: "",
+	},
+	ABILITY_RLF_IN_FLIGHT_SIGHT_RADIUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_IN_FLIGHT_SIGHT_RADIUS = ConvertAbilityRealLevelField('Esn1')",
+		description: "",
+	},
+	ABILITY_RLF_HOVERING_SIGHT_RADIUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HOVERING_SIGHT_RADIUS = ConvertAbilityRealLevelField('Esn2')",
+		description: "",
+	},
+	ABILITY_RLF_HOVERING_HEIGHT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HOVERING_HEIGHT = ConvertAbilityRealLevelField('Esn3')",
+		description: "",
+	},
+	ABILITY_RLF_DURATION_OF_OWLS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DURATION_OF_OWLS = ConvertAbilityRealLevelField('Esn5')",
+		description: "",
+	},
+	ABILITY_RLF_FADE_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FADE_DURATION = ConvertAbilityRealLevelField('Shm1')",
+		description: "",
+	},
+	ABILITY_RLF_DAY_NIGHT_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAY_NIGHT_DURATION = ConvertAbilityRealLevelField('Shm2')",
+		description: "",
+	},
+	ABILITY_RLF_ACTION_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ACTION_DURATION = ConvertAbilityRealLevelField('Shm3')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_FACTOR_SLO1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_FACTOR_SLO1 = ConvertAbilityRealLevelField('Slo1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_FACTOR_SLO2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_FACTOR_SLO2 = ConvertAbilityRealLevelField('Slo2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_SPO1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_SPO1 = ConvertAbilityRealLevelField('Spo1')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_FACTOR_SPO2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_FACTOR_SPO2 = ConvertAbilityRealLevelField('Spo2')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_FACTOR_SPO3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_FACTOR_SPO3 = ConvertAbilityRealLevelField('Spo3')",
+		description: "",
+	},
+	ABILITY_RLF_ACTIVATION_DELAY_STA1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ACTIVATION_DELAY_STA1 = ConvertAbilityRealLevelField('Sta1')",
+		description: "",
+	},
+	ABILITY_RLF_DETECTION_RADIUS_STA2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DETECTION_RADIUS_STA2 = ConvertAbilityRealLevelField('Sta2')",
+		description: "",
+	},
+	ABILITY_RLF_DETONATION_RADIUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DETONATION_RADIUS = ConvertAbilityRealLevelField('Sta3')",
+		description: "",
+	},
+	ABILITY_RLF_STUN_DURATION_STA4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_STUN_DURATION_STA4 = ConvertAbilityRealLevelField('Sta4')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_BONUS_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_BONUS_PERCENT = ConvertAbilityRealLevelField('Uhf1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_UHF2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_UHF2 = ConvertAbilityRealLevelField('Uhf2')",
+		description: "",
+	},
+	ABILITY_RLF_LUMBER_PER_INTERVAL: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LUMBER_PER_INTERVAL = ConvertAbilityRealLevelField('Wha1')",
+		description: "",
+	},
+	ABILITY_RLF_ART_ATTACHMENT_HEIGHT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ART_ATTACHMENT_HEIGHT = ConvertAbilityRealLevelField('Wha3')",
+		description: "",
+	},
+	ABILITY_RLF_TELEPORT_AREA_WIDTH: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_TELEPORT_AREA_WIDTH = ConvertAbilityRealLevelField('Wrp1')",
+		description: "",
+	},
+	ABILITY_RLF_TELEPORT_AREA_HEIGHT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_TELEPORT_AREA_HEIGHT = ConvertAbilityRealLevelField('Wrp2')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_STOLEN_PER_ATTACK: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_STOLEN_PER_ATTACK = ConvertAbilityRealLevelField('Ivam')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_IDAM: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_IDAM = ConvertAbilityRealLevelField('Idam')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_HIT_UNITS_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_HIT_UNITS_PERCENT = ConvertAbilityRealLevelField('Iob2')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_HIT_HEROS_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_HIT_HEROS_PERCENT = ConvertAbilityRealLevelField('Iob3')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_HIT_SUMMONS_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_HIT_SUMMONS_PERCENT = ConvertAbilityRealLevelField('Iob4')",
+		description: "",
+	},
+	ABILITY_RLF_DELAY_FOR_TARGET_EFFECT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DELAY_FOR_TARGET_EFFECT = ConvertAbilityRealLevelField('Idel')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_DEALT_PERCENT_OF_NORMAL: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_DEALT_PERCENT_OF_NORMAL = ConvertAbilityRealLevelField('Iild')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_RECEIVED_MULTIPLIER: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_RECEIVED_MULTIPLIER = ConvertAbilityRealLevelField('Iilw')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_REGENERATION_BONUS_AS_FRACTION_OF_NORMAL: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_REGENERATION_BONUS_AS_FRACTION_OF_NORMAL = ConvertAbilityRealLevelField('Imrp')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_INCREASE_ISPI: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_INCREASE_ISPI = ConvertAbilityRealLevelField('Ispi')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_IDPS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_IDPS = ConvertAbilityRealLevelField('Idps')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_DAMAGE_INCREASE_CAC1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_DAMAGE_INCREASE_CAC1 = ConvertAbilityRealLevelField('Cac1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_COR1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_COR1 = ConvertAbilityRealLevelField('Cor1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_INCREASE_ISX1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_INCREASE_ISX1 = ConvertAbilityRealLevelField('Isx1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_WRS1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_WRS1 = ConvertAbilityRealLevelField('Wrs1')",
+		description: "",
+	},
+	ABILITY_RLF_TERRAIN_DEFORMATION_AMPLITUDE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_TERRAIN_DEFORMATION_AMPLITUDE = ConvertAbilityRealLevelField('Wrs2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_CTC1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_CTC1 = ConvertAbilityRealLevelField('Ctc1')",
+		description: "",
+	},
+	ABILITY_RLF_EXTRA_DAMAGE_TO_TARGET: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_EXTRA_DAMAGE_TO_TARGET = ConvertAbilityRealLevelField('Ctc2')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_CTC3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_CTC3 = ConvertAbilityRealLevelField('Ctc3')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_REDUCTION_CTC4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_REDUCTION_CTC4 = ConvertAbilityRealLevelField('Ctc4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_CTB1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_CTB1 = ConvertAbilityRealLevelField('Ctb1')",
+		description: "",
+	},
+	ABILITY_RLF_CASTING_DELAY_SECONDS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CASTING_DELAY_SECONDS = ConvertAbilityRealLevelField('Uds2')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_LOSS_PER_UNIT_DTN1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_LOSS_PER_UNIT_DTN1 = ConvertAbilityRealLevelField('Dtn1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_TO_SUMMONED_UNITS_DTN2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_TO_SUMMONED_UNITS_DTN2 = ConvertAbilityRealLevelField('Dtn2')",
+		description: "",
+	},
+	ABILITY_RLF_TRANSITION_TIME_SECONDS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_TRANSITION_TIME_SECONDS = ConvertAbilityRealLevelField('Ivs1')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_DRAINED_PER_SECOND_NMR1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_DRAINED_PER_SECOND_NMR1 = ConvertAbilityRealLevelField('Nmr1')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_REDUCE_DAMAGE_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_REDUCE_DAMAGE_PERCENT = ConvertAbilityRealLevelField('Ssk1')",
+		description: "",
+	},
+	ABILITY_RLF_MINIMUM_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MINIMUM_DAMAGE = ConvertAbilityRealLevelField('Ssk2')",
+		description: "",
+	},
+	ABILITY_RLF_IGNORED_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_IGNORED_DAMAGE = ConvertAbilityRealLevelField('Ssk3')",
+		description: "",
+	},
+	ABILITY_RLF_FULL_DAMAGE_DEALT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FULL_DAMAGE_DEALT = ConvertAbilityRealLevelField('Hfs1')",
+		description: "",
+	},
+	ABILITY_RLF_FULL_DAMAGE_INTERVAL: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FULL_DAMAGE_INTERVAL = ConvertAbilityRealLevelField('Hfs2')",
+		description: "",
+	},
+	ABILITY_RLF_HALF_DAMAGE_DEALT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HALF_DAMAGE_DEALT = ConvertAbilityRealLevelField('Hfs3')",
+		description: "",
+	},
+	ABILITY_RLF_HALF_DAMAGE_INTERVAL: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HALF_DAMAGE_INTERVAL = ConvertAbilityRealLevelField('Hfs4')",
+		description: "",
+	},
+	ABILITY_RLF_BUILDING_REDUCTION_HFS5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BUILDING_REDUCTION_HFS5 = ConvertAbilityRealLevelField('Hfs5')",
+		description: "",
+	},
+	ABILITY_RLF_MAXIMUM_DAMAGE_HFS6: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAXIMUM_DAMAGE_HFS6 = ConvertAbilityRealLevelField('Hfs6')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_PER_HIT_POINT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_PER_HIT_POINT = ConvertAbilityRealLevelField('Nms1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_ABSORBED_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_ABSORBED_PERCENT = ConvertAbilityRealLevelField('Nms2')",
+		description: "",
+	},
+	ABILITY_RLF_WAVE_DISTANCE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_WAVE_DISTANCE = ConvertAbilityRealLevelField('Uim1')",
+		description: "",
+	},
+	ABILITY_RLF_WAVE_TIME_SECONDS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_WAVE_TIME_SECONDS = ConvertAbilityRealLevelField('Uim2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_DEALT_UIM3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_DEALT_UIM3 = ConvertAbilityRealLevelField('Uim3')",
+		description: "",
+	},
+	ABILITY_RLF_AIR_TIME_SECONDS_UIM4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AIR_TIME_SECONDS_UIM4 = ConvertAbilityRealLevelField('Uim4')",
+		description: "",
+	},
+	ABILITY_RLF_UNIT_RELEASE_INTERVAL_SECONDS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_UNIT_RELEASE_INTERVAL_SECONDS = ConvertAbilityRealLevelField('Uls2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_RETURN_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_RETURN_FACTOR = ConvertAbilityRealLevelField('Uls4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_RETURN_THRESHOLD: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_RETURN_THRESHOLD = ConvertAbilityRealLevelField('Uls5')",
+		description: "",
+	},
+	ABILITY_RLF_RETURNED_DAMAGE_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_RETURNED_DAMAGE_FACTOR = ConvertAbilityRealLevelField('Uts1')",
+		description: "",
+	},
+	ABILITY_RLF_RECEIVED_DAMAGE_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_RECEIVED_DAMAGE_FACTOR = ConvertAbilityRealLevelField('Uts2')",
+		description: "",
+	},
+	ABILITY_RLF_DEFENSE_BONUS_UTS3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DEFENSE_BONUS_UTS3 = ConvertAbilityRealLevelField('Uts3')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_NBA1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_NBA1 = ConvertAbilityRealLevelField('Nba1')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_UNIT_DURATION_SECONDS_NBA3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_UNIT_DURATION_SECONDS_NBA3 = ConvertAbilityRealLevelField('Nba3')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_PER_SUMMONED_HITPOINT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_PER_SUMMONED_HITPOINT = ConvertAbilityRealLevelField('Cmg2')",
+		description: "",
+	},
+	ABILITY_RLF_CHARGE_FOR_CURRENT_LIFE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHARGE_FOR_CURRENT_LIFE = ConvertAbilityRealLevelField('Cmg3')",
+		description: "",
+	},
+	ABILITY_RLF_HIT_POINTS_DRAINED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HIT_POINTS_DRAINED = ConvertAbilityRealLevelField('Ndr1')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_POINTS_DRAINED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_POINTS_DRAINED = ConvertAbilityRealLevelField('Ndr2')",
+		description: "",
+	},
+	ABILITY_RLF_DRAIN_INTERVAL_SECONDS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DRAIN_INTERVAL_SECONDS = ConvertAbilityRealLevelField('Ndr3')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_TRANSFERRED_PER_SECOND: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_TRANSFERRED_PER_SECOND = ConvertAbilityRealLevelField('Ndr4')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_TRANSFERRED_PER_SECOND: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_TRANSFERRED_PER_SECOND = ConvertAbilityRealLevelField('Ndr5')",
+		description: "",
+	},
+	ABILITY_RLF_BONUS_LIFE_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BONUS_LIFE_FACTOR = ConvertAbilityRealLevelField('Ndr6')",
+		description: "",
+	},
+	ABILITY_RLF_BONUS_LIFE_DECAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BONUS_LIFE_DECAY = ConvertAbilityRealLevelField('Ndr7')",
+		description: "",
+	},
+	ABILITY_RLF_BONUS_MANA_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BONUS_MANA_FACTOR = ConvertAbilityRealLevelField('Ndr8')",
+		description: "",
+	},
+	ABILITY_RLF_BONUS_MANA_DECAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BONUS_MANA_DECAY = ConvertAbilityRealLevelField('Ndr9')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_MISS_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_MISS_PERCENT = ConvertAbilityRealLevelField('Nsi2')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_MODIFIER: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_MODIFIER = ConvertAbilityRealLevelField('Nsi3')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_MODIFIER: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_MODIFIER = ConvertAbilityRealLevelField('Nsi4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_TDG1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_TDG1 = ConvertAbilityRealLevelField('Tdg1')",
+		description: "",
+	},
+	ABILITY_RLF_MEDIUM_DAMAGE_RADIUS_TDG2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MEDIUM_DAMAGE_RADIUS_TDG2 = ConvertAbilityRealLevelField('Tdg2')",
+		description: "",
+	},
+	ABILITY_RLF_MEDIUM_DAMAGE_PER_SECOND: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MEDIUM_DAMAGE_PER_SECOND = ConvertAbilityRealLevelField('Tdg3')",
+		description: "",
+	},
+	ABILITY_RLF_SMALL_DAMAGE_RADIUS_TDG4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SMALL_DAMAGE_RADIUS_TDG4 = ConvertAbilityRealLevelField('Tdg4')",
+		description: "",
+	},
+	ABILITY_RLF_SMALL_DAMAGE_PER_SECOND: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SMALL_DAMAGE_PER_SECOND = ConvertAbilityRealLevelField('Tdg5')",
+		description: "",
+	},
+	ABILITY_RLF_AIR_TIME_SECONDS_TSP1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_AIR_TIME_SECONDS_TSP1 = ConvertAbilityRealLevelField('Tsp1')",
+		description: "",
+	},
+	ABILITY_RLF_MINIMUM_HIT_INTERVAL_SECONDS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MINIMUM_HIT_INTERVAL_SECONDS = ConvertAbilityRealLevelField('Tsp2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_NBF5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_NBF5 = ConvertAbilityRealLevelField('Nbf5')",
+		description: "",
+	},
+	ABILITY_RLF_MAXIMUM_RANGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAXIMUM_RANGE = ConvertAbilityRealLevelField('Ebl1')",
+		description: "",
+	},
+	ABILITY_RLF_MINIMUM_RANGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MINIMUM_RANGE = ConvertAbilityRealLevelField('Ebl2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_TARGET_EFK1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_TARGET_EFK1 = ConvertAbilityRealLevelField('Efk1')",
+		description: "",
+	},
+	ABILITY_RLF_MAXIMUM_TOTAL_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAXIMUM_TOTAL_DAMAGE = ConvertAbilityRealLevelField('Efk2')",
+		description: "",
+	},
+	ABILITY_RLF_MAXIMUM_SPEED_ADJUSTMENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAXIMUM_SPEED_ADJUSTMENT = ConvertAbilityRealLevelField('Efk4')",
+		description: "",
+	},
+	ABILITY_RLF_DECAYING_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DECAYING_DAMAGE = ConvertAbilityRealLevelField('Esh1')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_FACTOR_ESH2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_FACTOR_ESH2 = ConvertAbilityRealLevelField('Esh2')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_FACTOR_ESH3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_FACTOR_ESH3 = ConvertAbilityRealLevelField('Esh3')",
+		description: "",
+	},
+	ABILITY_RLF_DECAY_POWER: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DECAY_POWER = ConvertAbilityRealLevelField('Esh4')",
+		description: "",
+	},
+	ABILITY_RLF_INITIAL_DAMAGE_ESH5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_INITIAL_DAMAGE_ESH5 = ConvertAbilityRealLevelField('Esh5')",
+		description: "",
+	},
+	ABILITY_RLF_MAXIMUM_LIFE_ABSORBED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAXIMUM_LIFE_ABSORBED = ConvertAbilityRealLevelField('abs1')",
+		description: "",
+	},
+	ABILITY_RLF_MAXIMUM_MANA_ABSORBED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAXIMUM_MANA_ABSORBED = ConvertAbilityRealLevelField('abs2')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_INCREASE_BSK1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_INCREASE_BSK1 = ConvertAbilityRealLevelField('bsk1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_INCREASE_BSK2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_INCREASE_BSK2 = ConvertAbilityRealLevelField('bsk2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_TAKEN_INCREASE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_TAKEN_INCREASE = ConvertAbilityRealLevelField('bsk3')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_PER_UNIT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_PER_UNIT = ConvertAbilityRealLevelField('dvm1')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_PER_UNIT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_PER_UNIT = ConvertAbilityRealLevelField('dvm2')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_PER_BUFF: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_PER_BUFF = ConvertAbilityRealLevelField('dvm3')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_PER_BUFF: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_PER_BUFF = ConvertAbilityRealLevelField('dvm4')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_UNIT_DAMAGE_DVM5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_UNIT_DAMAGE_DVM5 = ConvertAbilityRealLevelField('dvm5')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_FAK1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_FAK1 = ConvertAbilityRealLevelField('fak1')",
+		description: "",
+	},
+	ABILITY_RLF_MEDIUM_DAMAGE_FACTOR_FAK2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MEDIUM_DAMAGE_FACTOR_FAK2 = ConvertAbilityRealLevelField('fak2')",
+		description: "",
+	},
+	ABILITY_RLF_SMALL_DAMAGE_FACTOR_FAK3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SMALL_DAMAGE_FACTOR_FAK3 = ConvertAbilityRealLevelField('fak3')",
+		description: "",
+	},
+	ABILITY_RLF_FULL_DAMAGE_RADIUS_FAK4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FULL_DAMAGE_RADIUS_FAK4 = ConvertAbilityRealLevelField('fak4')",
+		description: "",
+	},
+	ABILITY_RLF_HALF_DAMAGE_RADIUS_FAK5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HALF_DAMAGE_RADIUS_FAK5 = ConvertAbilityRealLevelField('fak5')",
+		description: "",
+	},
+	ABILITY_RLF_EXTRA_DAMAGE_PER_SECOND: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_EXTRA_DAMAGE_PER_SECOND = ConvertAbilityRealLevelField('liq1')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_LIQ2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_LIQ2 = ConvertAbilityRealLevelField('liq2')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_REDUCTION_LIQ3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_REDUCTION_LIQ3 = ConvertAbilityRealLevelField('liq3')",
+		description: "",
+	},
+	ABILITY_RLF_MAGIC_DAMAGE_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAGIC_DAMAGE_FACTOR = ConvertAbilityRealLevelField('mim1')",
+		description: "",
+	},
+	ABILITY_RLF_UNIT_DAMAGE_PER_MANA_POINT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_UNIT_DAMAGE_PER_MANA_POINT = ConvertAbilityRealLevelField('mfl1')",
+		description: "",
+	},
+	ABILITY_RLF_HERO_DAMAGE_PER_MANA_POINT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HERO_DAMAGE_PER_MANA_POINT = ConvertAbilityRealLevelField('mfl2')",
+		description: "",
+	},
+	ABILITY_RLF_UNIT_MAXIMUM_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_UNIT_MAXIMUM_DAMAGE = ConvertAbilityRealLevelField('mfl3')",
+		description: "",
+	},
+	ABILITY_RLF_HERO_MAXIMUM_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HERO_MAXIMUM_DAMAGE = ConvertAbilityRealLevelField('mfl4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_COOLDOWN: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_COOLDOWN = ConvertAbilityRealLevelField('mfl5')",
+		description: "",
+	},
+	ABILITY_RLF_DISTRIBUTED_DAMAGE_FACTOR_SPL1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DISTRIBUTED_DAMAGE_FACTOR_SPL1 = ConvertAbilityRealLevelField('spl1')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_REGENERATED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_REGENERATED = ConvertAbilityRealLevelField('irl1')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_REGENERATED: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_REGENERATED = ConvertAbilityRealLevelField('irl2')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_LOSS_PER_UNIT_IDC1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_LOSS_PER_UNIT_IDC1 = ConvertAbilityRealLevelField('idc1')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_UNIT_DAMAGE_IDC2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_UNIT_DAMAGE_IDC2 = ConvertAbilityRealLevelField('idc2')",
+		description: "",
+	},
+	ABILITY_RLF_ACTIVATION_DELAY_IMO2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ACTIVATION_DELAY_IMO2 = ConvertAbilityRealLevelField('imo2')",
+		description: "",
+	},
+	ABILITY_RLF_LURE_INTERVAL_SECONDS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LURE_INTERVAL_SECONDS = ConvertAbilityRealLevelField('imo3')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_ISR1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_ISR1 = ConvertAbilityRealLevelField('isr1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_REDUCTION_ISR2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_REDUCTION_ISR2 = ConvertAbilityRealLevelField('isr2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_IPV1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_IPV1 = ConvertAbilityRealLevelField('ipv1')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_STEAL_AMOUNT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_STEAL_AMOUNT = ConvertAbilityRealLevelField('ipv2')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_RESTORED_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_RESTORED_FACTOR = ConvertAbilityRealLevelField('ast1')",
+		description: "",
+	},
+	ABILITY_RLF_MANA_RESTORED_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MANA_RESTORED_FACTOR = ConvertAbilityRealLevelField('ast2')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACH_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACH_DELAY = ConvertAbilityRealLevelField('gra1')",
+		description: "",
+	},
+	ABILITY_RLF_REMOVE_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_REMOVE_DELAY = ConvertAbilityRealLevelField('gra2')",
+		description: "",
+	},
+	ABILITY_RLF_HERO_REGENERATION_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HERO_REGENERATION_DELAY = ConvertAbilityRealLevelField('Nsa2')",
+		description: "",
+	},
+	ABILITY_RLF_UNIT_REGENERATION_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_UNIT_REGENERATION_DELAY = ConvertAbilityRealLevelField('Nsa3')",
+		description: "",
+	},
+	ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_NSA4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_NSA4 = ConvertAbilityRealLevelField('Nsa4')",
+		description: "",
+	},
+	ABILITY_RLF_HIT_POINTS_PER_SECOND_NSA5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HIT_POINTS_PER_SECOND_NSA5 = ConvertAbilityRealLevelField('Nsa5')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_TO_SUMMONED_UNITS_IXS1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_TO_SUMMONED_UNITS_IXS1 = ConvertAbilityRealLevelField('Ixs1')",
+		description: "",
+	},
+	ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_IXS2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAGIC_DAMAGE_REDUCTION_IXS2 = ConvertAbilityRealLevelField('Ixs2')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_UNIT_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_UNIT_DURATION = ConvertAbilityRealLevelField('Npa6')",
+		description: "",
+	},
+	ABILITY_RLF_SHIELD_COOLDOWN_TIME: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SHIELD_COOLDOWN_TIME = ConvertAbilityRealLevelField('Nse1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_NDO1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_NDO1 = ConvertAbilityRealLevelField('Ndo1')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_UNIT_DURATION_SECONDS_NDO3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_UNIT_DURATION_SECONDS_NDO3 = ConvertAbilityRealLevelField('Ndo3')",
+		description: "",
+	},
+	ABILITY_RLF_MEDIUM_DAMAGE_RADIUS_FLK1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MEDIUM_DAMAGE_RADIUS_FLK1 = ConvertAbilityRealLevelField('flk1')",
+		description: "",
+	},
+	ABILITY_RLF_SMALL_DAMAGE_RADIUS_FLK2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SMALL_DAMAGE_RADIUS_FLK2 = ConvertAbilityRealLevelField('flk2')",
+		description: "",
+	},
+	ABILITY_RLF_FULL_DAMAGE_AMOUNT_FLK3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FULL_DAMAGE_AMOUNT_FLK3 = ConvertAbilityRealLevelField('flk3')",
+		description: "",
+	},
+	ABILITY_RLF_MEDIUM_DAMAGE_AMOUNT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MEDIUM_DAMAGE_AMOUNT = ConvertAbilityRealLevelField('flk4')",
+		description: "",
+	},
+	ABILITY_RLF_SMALL_DAMAGE_AMOUNT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SMALL_DAMAGE_AMOUNT = ConvertAbilityRealLevelField('flk5')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_HBN1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_HBN1 = ConvertAbilityRealLevelField('Hbn1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_HBN2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_HBN2 = ConvertAbilityRealLevelField('Hbn2')",
+		description: "",
+	},
+	ABILITY_RLF_MAX_MANA_DRAINED_UNITS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAX_MANA_DRAINED_UNITS = ConvertAbilityRealLevelField('fbk1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_RATIO_UNITS_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_RATIO_UNITS_PERCENT = ConvertAbilityRealLevelField('fbk2')",
+		description: "",
+	},
+	ABILITY_RLF_MAX_MANA_DRAINED_HEROS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAX_MANA_DRAINED_HEROS = ConvertAbilityRealLevelField('fbk3')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_RATIO_HEROS_PERCENT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_RATIO_HEROS_PERCENT = ConvertAbilityRealLevelField('fbk4')",
+		description: "",
+	},
+	ABILITY_RLF_SUMMONED_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SUMMONED_DAMAGE = ConvertAbilityRealLevelField('fbk5')",
+		description: "",
+	},
+	ABILITY_RLF_DISTRIBUTED_DAMAGE_FACTOR_NCA1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DISTRIBUTED_DAMAGE_FACTOR_NCA1 = ConvertAbilityRealLevelField('nca1')",
+		description: "",
+	},
+	ABILITY_RLF_INITIAL_DAMAGE_PXF1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_INITIAL_DAMAGE_PXF1 = ConvertAbilityRealLevelField('pxf1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_PXF2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_PXF2 = ConvertAbilityRealLevelField('pxf2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PER_SECOND_MLS1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PER_SECOND_MLS1 = ConvertAbilityRealLevelField('mls1')",
+		description: "",
+	},
+	ABILITY_RLF_BEAST_COLLISION_RADIUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BEAST_COLLISION_RADIUS = ConvertAbilityRealLevelField('Nst2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_AMOUNT_NST3: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_AMOUNT_NST3 = ConvertAbilityRealLevelField('Nst3')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_RADIUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_RADIUS = ConvertAbilityRealLevelField('Nst4')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_DELAY = ConvertAbilityRealLevelField('Nst5')",
+		description: "",
+	},
+	ABILITY_RLF_FOLLOW_THROUGH_TIME: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FOLLOW_THROUGH_TIME = ConvertAbilityRealLevelField('Ncl1')",
+		description: "",
+	},
+	ABILITY_RLF_ART_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ART_DURATION = ConvertAbilityRealLevelField('Ncl4')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_NAB1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_NAB1 = ConvertAbilityRealLevelField('Nab1')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_NAB2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_NAB2 = ConvertAbilityRealLevelField('Nab2')",
+		description: "",
+	},
+	ABILITY_RLF_PRIMARY_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_PRIMARY_DAMAGE = ConvertAbilityRealLevelField('Nab4')",
+		description: "",
+	},
+	ABILITY_RLF_SECONDARY_DAMAGE: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SECONDARY_DAMAGE = ConvertAbilityRealLevelField('Nab5')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_INTERVAL_NAB6: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_INTERVAL_NAB6 = ConvertAbilityRealLevelField('Nab6')",
+		description: "",
+	},
+	ABILITY_RLF_GOLD_COST_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_GOLD_COST_FACTOR = ConvertAbilityRealLevelField('Ntm1')",
+		description: "",
+	},
+	ABILITY_RLF_LUMBER_COST_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LUMBER_COST_FACTOR = ConvertAbilityRealLevelField('Ntm2')",
+		description: "",
+	},
+	ABILITY_RLF_MOVE_SPEED_BONUS_NEG1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVE_SPEED_BONUS_NEG1 = ConvertAbilityRealLevelField('Neg1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_BONUS_NEG2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_BONUS_NEG2 = ConvertAbilityRealLevelField('Neg2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_AMOUNT_NCS1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_AMOUNT_NCS1 = ConvertAbilityRealLevelField('Ncs1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_INTERVAL_NCS2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_INTERVAL_NCS2 = ConvertAbilityRealLevelField('Ncs2')",
+		description: "",
+	},
+	ABILITY_RLF_MAX_DAMAGE_NCS4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAX_DAMAGE_NCS4 = ConvertAbilityRealLevelField('Ncs4')",
+		description: "",
+	},
+	ABILITY_RLF_BUILDING_DAMAGE_FACTOR_NCS5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BUILDING_DAMAGE_FACTOR_NCS5 = ConvertAbilityRealLevelField('Ncs5')",
+		description: "",
+	},
+	ABILITY_RLF_EFFECT_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_EFFECT_DURATION = ConvertAbilityRealLevelField('Ncs6')",
+		description: "",
+	},
+	ABILITY_RLF_SPAWN_INTERVAL_NSY1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SPAWN_INTERVAL_NSY1 = ConvertAbilityRealLevelField('Nsy1')",
+		description: "",
+	},
+	ABILITY_RLF_SPAWN_UNIT_DURATION: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SPAWN_UNIT_DURATION = ConvertAbilityRealLevelField('Nsy3')",
+		description: "",
+	},
+	ABILITY_RLF_SPAWN_UNIT_OFFSET: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SPAWN_UNIT_OFFSET = ConvertAbilityRealLevelField('Nsy4')",
+		description: "",
+	},
+	ABILITY_RLF_LEASH_RANGE_NSY5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LEASH_RANGE_NSY5 = ConvertAbilityRealLevelField('Nsy5')",
+		description: "",
+	},
+	ABILITY_RLF_SPAWN_INTERVAL_NFY1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SPAWN_INTERVAL_NFY1 = ConvertAbilityRealLevelField('Nfy1')",
+		description: "",
+	},
+	ABILITY_RLF_LEASH_RANGE_NFY2: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LEASH_RANGE_NFY2 = ConvertAbilityRealLevelField('Nfy2')",
+		description: "",
+	},
+	ABILITY_RLF_CHANCE_TO_DEMOLISH: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_CHANCE_TO_DEMOLISH = ConvertAbilityRealLevelField('Nde1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_MULTIPLIER_BUILDINGS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_MULTIPLIER_BUILDINGS = ConvertAbilityRealLevelField('Nde2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_MULTIPLIER_UNITS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_MULTIPLIER_UNITS = ConvertAbilityRealLevelField('Nde3')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_MULTIPLIER_HEROES: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_MULTIPLIER_HEROES = ConvertAbilityRealLevelField('Nde4')",
+		description: "",
+	},
+	ABILITY_RLF_BONUS_DAMAGE_MULTIPLIER: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BONUS_DAMAGE_MULTIPLIER = ConvertAbilityRealLevelField('Nic1')",
+		description: "",
+	},
+	ABILITY_RLF_DEATH_DAMAGE_FULL_AMOUNT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DEATH_DAMAGE_FULL_AMOUNT = ConvertAbilityRealLevelField('Nic2')",
+		description: "",
+	},
+	ABILITY_RLF_DEATH_DAMAGE_FULL_AREA: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DEATH_DAMAGE_FULL_AREA = ConvertAbilityRealLevelField('Nic3')",
+		description: "",
+	},
+	ABILITY_RLF_DEATH_DAMAGE_HALF_AMOUNT: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DEATH_DAMAGE_HALF_AMOUNT = ConvertAbilityRealLevelField('Nic4')",
+		description: "",
+	},
+	ABILITY_RLF_DEATH_DAMAGE_HALF_AREA: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DEATH_DAMAGE_HALF_AREA = ConvertAbilityRealLevelField('Nic5')",
+		description: "",
+	},
+	ABILITY_RLF_DEATH_DAMAGE_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DEATH_DAMAGE_DELAY = ConvertAbilityRealLevelField('Nic6')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_AMOUNT_NSO1: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_AMOUNT_NSO1 = ConvertAbilityRealLevelField('Nso1')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PERIOD: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PERIOD = ConvertAbilityRealLevelField('Nso2')",
+		description: "",
+	},
+	ABILITY_RLF_DAMAGE_PENALTY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_DAMAGE_PENALTY = ConvertAbilityRealLevelField('Nso3')",
+		description: "",
+	},
+	ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_NSO4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MOVEMENT_SPEED_REDUCTION_PERCENT_NSO4 = ConvertAbilityRealLevelField('Nso4')",
+		description: "",
+	},
+	ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_NSO5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_ATTACK_SPEED_REDUCTION_PERCENT_NSO5 = ConvertAbilityRealLevelField('Nso5')",
+		description: "",
+	},
+	ABILITY_RLF_SPLIT_DELAY: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_SPLIT_DELAY = ConvertAbilityRealLevelField('Nlm2')",
+		description: "",
+	},
+	ABILITY_RLF_MAX_HITPOINT_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_MAX_HITPOINT_FACTOR = ConvertAbilityRealLevelField('Nlm4')",
+		description: "",
+	},
+	ABILITY_RLF_LIFE_DURATION_SPLIT_BONUS: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_LIFE_DURATION_SPLIT_BONUS = ConvertAbilityRealLevelField('Nlm5')",
+		description: "",
+	},
+	ABILITY_RLF_WAVE_INTERVAL: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_WAVE_INTERVAL = ConvertAbilityRealLevelField('Nvc3')",
+		description: "",
+	},
+	ABILITY_RLF_BUILDING_DAMAGE_FACTOR_NVC4: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_BUILDING_DAMAGE_FACTOR_NVC4 = ConvertAbilityRealLevelField('Nvc4')",
+		description: "",
+	},
+	ABILITY_RLF_FULL_DAMAGE_AMOUNT_NVC5: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_FULL_DAMAGE_AMOUNT_NVC5 = ConvertAbilityRealLevelField('Nvc5')",
+		description: "",
+	},
+	ABILITY_RLF_HALF_DAMAGE_FACTOR: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_HALF_DAMAGE_FACTOR = ConvertAbilityRealLevelField('Nvc6')",
+		description: "",
+	},
+	ABILITY_RLF_INTERVAL_BETWEEN_PULSES: {
+		completion: "constant abilityreallevelfield ABILITY_RLF_INTERVAL_BETWEEN_PULSES = ConvertAbilityRealLevelField('Tau5')",
+		description: "",
+	},
+	ABILITY_BLF_PERCENT_BONUS_HAB2: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_PERCENT_BONUS_HAB2 = ConvertAbilityBooleanLevelField('Hab2')",
+		description: "",
+	},
+	ABILITY_BLF_USE_TELEPORT_CLUSTERING_HMT3: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_USE_TELEPORT_CLUSTERING_HMT3 = ConvertAbilityBooleanLevelField('Hmt3')",
+		description: "",
+	},
+	ABILITY_BLF_NEVER_MISS_OCR5: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_NEVER_MISS_OCR5 = ConvertAbilityBooleanLevelField('Ocr5')",
+		description: "",
+	},
+	ABILITY_BLF_EXCLUDE_ITEM_DAMAGE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_EXCLUDE_ITEM_DAMAGE = ConvertAbilityBooleanLevelField('Ocr6')",
+		description: "",
+	},
+	ABILITY_BLF_BACKSTAB_DAMAGE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_BACKSTAB_DAMAGE = ConvertAbilityBooleanLevelField('Owk4')",
+		description: "",
+	},
+	ABILITY_BLF_INHERIT_UPGRADES_UAN3: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_INHERIT_UPGRADES_UAN3 = ConvertAbilityBooleanLevelField('Uan3')",
+		description: "",
+	},
+	ABILITY_BLF_MANA_CONVERSION_AS_PERCENT: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_MANA_CONVERSION_AS_PERCENT = ConvertAbilityBooleanLevelField('Udp3')",
+		description: "",
+	},
+	ABILITY_BLF_LIFE_CONVERSION_AS_PERCENT: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_LIFE_CONVERSION_AS_PERCENT = ConvertAbilityBooleanLevelField('Udp4')",
+		description: "",
+	},
+	ABILITY_BLF_LEAVE_TARGET_ALIVE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_LEAVE_TARGET_ALIVE = ConvertAbilityBooleanLevelField('Udp5')",
+		description: "",
+	},
+	ABILITY_BLF_PERCENT_BONUS_UAU3: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_PERCENT_BONUS_UAU3 = ConvertAbilityBooleanLevelField('Uau3')",
+		description: "",
+	},
+	ABILITY_BLF_DAMAGE_IS_PERCENT_RECEIVED: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_DAMAGE_IS_PERCENT_RECEIVED = ConvertAbilityBooleanLevelField('Eah2')",
+		description: "",
+	},
+	ABILITY_BLF_MELEE_BONUS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_MELEE_BONUS = ConvertAbilityBooleanLevelField('Ear2')",
+		description: "",
+	},
+	ABILITY_BLF_RANGED_BONUS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_RANGED_BONUS = ConvertAbilityBooleanLevelField('Ear3')",
+		description: "",
+	},
+	ABILITY_BLF_FLAT_BONUS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_FLAT_BONUS = ConvertAbilityBooleanLevelField('Ear4')",
+		description: "",
+	},
+	ABILITY_BLF_NEVER_MISS_HBH5: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_NEVER_MISS_HBH5 = ConvertAbilityBooleanLevelField('Hbh5')",
+		description: "",
+	},
+	ABILITY_BLF_PERCENT_BONUS_HAD2: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_PERCENT_BONUS_HAD2 = ConvertAbilityBooleanLevelField('Had2')",
+		description: "",
+	},
+	ABILITY_BLF_CAN_DEACTIVATE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_CAN_DEACTIVATE = ConvertAbilityBooleanLevelField('Hds1')",
+		description: "",
+	},
+	ABILITY_BLF_RAISED_UNITS_ARE_INVULNERABLE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_RAISED_UNITS_ARE_INVULNERABLE = ConvertAbilityBooleanLevelField('Hre2')",
+		description: "",
+	},
+	ABILITY_BLF_PERCENTAGE_OAR2: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_PERCENTAGE_OAR2 = ConvertAbilityBooleanLevelField('Oar2')",
+		description: "",
+	},
+	ABILITY_BLF_SUMMON_BUSY_UNITS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_SUMMON_BUSY_UNITS = ConvertAbilityBooleanLevelField('Btl2')",
+		description: "",
+	},
+	ABILITY_BLF_CREATES_BLIGHT: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_CREATES_BLIGHT = ConvertAbilityBooleanLevelField('Bli2')",
+		description: "",
+	},
+	ABILITY_BLF_EXPLODES_ON_DEATH: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_EXPLODES_ON_DEATH = ConvertAbilityBooleanLevelField('Sds6')",
+		description: "",
+	},
+	ABILITY_BLF_ALWAYS_AUTOCAST_FAE2: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_ALWAYS_AUTOCAST_FAE2 = ConvertAbilityBooleanLevelField('Fae2')",
+		description: "",
+	},
+	ABILITY_BLF_REGENERATE_ONLY_AT_NIGHT: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_REGENERATE_ONLY_AT_NIGHT = ConvertAbilityBooleanLevelField('Mbt5')",
+		description: "",
+	},
+	ABILITY_BLF_SHOW_SELECT_UNIT_BUTTON: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_SHOW_SELECT_UNIT_BUTTON = ConvertAbilityBooleanLevelField('Neu3')",
+		description: "",
+	},
+	ABILITY_BLF_SHOW_UNIT_INDICATOR: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_SHOW_UNIT_INDICATOR = ConvertAbilityBooleanLevelField('Neu4')",
+		description: "",
+	},
+	ABILITY_BLF_CHARGE_OWNING_PLAYER: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_CHARGE_OWNING_PLAYER = ConvertAbilityBooleanLevelField('Ans6')",
+		description: "",
+	},
+	ABILITY_BLF_PERCENTAGE_ARM2: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_PERCENTAGE_ARM2 = ConvertAbilityBooleanLevelField('Arm2')",
+		description: "",
+	},
+	ABILITY_BLF_TARGET_IS_INVULNERABLE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_TARGET_IS_INVULNERABLE = ConvertAbilityBooleanLevelField('Pos3')",
+		description: "",
+	},
+	ABILITY_BLF_TARGET_IS_MAGIC_IMMUNE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_TARGET_IS_MAGIC_IMMUNE = ConvertAbilityBooleanLevelField('Pos4')",
+		description: "",
+	},
+	ABILITY_BLF_KILL_ON_CASTER_DEATH: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_KILL_ON_CASTER_DEATH = ConvertAbilityBooleanLevelField('Ucb6')",
+		description: "",
+	},
+	ABILITY_BLF_NO_TARGET_REQUIRED_REJ4: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_NO_TARGET_REQUIRED_REJ4 = ConvertAbilityBooleanLevelField('Rej4')",
+		description: "",
+	},
+	ABILITY_BLF_ACCEPTS_GOLD: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_ACCEPTS_GOLD = ConvertAbilityBooleanLevelField('Rtn1')",
+		description: "",
+	},
+	ABILITY_BLF_ACCEPTS_LUMBER: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_ACCEPTS_LUMBER = ConvertAbilityBooleanLevelField('Rtn2')",
+		description: "",
+	},
+	ABILITY_BLF_PREFER_HOSTILES_ROA5: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_PREFER_HOSTILES_ROA5 = ConvertAbilityBooleanLevelField('Roa5')",
+		description: "",
+	},
+	ABILITY_BLF_PREFER_FRIENDLIES_ROA6: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_PREFER_FRIENDLIES_ROA6 = ConvertAbilityBooleanLevelField('Roa6')",
+		description: "",
+	},
+	ABILITY_BLF_ROOTED_TURNING: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_ROOTED_TURNING = ConvertAbilityBooleanLevelField('Roo3')",
+		description: "",
+	},
+	ABILITY_BLF_ALWAYS_AUTOCAST_SLO3: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_ALWAYS_AUTOCAST_SLO3 = ConvertAbilityBooleanLevelField('Slo3')",
+		description: "",
+	},
+	ABILITY_BLF_HIDE_BUTTON: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_HIDE_BUTTON = ConvertAbilityBooleanLevelField('Ihid')",
+		description: "",
+	},
+	ABILITY_BLF_USE_TELEPORT_CLUSTERING_ITP2: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_USE_TELEPORT_CLUSTERING_ITP2 = ConvertAbilityBooleanLevelField('Itp2')",
+		description: "",
+	},
+	ABILITY_BLF_IMMUNE_TO_MORPH_EFFECTS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_IMMUNE_TO_MORPH_EFFECTS = ConvertAbilityBooleanLevelField('Eth1')",
+		description: "",
+	},
+	ABILITY_BLF_DOES_NOT_BLOCK_BUILDINGS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_DOES_NOT_BLOCK_BUILDINGS = ConvertAbilityBooleanLevelField('Eth2')",
+		description: "",
+	},
+	ABILITY_BLF_AUTO_ACQUIRE_ATTACK_TARGETS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_AUTO_ACQUIRE_ATTACK_TARGETS = ConvertAbilityBooleanLevelField('Gho1')",
+		description: "",
+	},
+	ABILITY_BLF_IMMUNE_TO_MORPH_EFFECTS_GHO2: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_IMMUNE_TO_MORPH_EFFECTS_GHO2 = ConvertAbilityBooleanLevelField('Gho2')",
+		description: "",
+	},
+	ABILITY_BLF_DO_NOT_BLOCK_BUILDINGS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_DO_NOT_BLOCK_BUILDINGS = ConvertAbilityBooleanLevelField('Gho3')",
+		description: "",
+	},
+	ABILITY_BLF_INCLUDE_RANGED_DAMAGE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_INCLUDE_RANGED_DAMAGE = ConvertAbilityBooleanLevelField('Ssk4')",
+		description: "",
+	},
+	ABILITY_BLF_INCLUDE_MELEE_DAMAGE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_INCLUDE_MELEE_DAMAGE = ConvertAbilityBooleanLevelField('Ssk5')",
+		description: "",
+	},
+	ABILITY_BLF_MOVE_TO_PARTNER: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_MOVE_TO_PARTNER = ConvertAbilityBooleanLevelField('coa2')",
+		description: "",
+	},
+	ABILITY_BLF_CAN_BE_DISPELLED: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_CAN_BE_DISPELLED = ConvertAbilityBooleanLevelField('cyc1')",
+		description: "",
+	},
+	ABILITY_BLF_IGNORE_FRIENDLY_BUFFS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_IGNORE_FRIENDLY_BUFFS = ConvertAbilityBooleanLevelField('dvm6')",
+		description: "",
+	},
+	ABILITY_BLF_DROP_ITEMS_ON_DEATH: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_DROP_ITEMS_ON_DEATH = ConvertAbilityBooleanLevelField('inv2')",
+		description: "",
+	},
+	ABILITY_BLF_CAN_USE_ITEMS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_CAN_USE_ITEMS = ConvertAbilityBooleanLevelField('inv3')",
+		description: "",
+	},
+	ABILITY_BLF_CAN_GET_ITEMS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_CAN_GET_ITEMS = ConvertAbilityBooleanLevelField('inv4')",
+		description: "",
+	},
+	ABILITY_BLF_CAN_DROP_ITEMS: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_CAN_DROP_ITEMS = ConvertAbilityBooleanLevelField('inv5')",
+		description: "",
+	},
+	ABILITY_BLF_REPAIRS_ALLOWED: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_REPAIRS_ALLOWED = ConvertAbilityBooleanLevelField('liq4')",
+		description: "",
+	},
+	ABILITY_BLF_CASTER_ONLY_SPLASH: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_CASTER_ONLY_SPLASH = ConvertAbilityBooleanLevelField('mfl6')",
+		description: "",
+	},
+	ABILITY_BLF_NO_TARGET_REQUIRED_IRL4: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_NO_TARGET_REQUIRED_IRL4 = ConvertAbilityBooleanLevelField('irl4')",
+		description: "",
+	},
+	ABILITY_BLF_DISPEL_ON_ATTACK: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_DISPEL_ON_ATTACK = ConvertAbilityBooleanLevelField('irl5')",
+		description: "",
+	},
+	ABILITY_BLF_AMOUNT_IS_RAW_VALUE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_AMOUNT_IS_RAW_VALUE = ConvertAbilityBooleanLevelField('ipv3')",
+		description: "",
+	},
+	ABILITY_BLF_SHARED_SPELL_COOLDOWN: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_SHARED_SPELL_COOLDOWN = ConvertAbilityBooleanLevelField('spb2')",
+		description: "",
+	},
+	ABILITY_BLF_SLEEP_ONCE: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_SLEEP_ONCE = ConvertAbilityBooleanLevelField('sla1')",
+		description: "",
+	},
+	ABILITY_BLF_ALLOW_ON_ANY_PLAYER_SLOT: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_ALLOW_ON_ANY_PLAYER_SLOT = ConvertAbilityBooleanLevelField('sla2')",
+		description: "",
+	},
+	ABILITY_BLF_DISABLE_OTHER_ABILITIES: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_DISABLE_OTHER_ABILITIES = ConvertAbilityBooleanLevelField('Ncl5')",
+		description: "",
+	},
+	ABILITY_BLF_ALLOW_BOUNTY: {
+		completion: "constant abilitybooleanlevelfield ABILITY_BLF_ALLOW_BOUNTY = ConvertAbilityBooleanLevelField('Ntm4')",
+		description: "",
+	},
+	ABILITY_SLF_ICON_NORMAL: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_ICON_NORMAL = ConvertAbilityStringLevelField('aart')",
+		description: "",
+	},
+	ABILITY_SLF_CASTER: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_CASTER = ConvertAbilityStringLevelField('acat')",
+		description: "",
+	},
+	ABILITY_SLF_TARGET: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_TARGET = ConvertAbilityStringLevelField('atat')",
+		description: "",
+	},
+	ABILITY_SLF_SPECIAL: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_SPECIAL = ConvertAbilityStringLevelField('asat')",
+		description: "",
+	},
+	ABILITY_SLF_EFFECT: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_EFFECT = ConvertAbilityStringLevelField('aeat')",
+		description: "",
+	},
+	ABILITY_SLF_AREA_EFFECT: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_AREA_EFFECT = ConvertAbilityStringLevelField('aaea')",
+		description: "",
+	},
+	ABILITY_SLF_LIGHTNING_EFFECTS: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_LIGHTNING_EFFECTS = ConvertAbilityStringLevelField('alig')",
+		description: "",
+	},
+	ABILITY_SLF_MISSILE_ART: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_MISSILE_ART = ConvertAbilityStringLevelField('amat')",
+		description: "",
+	},
+	ABILITY_SLF_TOOLTIP_LEARN: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_TOOLTIP_LEARN = ConvertAbilityStringLevelField('aret')",
+		description: "",
+	},
+	ABILITY_SLF_TOOLTIP_LEARN_EXTENDED: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_TOOLTIP_LEARN_EXTENDED = ConvertAbilityStringLevelField('arut')",
+		description: "",
+	},
+	ABILITY_SLF_TOOLTIP_NORMAL: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_TOOLTIP_NORMAL = ConvertAbilityStringLevelField('atp1')",
+		description: "",
+	},
+	ABILITY_SLF_TOOLTIP_TURN_OFF: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_TOOLTIP_TURN_OFF = ConvertAbilityStringLevelField('aut1')",
+		description: "",
+	},
+	ABILITY_SLF_TOOLTIP_NORMAL_EXTENDED: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_TOOLTIP_NORMAL_EXTENDED = ConvertAbilityStringLevelField('aub1')",
+		description: "",
+	},
+	ABILITY_SLF_TOOLTIP_TURN_OFF_EXTENDED: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_TOOLTIP_TURN_OFF_EXTENDED = ConvertAbilityStringLevelField('auu1')",
+		description: "",
+	},
+	ABILITY_SLF_NORMAL_FORM_UNIT_EME1: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_NORMAL_FORM_UNIT_EME1 = ConvertAbilityStringLevelField('Eme1')",
+		description: "",
+	},
+	ABILITY_SLF_SPAWNED_UNITS: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_SPAWNED_UNITS = ConvertAbilityStringLevelField('Ndp1')",
+		description: "",
+	},
+	ABILITY_SLF_ABILITY_FOR_UNIT_CREATION: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_ABILITY_FOR_UNIT_CREATION = ConvertAbilityStringLevelField('Nrc1')",
+		description: "",
+	},
+	ABILITY_SLF_NORMAL_FORM_UNIT_MIL1: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_NORMAL_FORM_UNIT_MIL1 = ConvertAbilityStringLevelField('Mil1')",
+		description: "",
+	},
+	ABILITY_SLF_ALTERNATE_FORM_UNIT_MIL2: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_ALTERNATE_FORM_UNIT_MIL2 = ConvertAbilityStringLevelField('Mil2')",
+		description: "",
+	},
+	ABILITY_SLF_BASE_ORDER_ID_ANS5: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_BASE_ORDER_ID_ANS5 = ConvertAbilityStringLevelField('Ans5')",
+		description: "",
+	},
+	ABILITY_SLF_MORPH_UNITS_GROUND: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_MORPH_UNITS_GROUND = ConvertAbilityStringLevelField('Ply2')",
+		description: "",
+	},
+	ABILITY_SLF_MORPH_UNITS_AIR: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_MORPH_UNITS_AIR = ConvertAbilityStringLevelField('Ply3')",
+		description: "",
+	},
+	ABILITY_SLF_MORPH_UNITS_AMPHIBIOUS: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_MORPH_UNITS_AMPHIBIOUS = ConvertAbilityStringLevelField('Ply4')",
+		description: "",
+	},
+	ABILITY_SLF_MORPH_UNITS_WATER: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_MORPH_UNITS_WATER = ConvertAbilityStringLevelField('Ply5')",
+		description: "",
+	},
+	ABILITY_SLF_UNIT_TYPE_ONE: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_UNIT_TYPE_ONE = ConvertAbilityStringLevelField('Rai3')",
+		description: "",
+	},
+	ABILITY_SLF_UNIT_TYPE_TWO: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_UNIT_TYPE_TWO = ConvertAbilityStringLevelField('Rai4')",
+		description: "",
+	},
+	ABILITY_SLF_UNIT_TYPE_SOD2: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_UNIT_TYPE_SOD2 = ConvertAbilityStringLevelField('Sod2')",
+		description: "",
+	},
+	ABILITY_SLF_SUMMON_1_UNIT_TYPE: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_SUMMON_1_UNIT_TYPE = ConvertAbilityStringLevelField('Ist1')",
+		description: "",
+	},
+	ABILITY_SLF_SUMMON_2_UNIT_TYPE: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_SUMMON_2_UNIT_TYPE = ConvertAbilityStringLevelField('Ist2')",
+		description: "",
+	},
+	ABILITY_SLF_RACE_TO_CONVERT: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_RACE_TO_CONVERT = ConvertAbilityStringLevelField('Ndc1')",
+		description: "",
+	},
+	ABILITY_SLF_PARTNER_UNIT_TYPE: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_PARTNER_UNIT_TYPE = ConvertAbilityStringLevelField('coa1')",
+		description: "",
+	},
+	ABILITY_SLF_PARTNER_UNIT_TYPE_ONE: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_PARTNER_UNIT_TYPE_ONE = ConvertAbilityStringLevelField('dcp1')",
+		description: "",
+	},
+	ABILITY_SLF_PARTNER_UNIT_TYPE_TWO: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_PARTNER_UNIT_TYPE_TWO = ConvertAbilityStringLevelField('dcp2')",
+		description: "",
+	},
+	ABILITY_SLF_REQUIRED_UNIT_TYPE: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_REQUIRED_UNIT_TYPE = ConvertAbilityStringLevelField('tpi1')",
+		description: "",
+	},
+	ABILITY_SLF_CONVERTED_UNIT_TYPE: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_CONVERTED_UNIT_TYPE = ConvertAbilityStringLevelField('tpi2')",
+		description: "",
+	},
+	ABILITY_SLF_SPELL_LIST: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_SPELL_LIST = ConvertAbilityStringLevelField('spb1')",
+		description: "",
+	},
+	ABILITY_SLF_BASE_ORDER_ID_SPB5: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_BASE_ORDER_ID_SPB5 = ConvertAbilityStringLevelField('spb5')",
+		description: "",
+	},
+	ABILITY_SLF_BASE_ORDER_ID_NCL6: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_BASE_ORDER_ID_NCL6 = ConvertAbilityStringLevelField('Ncl6')",
+		description: "",
+	},
+	ABILITY_SLF_ABILITY_UPGRADE_1: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_ABILITY_UPGRADE_1 = ConvertAbilityStringLevelField('Neg3')",
+		description: "",
+	},
+	ABILITY_SLF_ABILITY_UPGRADE_2: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_ABILITY_UPGRADE_2 = ConvertAbilityStringLevelField('Neg4')",
+		description: "",
+	},
+	ABILITY_SLF_ABILITY_UPGRADE_3: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_ABILITY_UPGRADE_3 = ConvertAbilityStringLevelField('Neg5')",
+		description: "",
+	},
+	ABILITY_SLF_ABILITY_UPGRADE_4: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_ABILITY_UPGRADE_4 = ConvertAbilityStringLevelField('Neg6')",
+		description: "",
+	},
+	ABILITY_SLF_SPAWN_UNIT_ID_NSY2: {
+		completion: "constant abilitystringlevelfield ABILITY_SLF_SPAWN_UNIT_ID_NSY2 = ConvertAbilityStringLevelField('Nsy2')",
+		description: "",
+	},
+	ITEM_IF_LEVEL: {
+		completion: "constant itemintegerfield ITEM_IF_LEVEL = ConvertItemIntegerField('ilev')",
+		description: "",
+	},
+	ITEM_IF_NUMBER_OF_CHARGES: {
+		completion: "constant itemintegerfield ITEM_IF_NUMBER_OF_CHARGES = ConvertItemIntegerField('iuse')",
+		description: "",
+	},
+	ITEM_IF_COOLDOWN_GROUP: {
+		completion: "constant itemintegerfield ITEM_IF_COOLDOWN_GROUP = ConvertItemIntegerField('icid')",
+		description: "",
+	},
+	ITEM_IF_MAX_HIT_POINTS: {
+		completion: "constant itemintegerfield ITEM_IF_MAX_HIT_POINTS = ConvertItemIntegerField('ihtp')",
+		description: "",
+	},
+	ITEM_IF_HIT_POINTS: {
+		completion: "constant itemintegerfield ITEM_IF_HIT_POINTS = ConvertItemIntegerField('ihpc')",
+		description: "",
+	},
+	ITEM_IF_PRIORITY: {
+		completion: "constant itemintegerfield ITEM_IF_PRIORITY = ConvertItemIntegerField('ipri')",
+		description: "",
+	},
+	ITEM_IF_ARMOR_TYPE: {
+		completion: "constant itemintegerfield ITEM_IF_ARMOR_TYPE = ConvertItemIntegerField('iarm')",
+		description: "",
+	},
+	ITEM_IF_TINTING_COLOR_RED: {
+		completion: "constant itemintegerfield ITEM_IF_TINTING_COLOR_RED = ConvertItemIntegerField('iclr')",
+		description: "",
+	},
+	ITEM_IF_TINTING_COLOR_GREEN: {
+		completion: "constant itemintegerfield ITEM_IF_TINTING_COLOR_GREEN = ConvertItemIntegerField('iclg')",
+		description: "",
+	},
+	ITEM_IF_TINTING_COLOR_BLUE: {
+		completion: "constant itemintegerfield ITEM_IF_TINTING_COLOR_BLUE = ConvertItemIntegerField('iclb')",
+		description: "",
+	},
+	ITEM_IF_TINTING_COLOR_ALPHA: {
+		completion: "constant itemintegerfield ITEM_IF_TINTING_COLOR_ALPHA = ConvertItemIntegerField('ical')",
+		description: "",
+	},
+	ITEM_RF_SCALING_VALUE: {
+		completion: "constant itemrealfield ITEM_RF_SCALING_VALUE = ConvertItemRealField('isca')",
+		description: "",
+	},
+	ITEM_BF_DROPPED_WHEN_CARRIER_DIES: {
+		completion: "constant itembooleanfield ITEM_BF_DROPPED_WHEN_CARRIER_DIES = ConvertItemBooleanField('idrp')",
+		description: "",
+	},
+	ITEM_BF_CAN_BE_DROPPED: {
+		completion: "constant itembooleanfield ITEM_BF_CAN_BE_DROPPED = ConvertItemBooleanField('idro')",
+		description: "",
+	},
+	ITEM_BF_PERISHABLE: {
+		completion: "constant itembooleanfield ITEM_BF_PERISHABLE = ConvertItemBooleanField('iper')",
+		description: "",
+	},
+	ITEM_BF_INCLUDE_AS_RANDOM_CHOICE: {
+		completion: "constant itembooleanfield ITEM_BF_INCLUDE_AS_RANDOM_CHOICE = ConvertItemBooleanField('iprn')",
+		description: "",
+	},
+	ITEM_BF_USE_AUTOMATICALLY_WHEN_ACQUIRED: {
+		completion: "constant itembooleanfield ITEM_BF_USE_AUTOMATICALLY_WHEN_ACQUIRED = ConvertItemBooleanField('ipow')",
+		description: "",
+	},
+	ITEM_BF_CAN_BE_SOLD_TO_MERCHANTS: {
+		completion: "constant itembooleanfield ITEM_BF_CAN_BE_SOLD_TO_MERCHANTS = ConvertItemBooleanField('ipaw')",
+		description: "",
+	},
+	ITEM_BF_ACTIVELY_USED: {
+		completion: "constant itembooleanfield ITEM_BF_ACTIVELY_USED = ConvertItemBooleanField('iusa')",
+		description: "",
+	},
+	ITEM_SF_MODEL_USED: {
+		completion: "constant itemstringfield ITEM_SF_MODEL_USED = ConvertItemStringField('ifil')",
+		description: "",
+	},
+	UNIT_IF_DEFENSE_TYPE: {
+		completion: "constant unitintegerfield UNIT_IF_DEFENSE_TYPE = ConvertUnitIntegerField('udty')",
+		description: "",
+	},
+	UNIT_IF_ARMOR_TYPE: {
+		completion: "constant unitintegerfield UNIT_IF_ARMOR_TYPE = ConvertUnitIntegerField('uarm')",
+		description: "",
+	},
+	UNIT_IF_LOOPING_FADE_IN_RATE: {
+		completion: "constant unitintegerfield UNIT_IF_LOOPING_FADE_IN_RATE = ConvertUnitIntegerField('ulfi')",
+		description: "",
+	},
+	UNIT_IF_LOOPING_FADE_OUT_RATE: {
+		completion: "constant unitintegerfield UNIT_IF_LOOPING_FADE_OUT_RATE = ConvertUnitIntegerField('ulfo')",
+		description: "",
+	},
+	UNIT_IF_AGILITY: {
+		completion: "constant unitintegerfield UNIT_IF_AGILITY = ConvertUnitIntegerField('uagc')",
+		description: "",
+	},
+	UNIT_IF_INTELLIGENCE: {
+		completion: "constant unitintegerfield UNIT_IF_INTELLIGENCE = ConvertUnitIntegerField('uinc')",
+		description: "",
+	},
+	UNIT_IF_STRENGTH: {
+		completion: "constant unitintegerfield UNIT_IF_STRENGTH = ConvertUnitIntegerField('ustc')",
+		description: "",
+	},
+	UNIT_IF_AGILITY_PERMANENT: {
+		completion: "constant unitintegerfield UNIT_IF_AGILITY_PERMANENT = ConvertUnitIntegerField('uagm')",
+		description: "",
+	},
+	UNIT_IF_INTELLIGENCE_PERMANENT: {
+		completion: "constant unitintegerfield UNIT_IF_INTELLIGENCE_PERMANENT = ConvertUnitIntegerField('uinm')",
+		description: "",
+	},
+	UNIT_IF_STRENGTH_PERMANENT: {
+		completion: "constant unitintegerfield UNIT_IF_STRENGTH_PERMANENT = ConvertUnitIntegerField('ustm')",
+		description: "",
+	},
+	UNIT_IF_AGILITY_WITH_BONUS: {
+		completion: "constant unitintegerfield UNIT_IF_AGILITY_WITH_BONUS = ConvertUnitIntegerField('uagb')",
+		description: "",
+	},
+	UNIT_IF_INTELLIGENCE_WITH_BONUS: {
+		completion: "constant unitintegerfield UNIT_IF_INTELLIGENCE_WITH_BONUS = ConvertUnitIntegerField('uinb')",
+		description: "",
+	},
+	UNIT_IF_STRENGTH_WITH_BONUS: {
+		completion: "constant unitintegerfield UNIT_IF_STRENGTH_WITH_BONUS = ConvertUnitIntegerField('ustb')",
+		description: "",
+	},
+	UNIT_IF_GOLD_BOUNTY_AWARDED_NUMBER_OF_DICE: {
+		completion: "constant unitintegerfield UNIT_IF_GOLD_BOUNTY_AWARDED_NUMBER_OF_DICE = ConvertUnitIntegerField('ubdi')",
+		description: "",
+	},
+	UNIT_IF_GOLD_BOUNTY_AWARDED_BASE: {
+		completion: "constant unitintegerfield UNIT_IF_GOLD_BOUNTY_AWARDED_BASE = ConvertUnitIntegerField('ubba')",
+		description: "",
+	},
+	UNIT_IF_GOLD_BOUNTY_AWARDED_SIDES_PER_DIE: {
+		completion: "constant unitintegerfield UNIT_IF_GOLD_BOUNTY_AWARDED_SIDES_PER_DIE = ConvertUnitIntegerField('ubsi')",
+		description: "",
+	},
+	UNIT_IF_LUMBER_BOUNTY_AWARDED_NUMBER_OF_DICE: {
+		completion: "constant unitintegerfield UNIT_IF_LUMBER_BOUNTY_AWARDED_NUMBER_OF_DICE = ConvertUnitIntegerField('ulbd')",
+		description: "",
+	},
+	UNIT_IF_LUMBER_BOUNTY_AWARDED_BASE: {
+		completion: "constant unitintegerfield UNIT_IF_LUMBER_BOUNTY_AWARDED_BASE = ConvertUnitIntegerField('ulba')",
+		description: "",
+	},
+	UNIT_IF_LUMBER_BOUNTY_AWARDED_SIDES_PER_DIE: {
+		completion: "constant unitintegerfield UNIT_IF_LUMBER_BOUNTY_AWARDED_SIDES_PER_DIE = ConvertUnitIntegerField('ulbs')",
+		description: "",
+	},
+	UNIT_IF_LEVEL: {
+		completion: "constant unitintegerfield UNIT_IF_LEVEL = ConvertUnitIntegerField('ulev')",
+		description: "",
+	},
+	UNIT_IF_FORMATION_RANK: {
+		completion: "constant unitintegerfield UNIT_IF_FORMATION_RANK = ConvertUnitIntegerField('ufor')",
+		description: "",
+	},
+	UNIT_IF_ORIENTATION_INTERPOLATION: {
+		completion: "constant unitintegerfield UNIT_IF_ORIENTATION_INTERPOLATION = ConvertUnitIntegerField('uori')",
+		description: "",
+	},
+	UNIT_IF_ELEVATION_SAMPLE_POINTS: {
+		completion: "constant unitintegerfield UNIT_IF_ELEVATION_SAMPLE_POINTS = ConvertUnitIntegerField('uept')",
+		description: "",
+	},
+	UNIT_IF_TINTING_COLOR_RED: {
+		completion: "constant unitintegerfield UNIT_IF_TINTING_COLOR_RED = ConvertUnitIntegerField('uclr')",
+		description: "",
+	},
+	UNIT_IF_TINTING_COLOR_GREEN: {
+		completion: "constant unitintegerfield UNIT_IF_TINTING_COLOR_GREEN = ConvertUnitIntegerField('uclg')",
+		description: "",
+	},
+	UNIT_IF_TINTING_COLOR_BLUE: {
+		completion: "constant unitintegerfield UNIT_IF_TINTING_COLOR_BLUE = ConvertUnitIntegerField('uclb')",
+		description: "",
+	},
+	UNIT_IF_TINTING_COLOR_ALPHA: {
+		completion: "constant unitintegerfield UNIT_IF_TINTING_COLOR_ALPHA = ConvertUnitIntegerField('ucal')",
+		description: "",
+	},
+	UNIT_IF_MOVE_TYPE: {
+		completion: "constant unitintegerfield UNIT_IF_MOVE_TYPE = ConvertUnitIntegerField('umvt')",
+		description: "",
+	},
+	UNIT_IF_TARGETED_AS: {
+		completion: "constant unitintegerfield UNIT_IF_TARGETED_AS = ConvertUnitIntegerField('utar')",
+		description: "",
+	},
+	UNIT_IF_UNIT_CLASSIFICATION: {
+		completion: "constant unitintegerfield UNIT_IF_UNIT_CLASSIFICATION = ConvertUnitIntegerField('utyp')",
+		description: "",
+	},
+	UNIT_IF_HIT_POINTS_REGENERATION_TYPE: {
+		completion: "constant unitintegerfield UNIT_IF_HIT_POINTS_REGENERATION_TYPE = ConvertUnitIntegerField('uhrt')",
+		description: "",
+	},
+	UNIT_IF_PLACEMENT_PREVENTED_BY: {
+		completion: "constant unitintegerfield UNIT_IF_PLACEMENT_PREVENTED_BY = ConvertUnitIntegerField('upar')",
+		description: "",
+	},
+	UNIT_IF_PRIMARY_ATTRIBUTE: {
+		completion: "constant unitintegerfield UNIT_IF_PRIMARY_ATTRIBUTE = ConvertUnitIntegerField('upra')",
+		description: "",
+	},
+	UNIT_RF_STRENGTH_PER_LEVEL: {
+		completion: "constant unitrealfield UNIT_RF_STRENGTH_PER_LEVEL = ConvertUnitRealField('ustp')",
+		description: "",
+	},
+	UNIT_RF_AGILITY_PER_LEVEL: {
+		completion: "constant unitrealfield UNIT_RF_AGILITY_PER_LEVEL = ConvertUnitRealField('uagp')",
+		description: "",
+	},
+	UNIT_RF_INTELLIGENCE_PER_LEVEL: {
+		completion: "constant unitrealfield UNIT_RF_INTELLIGENCE_PER_LEVEL = ConvertUnitRealField('uinp')",
+		description: "",
+	},
+	UNIT_RF_HIT_POINTS_REGENERATION_RATE: {
+		completion: "constant unitrealfield UNIT_RF_HIT_POINTS_REGENERATION_RATE = ConvertUnitRealField('uhpr')",
+		description: "",
+	},
+	UNIT_RF_MANA_REGENERATION: {
+		completion: "constant unitrealfield UNIT_RF_MANA_REGENERATION = ConvertUnitRealField('umpr')",
+		description: "",
+	},
+	UNIT_RF_DEATH_TIME: {
+		completion: "constant unitrealfield UNIT_RF_DEATH_TIME = ConvertUnitRealField('udtm')",
+		description: "",
+	},
+	UNIT_RF_FLY_HEIGHT: {
+		completion: "constant unitrealfield UNIT_RF_FLY_HEIGHT = ConvertUnitRealField('ufyh')",
+		description: "",
+	},
+	UNIT_RF_TURN_RATE: {
+		completion: "constant unitrealfield UNIT_RF_TURN_RATE = ConvertUnitRealField('umvr')",
+		description: "",
+	},
+	UNIT_RF_ELEVATION_SAMPLE_RADIUS: {
+		completion: "constant unitrealfield UNIT_RF_ELEVATION_SAMPLE_RADIUS = ConvertUnitRealField('uerd')",
+		description: "",
+	},
+	UNIT_RF_FOG_OF_WAR_SAMPLE_RADIUS: {
+		completion: "constant unitrealfield UNIT_RF_FOG_OF_WAR_SAMPLE_RADIUS = ConvertUnitRealField('ufrd')",
+		description: "",
+	},
+	UNIT_RF_MAXIMUM_PITCH_ANGLE_DEGREES: {
+		completion: "constant unitrealfield UNIT_RF_MAXIMUM_PITCH_ANGLE_DEGREES = ConvertUnitRealField('umxp')",
+		description: "",
+	},
+	UNIT_RF_MAXIMUM_ROLL_ANGLE_DEGREES: {
+		completion: "constant unitrealfield UNIT_RF_MAXIMUM_ROLL_ANGLE_DEGREES = ConvertUnitRealField('umxr')",
+		description: "",
+	},
+	UNIT_RF_SCALING_VALUE: {
+		completion: "constant unitrealfield UNIT_RF_SCALING_VALUE = ConvertUnitRealField('usca')",
+		description: "",
+	},
+	UNIT_RF_ANIMATION_RUN_SPEED: {
+		completion: "constant unitrealfield UNIT_RF_ANIMATION_RUN_SPEED = ConvertUnitRealField('urun')",
+		description: "",
+	},
+	UNIT_RF_SELECTION_SCALE: {
+		completion: "constant unitrealfield UNIT_RF_SELECTION_SCALE = ConvertUnitRealField('ussc')",
+		description: "",
+	},
+	UNIT_RF_SELECTION_CIRCLE_HEIGHT: {
+		completion: "constant unitrealfield UNIT_RF_SELECTION_CIRCLE_HEIGHT = ConvertUnitRealField('uslz')",
+		description: "",
+	},
+	UNIT_RF_SHADOW_IMAGE_HEIGHT: {
+		completion: "constant unitrealfield UNIT_RF_SHADOW_IMAGE_HEIGHT = ConvertUnitRealField('ushh')",
+		description: "",
+	},
+	UNIT_RF_SHADOW_IMAGE_WIDTH: {
+		completion: "constant unitrealfield UNIT_RF_SHADOW_IMAGE_WIDTH = ConvertUnitRealField('ushw')",
+		description: "",
+	},
+	UNIT_RF_SHADOW_IMAGE_CENTER_X: {
+		completion: "constant unitrealfield UNIT_RF_SHADOW_IMAGE_CENTER_X = ConvertUnitRealField('ushx')",
+		description: "",
+	},
+	UNIT_RF_SHADOW_IMAGE_CENTER_Y: {
+		completion: "constant unitrealfield UNIT_RF_SHADOW_IMAGE_CENTER_Y = ConvertUnitRealField('ushy')",
+		description: "",
+	},
+	UNIT_RF_ANIMATION_WALK_SPEED: {
+		completion: "constant unitrealfield UNIT_RF_ANIMATION_WALK_SPEED = ConvertUnitRealField('uwal')",
+		description: "",
+	},
+	UNIT_RF_DEFENSE: {
+		completion: "constant unitrealfield UNIT_RF_DEFENSE = ConvertUnitRealField('udfc')",
+		description: "",
+	},
+	UNIT_RF_SIGHT_RADIUS: {
+		completion: "constant unitrealfield UNIT_RF_SIGHT_RADIUS = ConvertUnitRealField('usir')",
+		description: "",
+	},
+	UNIT_RF_PRIORITY: {
+		completion: "constant unitrealfield UNIT_RF_PRIORITY = ConvertUnitRealField('upri')",
+		description: "",
+	},
+	UNIT_RF_SPEED: {
+		completion: "constant unitrealfield UNIT_RF_SPEED = ConvertUnitRealField('umvc')",
+		description: "",
+	},
+	UNIT_RF_OCCLUDER_HEIGHT: {
+		completion: "constant unitrealfield UNIT_RF_OCCLUDER_HEIGHT = ConvertUnitRealField('uocc')",
+		description: "",
+	},
+	UNIT_RF_HP: {
+		completion: "constant unitrealfield UNIT_RF_HP = ConvertUnitRealField('uhpc')",
+		description: "",
+	},
+	UNIT_RF_MANA: {
+		completion: "constant unitrealfield UNIT_RF_MANA = ConvertUnitRealField('umpc')",
+		description: "",
+	},
+	UNIT_RF_ACQUISITION_RANGE: {
+		completion: "constant unitrealfield UNIT_RF_ACQUISITION_RANGE = ConvertUnitRealField('uacq')",
+		description: "",
+	},
+	UNIT_RF_CAST_BACK_SWING: {
+		completion: "constant unitrealfield UNIT_RF_CAST_BACK_SWING = ConvertUnitRealField('ucbs')",
+		description: "",
+	},
+	UNIT_RF_CAST_POINT: {
+		completion: "constant unitrealfield UNIT_RF_CAST_POINT = ConvertUnitRealField('ucpt')",
+		description: "",
+	},
+	UNIT_RF_MINIMUM_ATTACK_RANGE: {
+		completion: "constant unitrealfield UNIT_RF_MINIMUM_ATTACK_RANGE = ConvertUnitRealField('uamn')",
+		description: "",
+	},
+	UNIT_BF_RAISABLE: {
+		completion: "constant unitbooleanfield UNIT_BF_RAISABLE = ConvertUnitBooleanField('urai')",
+		description: "",
+	},
+	UNIT_BF_DECAYABLE: {
+		completion: "constant unitbooleanfield UNIT_BF_DECAYABLE = ConvertUnitBooleanField('udec')",
+		description: "",
+	},
+	UNIT_BF_IS_A_BUILDING: {
+		completion: "constant unitbooleanfield UNIT_BF_IS_A_BUILDING = ConvertUnitBooleanField('ubdg')",
+		description: "",
+	},
+	UNIT_BF_USE_EXTENDED_LINE_OF_SIGHT: {
+		completion: "constant unitbooleanfield UNIT_BF_USE_EXTENDED_LINE_OF_SIGHT = ConvertUnitBooleanField('ulos')",
+		description: "",
+	},
+	UNIT_BF_NEUTRAL_BUILDING_SHOWS_MINIMAP_ICON: {
+		completion: "constant unitbooleanfield UNIT_BF_NEUTRAL_BUILDING_SHOWS_MINIMAP_ICON = ConvertUnitBooleanField('unbm')",
+		description: "",
+	},
+	UNIT_BF_HERO_HIDE_HERO_INTERFACE_ICON: {
+		completion: "constant unitbooleanfield UNIT_BF_HERO_HIDE_HERO_INTERFACE_ICON = ConvertUnitBooleanField('uhhb')",
+		description: "",
+	},
+	UNIT_BF_HERO_HIDE_HERO_MINIMAP_DISPLAY: {
+		completion: "constant unitbooleanfield UNIT_BF_HERO_HIDE_HERO_MINIMAP_DISPLAY = ConvertUnitBooleanField('uhhm')",
+		description: "",
+	},
+	UNIT_BF_HERO_HIDE_HERO_DEATH_MESSAGE: {
+		completion: "constant unitbooleanfield UNIT_BF_HERO_HIDE_HERO_DEATH_MESSAGE = ConvertUnitBooleanField('uhhd')",
+		description: "",
+	},
+	UNIT_BF_HIDE_MINIMAP_DISPLAY: {
+		completion: "constant unitbooleanfield UNIT_BF_HIDE_MINIMAP_DISPLAY = ConvertUnitBooleanField('uhom')",
+		description: "",
+	},
+	UNIT_BF_SCALE_PROJECTILES: {
+		completion: "constant unitbooleanfield UNIT_BF_SCALE_PROJECTILES = ConvertUnitBooleanField('uscb')",
+		description: "",
+	},
+	UNIT_BF_SELECTION_CIRCLE_ON_WATER: {
+		completion: "constant unitbooleanfield UNIT_BF_SELECTION_CIRCLE_ON_WATER = ConvertUnitBooleanField('usew')",
+		description: "",
+	},
+	UNIT_BF_HAS_WATER_SHADOW: {
+		completion: "constant unitbooleanfield UNIT_BF_HAS_WATER_SHADOW = ConvertUnitBooleanField('ushr')",
+		description: "",
+	},
+	UNIT_SF_NAME: {
+		completion: "constant unitstringfield UNIT_SF_NAME = ConvertUnitStringField('unam')",
+		description: "",
+	},
+	UNIT_SF_PROPER_NAMES: {
+		completion: "constant unitstringfield UNIT_SF_PROPER_NAMES = ConvertUnitStringField('upro')",
+		description: "",
+	},
+	UNIT_SF_GROUND_TEXTURE: {
+		completion: "constant unitstringfield UNIT_SF_GROUND_TEXTURE = ConvertUnitStringField('uubs')",
+		description: "",
+	},
+	UNIT_SF_SHADOW_IMAGE_UNIT: {
+		completion: "constant unitstringfield UNIT_SF_SHADOW_IMAGE_UNIT = ConvertUnitStringField('ushu')",
+		description: "",
+	},
+	UNIT_WEAPON_IF_ATTACK_DAMAGE_NUMBER_OF_DICE: {
+		completion: "constant unitweaponintegerfield UNIT_WEAPON_IF_ATTACK_DAMAGE_NUMBER_OF_DICE = ConvertUnitWeaponIntegerField('ua1d')",
+		description: "",
+	},
+	UNIT_WEAPON_IF_ATTACK_DAMAGE_BASE: {
+		completion: "constant unitweaponintegerfield UNIT_WEAPON_IF_ATTACK_DAMAGE_BASE = ConvertUnitWeaponIntegerField('ua1b')",
+		description: "",
+	},
+	UNIT_WEAPON_IF_ATTACK_DAMAGE_SIDES_PER_DIE: {
+		completion: "constant unitweaponintegerfield UNIT_WEAPON_IF_ATTACK_DAMAGE_SIDES_PER_DIE = ConvertUnitWeaponIntegerField('ua1s')",
+		description: "",
+	},
+	UNIT_WEAPON_IF_ATTACK_MAXIMUM_NUMBER_OF_TARGETS: {
+		completion: "constant unitweaponintegerfield UNIT_WEAPON_IF_ATTACK_MAXIMUM_NUMBER_OF_TARGETS = ConvertUnitWeaponIntegerField('utc1')",
+		description: "",
+	},
+	UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE: {
+		completion: "constant unitweaponintegerfield UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE = ConvertUnitWeaponIntegerField('ua1t')",
+		description: "",
+	},
+	UNIT_WEAPON_IF_ATTACK_WEAPON_SOUND: {
+		completion: "constant unitweaponintegerfield UNIT_WEAPON_IF_ATTACK_WEAPON_SOUND = ConvertUnitWeaponIntegerField('ucs1')",
+		description: "",
+	},
+	UNIT_WEAPON_IF_ATTACK_AREA_OF_EFFECT_TARGETS: {
+		completion: "constant unitweaponintegerfield UNIT_WEAPON_IF_ATTACK_AREA_OF_EFFECT_TARGETS = ConvertUnitWeaponIntegerField('ua1p')",
+		description: "",
+	},
+	UNIT_WEAPON_IF_ATTACK_TARGETS_ALLOWED: {
+		completion: "constant unitweaponintegerfield UNIT_WEAPON_IF_ATTACK_TARGETS_ALLOWED = ConvertUnitWeaponIntegerField('ua1g')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_BACKSWING_POINT: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_BACKSWING_POINT = ConvertUnitWeaponRealField('ubs1')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_DAMAGE_POINT: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_DAMAGE_POINT = ConvertUnitWeaponRealField('udp1')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_BASE_COOLDOWN: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_BASE_COOLDOWN = ConvertUnitWeaponRealField('ua1c')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_DAMAGE_LOSS_FACTOR: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_DAMAGE_LOSS_FACTOR = ConvertUnitWeaponRealField('udl1')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_DAMAGE_FACTOR_MEDIUM: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_DAMAGE_FACTOR_MEDIUM = ConvertUnitWeaponRealField('uhd1')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_DAMAGE_FACTOR_SMALL: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_DAMAGE_FACTOR_SMALL = ConvertUnitWeaponRealField('uqd1')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_DAMAGE_SPILL_DISTANCE: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_DAMAGE_SPILL_DISTANCE = ConvertUnitWeaponRealField('usd1')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_DAMAGE_SPILL_RADIUS: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_DAMAGE_SPILL_RADIUS = ConvertUnitWeaponRealField('usr1')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_PROJECTILE_SPEED: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_PROJECTILE_SPEED = ConvertUnitWeaponRealField('ua1z')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_PROJECTILE_ARC: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_PROJECTILE_ARC = ConvertUnitWeaponRealField('uma1')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_AREA_OF_EFFECT_FULL_DAMAGE: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_AREA_OF_EFFECT_FULL_DAMAGE = ConvertUnitWeaponRealField('ua1f')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_AREA_OF_EFFECT_MEDIUM_DAMAGE: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_AREA_OF_EFFECT_MEDIUM_DAMAGE = ConvertUnitWeaponRealField('ua1h')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_AREA_OF_EFFECT_SMALL_DAMAGE: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_AREA_OF_EFFECT_SMALL_DAMAGE = ConvertUnitWeaponRealField('ua1q')",
+		description: "",
+	},
+	UNIT_WEAPON_RF_ATTACK_RANGE: {
+		completion: "constant unitweaponrealfield UNIT_WEAPON_RF_ATTACK_RANGE = ConvertUnitWeaponRealField('ua1r')",
+		description: "",
+	},
+	UNIT_WEAPON_BF_ATTACK_SHOW_UI: {
+		completion: "constant unitweaponbooleanfield UNIT_WEAPON_BF_ATTACK_SHOW_UI = ConvertUnitWeaponBooleanField('uwu1')",
+		description: "",
+	},
+	UNIT_WEAPON_BF_ATTACKS_ENABLED: {
+		completion: "constant unitweaponbooleanfield UNIT_WEAPON_BF_ATTACKS_ENABLED = ConvertUnitWeaponBooleanField('uaen')",
+		description: "",
+	},
+	UNIT_WEAPON_BF_ATTACK_PROJECTILE_HOMING_ENABLED: {
+		completion: "constant unitweaponbooleanfield UNIT_WEAPON_BF_ATTACK_PROJECTILE_HOMING_ENABLED = ConvertUnitWeaponBooleanField('umh1')",
+		description: "",
+	},
+	UNIT_WEAPON_SF_ATTACK_PROJECTILE_ART: {
+		completion: "constant unitweaponstringfield UNIT_WEAPON_SF_ATTACK_PROJECTILE_ART = ConvertUnitWeaponStringField('ua1m')",
+		description: "",
+	},
+	MOVE_TYPE_UNKNOWN: {
+		completion: "constant movetype MOVE_TYPE_UNKNOWN = ConvertMoveType(0)",
+		description: "",
+	},
+	MOVE_TYPE_FOOT: {
+		completion: "constant movetype MOVE_TYPE_FOOT = ConvertMoveType(1)",
+		description: "",
+	},
+	MOVE_TYPE_FLY: {
+		completion: "constant movetype MOVE_TYPE_FLY = ConvertMoveType(2)",
+		description: "",
+	},
+	MOVE_TYPE_HORSE: {
+		completion: "constant movetype MOVE_TYPE_HORSE = ConvertMoveType(4)",
+		description: "",
+	},
+	MOVE_TYPE_HOVER: {
+		completion: "constant movetype MOVE_TYPE_HOVER = ConvertMoveType(8)",
+		description: "",
+	},
+	MOVE_TYPE_FLOAT: {
+		completion: "constant movetype MOVE_TYPE_FLOAT = ConvertMoveType(16)",
+		description: "",
+	},
+	MOVE_TYPE_AMPHIBIOUS: {
+		completion: "constant movetype MOVE_TYPE_AMPHIBIOUS = ConvertMoveType(32)",
+		description: "",
+	},
+	MOVE_TYPE_UNBUILDABLE: {
+		completion: "constant movetype MOVE_TYPE_UNBUILDABLE = ConvertMoveType(64)",
+		description: "",
+	},
+	TARGET_FLAG_NONE: {
+		completion: "constant targetflag TARGET_FLAG_NONE = ConvertTargetFlag(1)",
+		description: "",
+	},
+	TARGET_FLAG_GROUND: {
+		completion: "constant targetflag TARGET_FLAG_GROUND = ConvertTargetFlag(2)",
+		description: "",
+	},
+	TARGET_FLAG_AIR: {
+		completion: "constant targetflag TARGET_FLAG_AIR = ConvertTargetFlag(4)",
+		description: "",
+	},
+	TARGET_FLAG_STRUCTURE: {
+		completion: "constant targetflag TARGET_FLAG_STRUCTURE = ConvertTargetFlag(8)",
+		description: "",
+	},
+	TARGET_FLAG_WARD: {
+		completion: "constant targetflag TARGET_FLAG_WARD = ConvertTargetFlag(16)",
+		description: "",
+	},
+	TARGET_FLAG_ITEM: {
+		completion: "constant targetflag TARGET_FLAG_ITEM = ConvertTargetFlag(32)",
+		description: "",
+	},
+	TARGET_FLAG_TREE: {
+		completion: "constant targetflag TARGET_FLAG_TREE = ConvertTargetFlag(64)",
+		description: "",
+	},
+	TARGET_FLAG_WALL: {
+		completion: "constant targetflag TARGET_FLAG_WALL = ConvertTargetFlag(128)",
+		description: "",
+	},
+	TARGET_FLAG_DEBRIS: {
+		completion: "constant targetflag TARGET_FLAG_DEBRIS = ConvertTargetFlag(256)",
+		description: "",
+	},
+	TARGET_FLAG_DECORATION: {
+		completion: "constant targetflag TARGET_FLAG_DECORATION = ConvertTargetFlag(512)",
+		description: "",
+	},
+	TARGET_FLAG_BRIDGE: {
+		completion: "constant targetflag TARGET_FLAG_BRIDGE = ConvertTargetFlag(1024)",
+		description: "",
+	},
+	DEFENSE_TYPE_LIGHT: {
+		completion: "constant defensetype DEFENSE_TYPE_LIGHT = ConvertDefenseType(0)",
+		description: "",
+	},
+	DEFENSE_TYPE_MEDIUM: {
+		completion: "constant defensetype DEFENSE_TYPE_MEDIUM = ConvertDefenseType(1)",
+		description: "",
+	},
+	DEFENSE_TYPE_LARGE: {
+		completion: "constant defensetype DEFENSE_TYPE_LARGE = ConvertDefenseType(2)",
+		description: "",
+	},
+	DEFENSE_TYPE_FORT: {
+		completion: "constant defensetype DEFENSE_TYPE_FORT = ConvertDefenseType(3)",
+		description: "",
+	},
+	DEFENSE_TYPE_NORMAL: {
+		completion: "constant defensetype DEFENSE_TYPE_NORMAL = ConvertDefenseType(4)",
+		description: "",
+	},
+	DEFENSE_TYPE_HERO: {
+		completion: "constant defensetype DEFENSE_TYPE_HERO = ConvertDefenseType(5)",
+		description: "",
+	},
+	DEFENSE_TYPE_DIVINE: {
+		completion: "constant defensetype DEFENSE_TYPE_DIVINE = ConvertDefenseType(6)",
+		description: "",
+	},
+	DEFENSE_TYPE_NONE: {
+		completion: "constant defensetype DEFENSE_TYPE_NONE = ConvertDefenseType(7)",
+		description: "",
+	},
+	HERO_ATTRIBUTE_STR: {
+		completion: "constant heroattribute HERO_ATTRIBUTE_STR = ConvertHeroAttribute(1)",
+		description: "",
+	},
+	HERO_ATTRIBUTE_INT: {
+		completion: "constant heroattribute HERO_ATTRIBUTE_INT = ConvertHeroAttribute(2)",
+		description: "",
+	},
+	HERO_ATTRIBUTE_AGI: {
+		completion: "constant heroattribute HERO_ATTRIBUTE_AGI = ConvertHeroAttribute(3)",
+		description: "",
+	},
+	ARMOR_TYPE_WHOKNOWS: {
+		completion: "constant armortype ARMOR_TYPE_WHOKNOWS = ConvertArmorType(0)",
+		description: "",
+	},
+	ARMOR_TYPE_FLESH: {
+		completion: "constant armortype ARMOR_TYPE_FLESH = ConvertArmorType(1)",
+		description: "",
+	},
+	ARMOR_TYPE_METAL: {
+		completion: "constant armortype ARMOR_TYPE_METAL = ConvertArmorType(2)",
+		description: "",
+	},
+	ARMOR_TYPE_WOOD: {
+		completion: "constant armortype ARMOR_TYPE_WOOD = ConvertArmorType(3)",
+		description: "",
+	},
+	ARMOR_TYPE_ETHREAL: {
+		completion: "constant armortype ARMOR_TYPE_ETHREAL = ConvertArmorType(4)",
+		description: "",
+	},
+	ARMOR_TYPE_STONE: {
+		completion: "constant armortype ARMOR_TYPE_STONE = ConvertArmorType(5)",
+		description: "",
+	},
+	REGENERATION_TYPE_NONE: {
+		completion: "constant regentype REGENERATION_TYPE_NONE = ConvertRegenType(0)",
+		description: "",
+	},
+	REGENERATION_TYPE_ALWAYS: {
+		completion: "constant regentype REGENERATION_TYPE_ALWAYS = ConvertRegenType(1)",
+		description: "",
+	},
+	REGENERATION_TYPE_BLIGHT: {
+		completion: "constant regentype REGENERATION_TYPE_BLIGHT = ConvertRegenType(2)",
+		description: "",
+	},
+	REGENERATION_TYPE_DAY: {
+		completion: "constant regentype REGENERATION_TYPE_DAY = ConvertRegenType(3)",
+		description: "",
+	},
+	REGENERATION_TYPE_NIGHT: {
+		completion: "constant regentype REGENERATION_TYPE_NIGHT = ConvertRegenType(4)",
+		description: "",
+	},
+	UNIT_CATEGORY_GIANT: {
+		completion: "constant unitcategory UNIT_CATEGORY_GIANT = ConvertUnitCategory(1)",
+		description: "",
+	},
+	UNIT_CATEGORY_UNDEAD: {
+		completion: "constant unitcategory UNIT_CATEGORY_UNDEAD = ConvertUnitCategory(2)",
+		description: "",
+	},
+	UNIT_CATEGORY_SUMMONED: {
+		completion: "constant unitcategory UNIT_CATEGORY_SUMMONED = ConvertUnitCategory(4)",
+		description: "",
+	},
+	UNIT_CATEGORY_MECHANICAL: {
+		completion: "constant unitcategory UNIT_CATEGORY_MECHANICAL = ConvertUnitCategory(8)",
+		description: "",
+	},
+	UNIT_CATEGORY_PEON: {
+		completion: "constant unitcategory UNIT_CATEGORY_PEON = ConvertUnitCategory(16)",
+		description: "",
+	},
+	UNIT_CATEGORY_SAPPER: {
+		completion: "constant unitcategory UNIT_CATEGORY_SAPPER = ConvertUnitCategory(32)",
+		description: "",
+	},
+	UNIT_CATEGORY_TOWNHALL: {
+		completion: "constant unitcategory UNIT_CATEGORY_TOWNHALL = ConvertUnitCategory(64)",
+		description: "",
+	},
+	UNIT_CATEGORY_ANCIENT: {
+		completion: "constant unitcategory UNIT_CATEGORY_ANCIENT = ConvertUnitCategory(128)",
+		description: "",
+	},
+	UNIT_CATEGORY_NEUTRAL: {
+		completion: "constant unitcategory UNIT_CATEGORY_NEUTRAL = ConvertUnitCategory(256)",
+		description: "",
+	},
+	UNIT_CATEGORY_WARD: {
+		completion: "constant unitcategory UNIT_CATEGORY_WARD = ConvertUnitCategory(512)",
+		description: "",
+	},
+	UNIT_CATEGORY_STANDON: {
+		completion: "constant unitcategory UNIT_CATEGORY_STANDON = ConvertUnitCategory(1024)",
+		description: "",
+	},
+	UNIT_CATEGORY_TAUREN: {
+		completion: "constant unitcategory UNIT_CATEGORY_TAUREN = ConvertUnitCategory(2048)",
+		description: "",
+	},
+	PATHING_FLAG_UNWALKABLE: {
+		completion: "constant pathingflag PATHING_FLAG_UNWALKABLE = ConvertPathingFlag(2)",
+		description: "",
+	},
+	PATHING_FLAG_UNFLYABLE: {
+		completion: "constant pathingflag PATHING_FLAG_UNFLYABLE = ConvertPathingFlag(4)",
+		description: "",
+	},
+	PATHING_FLAG_UNBUILDABLE: {
+		completion: "constant pathingflag PATHING_FLAG_UNBUILDABLE = ConvertPathingFlag(8)",
+		description: "",
+	},
+	PATHING_FLAG_UNPEONHARVEST: {
+		completion: "constant pathingflag PATHING_FLAG_UNPEONHARVEST = ConvertPathingFlag(16)",
+		description: "",
+	},
+	PATHING_FLAG_BLIGHTED: {
+		completion: "constant pathingflag PATHING_FLAG_BLIGHTED = ConvertPathingFlag(32)",
+		description: "",
+	},
+	PATHING_FLAG_UNFLOATABLE: {
+		completion: "constant pathingflag PATHING_FLAG_UNFLOATABLE = ConvertPathingFlag(64)",
+		description: "",
+	},
+	PATHING_FLAG_UNAMPHIBIOUS: {
+		completion: "constant pathingflag PATHING_FLAG_UNAMPHIBIOUS = ConvertPathingFlag(128)",
+		description: "",
+	},
+	PATHING_FLAG_UNITEMPLACABLE: {
+		completion: "constant pathingflag PATHING_FLAG_UNITEMPLACABLE = ConvertPathingFlag(256)",
+		description: "",
+	},
     FALSE: {
     completion: "constant boolean FALSE=false",
     description: "",
