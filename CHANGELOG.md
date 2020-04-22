@@ -4,7 +4,7 @@ All notable changes to the "vjass" extension will be documented in this file.
 
 ## 0.1.0
 
-Add 1.31 natives, constants, and types from common.j which were not present in plugin.
+Add 1.31 natives, constants, and types from common.j.
 
 ## 0.0.9
 
