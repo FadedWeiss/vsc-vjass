@@ -2,6 +2,10 @@
 
 All notable changes to the "vjass" extension will be documented in this file.
 
+## 0.1.0
+
+Add 1.31 natives, constants, and types from common.j which were not present in plugin.
+
 ## 0.0.9
 
 fixed a bug that completion won't work when jass file has been edited;
